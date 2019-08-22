@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import 
+import './FormsPage';
 
 class FormsPage extends Component {}
 
