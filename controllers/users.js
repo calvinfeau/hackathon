@@ -4,10 +4,11 @@ module.exports = {
     createUser
 }
 
-function createUser(req, res) {
-    console.log('req body name', req.body.name);
-    var newUser = new User(req.body);
-    newUser.save(function(err) {
-        return user.save((item) => res.status(200).json(item))
-    })
+async function createUser(req, res) {
+    try {
+        await
+        console.log('req body passed in controller: ', req.body);
+        var newUser = new User(req.body);
+        return newUser.save((item) => res.status(200).json(item));
+    } catch(err) {console.log('error in createUser mongoose')}
 }
