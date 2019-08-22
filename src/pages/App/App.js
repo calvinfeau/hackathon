@@ -20,8 +20,8 @@ function App() {
               <div className="box1">
                 <h2>Nobody Plans To Be Homeless</h2>
               </div>
-              <img id="img1" src={image1} />
-              <div>
+              <div className="wrapper-div">
+                <img id="img1" src={image1} />
                 <p>
                   Safe Parking programs are a safe and legal homelessness
                   intervention to stabilize and connect to resources for people
@@ -29,19 +29,22 @@ function App() {
                   include access to a restroom facility and the security of a
                   guard.
                 </p>
-                <a class="" href="#">
-                  <img id="" src={button} alt="button" />
-                </a>
+                <Link className="btn btn-primary btn-lg links" to="/forms">
+                  FIND YOUR SPOT
+                </Link>{" "}
               </div>
-              <Link to="/forms">FIND YOUR SPOT</Link>
-              <img id="img2" src={image2} />
-              <div>
-                In Los Angeles County, there are over 15,700 people living in
-                their vehicles each night. These vehicle dwellers represent over
-                25% of the population of people experiencing homelessness in LA
-                County.
+              <div className="wrapper-div">
+                <img id="img2" src={image2} />
+                <p>
+                  In Los Angeles County, there are over 15,700 people living in
+                  their vehicles each night. These vehicle dwellers represent
+                  over 25% of the population of people experiencing homelessness
+                  in LA County.
+                </p>
+                <Link className="btn btn-primary btn-lg links" to="/forms">
+                  WHO WE SERVE
+                </Link>{" "}
               </div>
-              <Link>WHO WE SERVE</Link>
             </div>
           )}
         />
