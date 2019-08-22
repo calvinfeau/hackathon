@@ -21,7 +21,6 @@ const userSchema = new mongoose.Schema({
     },
     driverId: {
         type: String,
-        required: true
     },
     driverStatus: {
         type: String,

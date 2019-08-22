@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import './FormsPage';
 import { Route, Switch, Link } from "react-router-dom";
 import InterestForm from "../../components/InterestForm/InterestForm";
-
+import Form2 from "../../components/Form2/Form2";
 
 class FormsPage extends Component {
     constructor(props) {
@@ -14,8 +14,12 @@ class FormsPage extends Component {
             <div>
                 <Switch>
                     <Route
-                    exact path="/form-1"
+                    exact path="/forms"
                     render={() => <InterestForm />}
+                    />
+                    <Route
+                    exact path="/form2"
+                    render={() => < Form2/>}
                     />
                 </Switch>
             </div>
