@@ -15,9 +15,7 @@
 }
 
 .logo {
-  width: 375px;
-  height: 50px;
-  object-fit: contain;
+  display: none;
 }
 
 @media (min-width: 992px) {
@@ -25,5 +23,10 @@
     display: flex;
     width: 60%;
     justify-content: space-between;
+  }
+  .logo {
+    width: 375px;
+    height: 50px;
+    object-fit: contain;
   }
 }

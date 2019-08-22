@@ -23,17 +23,71 @@ h2 {
   color: #12679b;
 }
 
+p {
+  padding: 10px;
+}
+
+.p-headers {
+  padding: 15px;
+  font-weight: bold;
+  color: black;
+}
+
 .btn {
   border-radius: 30px;
   margin-bottom: 30px;
+}
+
+i {
+  font-size: 12px;
+  margin: 20px;
 }
 
 .btn:hover {
   background: grey;
 }
 
+.story-link {
+  background-color: white;
+}
+
+footer {
+  background-color: black;
+  width: 100vw;
+}
+
+.footer-links {
+  color: black;
+}
+
+.footer-icons {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 20px;
+  color: white;
+  padding: 10px;
+}
+
+.footer-tags {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.footer-fabs {
+  font-size: 25px;
+}
+
+.footer-links {
+  color: white;
+  padding: 8px;
+}
+
 .App-link {
   color: #61dafb;
+}
+
+.icon-links {
+  color: white;
 }
 
 .box1 {
@@ -46,11 +100,23 @@ h2 {
 
 .container {
   margin: 0;
+  padding: 0;
 }
 
 .wrapper-div {
   width: 100vw;
 }
+
+.wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100vw;
+  font-size: 12px;
+  background-color: #d6e3ec;
+  height: 20vh;
+}
+
 #img1,
 #img2 {
   width: 100vw;
