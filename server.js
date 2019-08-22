@@ -8,7 +8,7 @@ var cors = require('cors');
 require('dotenv').config();
 require('./config/database');
 
-// var apiRouter = require('./routes/api');
+var apiRouter = require('./routes/api');
 
 var app = express();
 
@@ -23,7 +23,7 @@ app.use(cookieParser());
 // app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build')));
 
-// app.use('/api', apiRouter);
+app.use('/api', apiRouter);
 // app.use(require("./config/auth"));
 
 // The following "catch all" route (note the *)is necessary

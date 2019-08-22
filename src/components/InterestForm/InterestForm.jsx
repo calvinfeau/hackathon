@@ -4,13 +4,21 @@ import './InterestForm.css';
 class InterestForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+
+        }
     }
 
     render () {
         return (
             <div>
-                INTEREST FORM
+                <div>INTEREST FORM</div>
+                <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit, magnam dolor doloribus excepturi quis obcaecati corrupti vero delectus consequuntur nam quod perspiciatis voluptatem repellendus reiciendis nostrum dolore nihil sequi ducimus.</div>
+                <div>
+                    <form>
+                        
+                    </form>
+                </div>
             </div>
         ) 
     }

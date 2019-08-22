@@ -12,10 +12,12 @@ class FormsPage extends Component {
     render() {
         return (
             <div>
-                <Route
-                exact path="/form-1"
-                render={() => <InterestForm />}
-                 />
+                <Switch>
+                    <Route
+                    exact path="/form-1"
+                    render={() => <InterestForm />}
+                    />
+                </Switch>
             </div>
         )
     }
