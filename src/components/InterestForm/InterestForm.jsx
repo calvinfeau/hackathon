@@ -11,7 +11,6 @@ class InterestForm extends Component {
         return (
             <div>
                 INTEREST FORM
-                
             </div>
         ) 
     }
