@@ -31,7 +31,7 @@ function App() {
                   include access to a restroom facility and the security of a
                   guard.
                 </p>
-                <Link className="btn btn-primary btn-lg links" to="/forms">
+                <Link className="btn btn-primary btn-lg links" to="/forms/1">
                   FIND YOUR SPOT
                 </Link>{" "}
               </div>
@@ -61,7 +61,7 @@ function App() {
                 </p>
                 <Link
                   className="btn btn-outline-warning btn-lg links"
-                  to="/forms"
+                  to="/forms/1"
                 >
                   READ MORE STORIES
                 </Link>{" "}
@@ -78,7 +78,7 @@ function App() {
                 </p>
                 <Link
                   className="btn btn-outline-success btn-lg links"
-                  to="/forms"
+                  to="/forms/1"
                 >
                   READ MORE STORIES
                 </Link>{" "}
@@ -94,7 +94,7 @@ function App() {
                 </p>
                 <Link
                   className="btn btn-outline-warning btn-lg links"
-                  to="/forms"
+                  to="/forms/1"
                 >
                   MORE INFO
                 </Link>{" "}
@@ -141,7 +141,7 @@ function App() {
           )}
         />
 
-        <Route exact path="/forms" render={() => <FormsPage />} />
+        <Route exact path={"/forms/:form"} render={() => <FormsPage />} />
       </Switch>
     </div>
   );

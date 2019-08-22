@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch, Link } from "react-router-dom";
+import { Route, Switch, Link, Redirect } from "react-router-dom";
 import {createUser} from "../../services/api";
 
 import './InterestForm.css';
@@ -14,7 +14,8 @@ class InterestForm extends Component {
             email: "",
             driverId: "",
             driverStatus: "",
-            drivable: true
+            drivable: true,
+            id: ""
         }
     }
 
@@ -40,14 +41,14 @@ class InterestForm extends Component {
         e.preventDefault();
         console.log('submit button hit')
         // this.isFormValid() ? 
-        createUser(this.state).then(() => {
-            window.location = '/form2'
+        createUser(this.state).then((item) => {
+            console.log('item._id: ', item._id)
+
+            this.setState({id: item._id});
+            console.log('id added- to state: ', this.state.id)
+            // window.location = '/forms/2'
         });
     }
-
-    // isFormValid() {
-    //     return 
-    // }
 
     strToBool = (value) => {
         if (value && typeof value === 'string') {
@@ -68,86 +69,99 @@ class InterestForm extends Component {
                 </label>
             </div>
         }
+
+        var form1;
+        if(this.state.id) {
+            form1 = <Redirect to={{pathname: '/forms/2', state:{id: this.state.id}}} />
+         } else {
+        form1 = 
+        <div>
+        <div>INTEREST FORM</div>
+        <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit, magnam dolor doloribus excepturi quis obcaecati corrupti vero delectus consequuntur nam quod perspiciatis voluptatem repellendus reiciendis nostrum dolore nihil sequi ducimus.</div>
+        <div>
+            <form onSubmit={this.handleSubmit}>
+                <div>
+                    <label>Applicant. First and last name of the vehicle driver.
+                    <input type="text" required name="applicant" onChange={this.handleChange}/>
+                    </label>
+                </div>
+                <div>
+                    <label>Date of Birth
+                    <input type="date" required name="birth" onChange={this.handleChange}/>
+                    </label>
+                </div>
+                <div>
+                    <label>Phone Number
+                    <input type="text" required name="phone" onChange={this.handleChange}/>
+                    </label>
+                </div>
+                <div>
+                    <label>Email Address
+                    <input type="text" required name="email" onChange={this.handleChange}/>
+                    </label>
+                </div>
+                <div className="radio">
+                    Driver's License Status:
+                <label>
+                    <input type="radio" value="Valid" 
+                                checked={this.state.driverStatus === 'Valid'} 
+                                onChange={this.handleDriverStatus} />
+                    Valid
+                </label>
+                </div>
+                <div className="radio">
+                <label>
+                    <input type="radio" value="Expired" 
+                                checked={this.state.driverStatus === 'Expired'} 
+                                onChange={this.handleDriverStatus} />
+                    Expired
+                </label>
+                </div>
+                <div className="radio">
+                <label>
+                    <input type="radio" value="Suspended" 
+                                checked={this.state.driverStatus === 'Suspended'} 
+                                onChange={this.handleDriverStatus} />
+                    Suspended
+                </label>
+                </div>
+                <div className="radio">
+                <label>
+                    <input type="radio" value="Lost or Stolen" 
+                                checked={this.state.driverStatus === 'Lost or Stolen'} 
+                                onChange={this.handleDriverStatus} />
+                    Lost or Stolen
+                </label>
+                </div>
+                {driverIdInput}
+                <div className="radio">
+                    Is your vehicle driveable ?
+                <label>
+                    <input type="radio" value="true"
+                                checked={this.state.drivable === true} 
+                                onChange={this.handleDrivable} />
+                    Yes
+                </label>
+                </div>
+                <div className="radio">
+                <label>
+                    <input type="radio" value="false"
+                                checked={this.state.drivable === false} 
+                                onChange={this.handleDrivable} />
+                    No
+                </label>
+                </div>
+                    <input type="submit" value="NEXT"/>
+                
+                    
+            </form>
+        </div>
+        </div>
+        }
+
         return (
             <div>
-                <div>INTEREST FORM</div>
-                <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit, magnam dolor doloribus excepturi quis obcaecati corrupti vero delectus consequuntur nam quod perspiciatis voluptatem repellendus reiciendis nostrum dolore nihil sequi ducimus.</div>
-                <div>
-                    <form onSubmit={this.handleSubmit}>
-                        <div>
-                            <label>Applicant. First and last name of the vehicle driver.
-                            <input type="text" required name="applicant" onChange={this.handleChange}/>
-                            </label>
-                        </div>
-                        <div>
-                            <label>Date of Birth
-                            <input type="date" required name="birth" onChange={this.handleChange}/>
-                            </label>
-                        </div>
-                        <div>
-                            <label>Phone Number
-                            <input type="text" required name="phone" onChange={this.handleChange}/>
-                            </label>
-                        </div>
-                        <div>
-                            <label>Email Address
-                            <input type="text" required name="email" onChange={this.handleChange}/>
-                            </label>
-                        </div>
-                        <div className="radio">
-                            Driver's License Status:
-                        <label>
-                            <input type="radio" value="Valid" 
-                                        checked={this.state.driverStatus === 'Valid'} 
-                                        onChange={this.handleDriverStatus} />
-                            Valid
-                        </label>
-                        </div>
-                        <div className="radio">
-                        <label>
-                            <input type="radio" value="Expired" 
-                                        checked={this.state.driverStatus === 'Expired'} 
-                                        onChange={this.handleDriverStatus} />
-                            Expired
-                        </label>
-                        </div>
-                        <div className="radio">
-                        <label>
-                            <input type="radio" value="Suspended" 
-                                        checked={this.state.driverStatus === 'Suspended'} 
-                                        onChange={this.handleDriverStatus} />
-                            Suspended
-                        </label>
-                        </div>
-                        <div className="radio">
-                        <label>
-                            <input type="radio" value="Lost or Stolen" 
-                                        checked={this.state.driverStatus === 'Lost or Stolen'} 
-                                        onChange={this.handleDriverStatus} />
-                            Lost or Stolen
-                        </label>
-                        </div>
-                        {driverIdInput}
-                        <div className="radio">
-                            Is your vehicle driveable ?
-                        <label>
-                            <input type="radio" value="true"
-                                        checked={this.state.drivable === true} 
-                                        onChange={this.handleDrivable} />
-                            Yes
-                        </label>
-                        </div>
-                        <div className="radio">
-                        <label>
-                            <input type="radio" value="false"
-                                        checked={this.state.drivable === false} 
-                                        onChange={this.handleDrivable} />
-                            No
-                        </label>
-                        </div>
-                        <input type="submit" value="NEXT" />
-                    </form>
-                </div>
+                {form1}
             </div>
         ) 
     }
