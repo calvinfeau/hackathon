@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Route, Switch, Link, Redirect } from "react-router-dom";
 import { createUser } from "../../services/api";
-import Footer from "../Footer/Footer";
 import "./InterestForm.css";
 import FormHeader from "../FormHeader/FormHeader";
 
@@ -215,7 +214,6 @@ class InterestForm extends Component {
                 />
               </div>
             </form>
-            <Footer />
           </div>
         </div>
       );

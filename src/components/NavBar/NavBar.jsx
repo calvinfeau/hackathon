@@ -13,19 +13,6 @@ const NavBar = props => {
           </a>
           <img className="logo" src={logo} alt="logo" />
         </div>
-
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon" />
-        </button>
-
         <div
           class="collapse navbar-collapse justify-content-end mr-auto mt-2"
           id="navbarNavAltMarkup"
@@ -45,6 +32,17 @@ const NavBar = props => {
             </a>
           </div>
         </div>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon" />
+        </button>
       </div>
     </nav>
   );
