@@ -144,7 +144,7 @@ class InterestForm extends Component {
                     No
                 </label>
                 </div>
-                    <input type="submit" value="NEXT"/>
+                <input type="submit" value="NEXT"/>
                 
                     
             </form>
