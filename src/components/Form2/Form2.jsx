@@ -25,12 +25,11 @@ class Form2 extends Component {
             },
             neighborhood: {
                 desired: "",
-                factors: {
-                    work: false,
-                    school: false,
-                    family: false,
-                    other: ""
-                }
+                work: false,
+                school: false,
+                family: false,
+                other: ""
+                
             }
         }
     }
@@ -113,11 +112,13 @@ class Form2 extends Component {
     }
 
     handleParking = e => {
-        this.setState({currParking: {[e.target.name]: this.strToBool(e.target.value)}})
+        let property = e.target;
+        this.setState(prevState => ({...prevState, currParking: {...prevState.currParking, [property.name]: this.strToBool(property.value)}}))
     }
 
     handleNeighborhood = e => {
-        this.setState({neighborhood: {[e.target.name]: strToBool(e.target.value)}})
+        let property = e.target;
+        this.setState(prevState => ({...prevState, neighborhood: {...prevState.neighborhood, [property.name]: this.strToBool(property.value)}}))
     }
 
     handleSubmit = e => {

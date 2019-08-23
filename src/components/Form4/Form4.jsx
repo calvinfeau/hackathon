@@ -47,7 +47,8 @@ class Form4 extends Component {
 
 
   handleSituation = e => {
-    this.setState({situation: {[e.target.name]: e.target.value, ...rest}})
+    let property = e.target;
+    this.setState(prevState => ({...prevState, situation: {...prevState.situation, [property.name]: property.value}}))
   }
 
   handleStory = e => {
@@ -55,15 +56,18 @@ class Form4 extends Component {
   }
 
   handleHomelessness = e => {
-    this.setState({homelessness: {[e.target.name]: e.target.value, ...rest}})
+    let property = e.target;
+    this.setState(prevState => ({...prevState, homelessness: {...prevState.homelessness, [property.name]: property.value}}))
   }
 
   handleHealthConcern = e => {
-    this.setState({healthConcern: {[e.target.name]: e.target.value, ...rest}})
+    let property = e.target;
+    this.setState(prevState => ({...prevState, healthConcern: {...prevState.healthConcern, [property.name]: property.value}}))
   }
 
   handleEmergencyContact = e => {
-    this.setState({emergencyContact: {[e.target.name]: e.target.value, ...rest}})
+    let property = e.target;
+    this.setState(prevState => ({...prevState, emergencyContact: {...prevState.emergencyContact, [property.name]: property.value}}))
   }
 
   handleSubmit = e => {

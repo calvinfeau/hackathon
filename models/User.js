@@ -43,12 +43,10 @@ const userSchema = new mongoose.Schema({
     },
     neighborhood: {
         desired: String,
-        factors: {
-            work: Boolean,
-            school: Boolean,
-            family: Boolean,
-            other: String
-        }
+        work: Boolean,
+        school: Boolean,
+        family: Boolean,
+        other: String
     },
     // FORM 3
     employed: Boolean,
@@ -78,7 +76,7 @@ const userSchema = new mongoose.Schema({
       story: String,
       homelessness: {
         length: String,
-        date: String
+        date: Date
       },
       healthConcern: {
         none: Boolean,

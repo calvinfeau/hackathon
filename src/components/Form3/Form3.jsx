@@ -30,15 +30,16 @@ class Form3 extends Component {
   };
 
   handleEmployment = e => {
-    this.setState({ employed: this.strToBool(e.target.value) });
+    this.setState({employed: this.strToBool(e.target.value)});
   };
 
   handleGovAssistance = e => {
-    this.setState({ govAssistance: this.strToBool(e.target.value) });
+    this.setState({govAssistance: this.strToBool(e.target.value)});
   };
 
   handleGovIncome = e => {
-    this.setState({ govIncome:{[e.target.name]: e.target.value}, ...rest});
+    let property = e.target;
+    this.setState(prevState => ({...prevState, govIncome:{...prevState.govIncome, [property.name]: property.value}}));
   };
 
   handleSubmit = e => {
