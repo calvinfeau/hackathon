@@ -24,16 +24,19 @@ const Footer = props => {
           </a>
         </div>
         <div className="footer-tags">
-          <a className="footer-links" href="#">
+          <a className="footer-links" href="https://www.safeparkingla.org/about">
             About
           </a>
-          <a className="footer-links" href="#">
+          <a className="footer-links" href="https://www.safeparkingla.org/faq">
             FAQ
           </a>
-          <a className="footer-links" href="#">
+          <a className="footer-links" href="https://safeparkingla.networkforgood.com/projects/68953-safe-parking-la">
             Donate
           </a>
           <a className="footer-links" href="#">
+            Contribute
+          </a>
+          <a className="footer-links" href="https://www.safeparkingla.org/contact">
             Contact
           </a>
         </div>
@@ -41,5 +44,6 @@ const Footer = props => {
     </div>
   );
 };
+
 
 export default Footer;

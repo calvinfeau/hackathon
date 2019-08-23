@@ -32,9 +32,9 @@ function App() {
                   include access to a restroom facility and the security of a
                   guard.
                 </p>
-                <Link className="btn btn-primary btn-lg links" to="/forms/1">
+                <Link className="btn btn-primary btn-lg links" to="/forms/intro">
                   FIND YOUR SPOT
-                </Link>{" "}
+                </Link>
               </div>
               <div className="wrapper">
                 <div className="icon-box">
@@ -60,16 +60,17 @@ function App() {
                   over 25% of the population of people experiencing homelessness
                   in LA County.
                 </p>
-                <Link
+                <a
                   className="btn btn-outline-warning btn-lg links"
-                  to="/forms/1"
+                  href="https://www.safeparkingla.org/who-we-serve"
+                  target="_blank"
                 >
                   READ MORE STORIES
-                </Link>{" "}
+                </a>
               </div>
               <div className="wrapper-div">
                 <img id="img2" src={mandog} />
-                <h2 className="p-headers">WHO WE SERVE</h2>
+                <h2 className="p-headers">CAR BUT NO HOME?</h2>
                 <p>
                   Safe Parking LA is an example of a relatively new effort on
                   the West Coast to assist a specific group of individuals
@@ -77,16 +78,17 @@ function App() {
                   may be working or have some source of income and are homeless
                   for the first time.
                 </p>
-                <Link
+                <a
                   className="btn btn-outline-success btn-lg links"
-                  to="/forms/1"
+                  href="https://www.safeparkingla.org/news"
+                  target="_blank"
                 >
-                  READ MORE STORIES
-                </Link>{" "}
+                  READ MORE NEWS
+                </a>
               </div>
               <div className="wrapper-div">
                 <img id="img2" src={veteran} />
-                <h2 className="p-headers">WHO WE SERVE</h2>
+                <h2 className="p-headers">FOR VETERANS</h2>
                 <p>
                   SafeParkingLA provides a safe and legal overnight parking
                   place for veterans and their families who are currently living
@@ -95,49 +97,12 @@ function App() {
                 </p>
                 <Link
                   className="btn btn-outline-warning btn-lg links"
-                  to="/forms/1"
+                  href="https://www.safeparkingla.org/resources-for-veterans"
+                  target="_blank"
                 >
                   MORE INFO
-                </Link>{" "}
+                </Link>
               </div>
-              <footer>
-                <div className="footer-icons">
-                  <a
-                    className="icon-links"
-                    href="https://www.facebook.com/SafeParkingLA/"
-                    target="none"
-                  >
-                    <i class="fab fa-facebook-square footer-fabs" />
-                  </a>
-                  <a
-                    className="icon-links"
-                    href="https://www.instagram.com/safeparking_la/"
-                    target="none"
-                  >
-                    <i class="fab fa-instagram footer-fabs" />
-                  </a>
-                  <a
-                    className="icon-links"
-                    href="mailto:info@safeparkingla.org"
-                  >
-                    <i class="far fa-envelope footer-fabs" />
-                  </a>
-                </div>
-                <div className="footer-tags">
-                  <a className="footer-links" href="#">
-                    About
-                  </a>
-                  <a className="footer-links" href="#">
-                    FAQ
-                  </a>
-                  <a className="footer-links" href="#">
-                    Donate
-                  </a>
-                  <a className="footer-links" href="#">
-                    Contact
-                  </a>
-                </div>
-              </footer>
             </div>
           )}
         />
