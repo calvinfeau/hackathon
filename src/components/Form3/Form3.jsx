@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import {updateUser} from "../../services/api"
+import './Form3.css';
 
 class Form3 extends Component {
   constructor(props) {
@@ -170,7 +171,7 @@ class Form3 extends Component {
         form3 =
       <div>
         <div>
-        <h3>INTEREST FORM</h3>
+        <h3 className="form-3-header">INTEREST FORM</h3>
       </div>
       <div className="copy-top">
         <p id="p1">
@@ -249,7 +250,7 @@ class Form3 extends Component {
       </div>
     }
     return (
-      <div>
+      <div className="form-3-wrapper">
         {form3}
       </div>
     )

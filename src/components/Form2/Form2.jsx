@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import {updateUser} from "../../services/api"
+import './Form2.css';
 
 
 class Form2 extends Component {
@@ -196,93 +197,97 @@ class Form2 extends Component {
         }
         else {
             form2 =
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <div>Basic Demographic</div>
-                    <div>Gender:
-                        <label>
-                            <input type="radio" value="Male" 
+            <div className="wrap-form2">
+                <form className="form-2" onSubmit={this.handleSubmit}>
+                    <div>
+                        <h2 className="form-2-head">Basic Demographic</h2>
+                    </div>
+                    <div>
+                        <p>Gender:</p>
+                        <label className="form-check-label">
+                            <input className="form-check-input" type="radio" value="Male" 
                             checked={this.state.gender === "Male"}
                             onChange={this.handleGender} />
                             Male
                         </label>
                     </div>
                     <div>
-                        <label>
-                            <input type="radio" value="Female" 
+                        <label className="form-check-label">
+                            <input className="form-check-input"  type="radio" value="Female" 
                             checked={this.state.gender === "Female"}
                             onChange={this.handleGender} />
                             Female
                         </label>
                     </div>
                     <div>
-                        <label>
-                            <input type="radio" value="Other" 
+                        <label className="form-check-label">
+                            <input className="form-check-input" type="radio" value="Other" 
                             checked={this.state.gender === "Other"}
                             onChange={this.handleGender} />
                             Other
                         </label>
                     </div>
                     <div>
-                        <label>
-                            <input type="radio" value="Prefer not to say" 
+                        <label className="form-check-label">
+                            <input className="form-check-input" type="radio" value="Prefer not to say" 
                             checked={this.state.gender === "Prefer not to say"}
                             onChange={this.handleGender}/>
                             Prefer not to say
                         </label>
                     </div>
 
-                    <div>Race & Ethnicity:
-                        <label>
-                            <input type="radio" value="African American" 
+                    <div>
+                        <p>Race & Ethnicity:</p>
+                        <label className="form-check-label">
+                            <input className="form-check-input" type="radio" value="African American" 
                             checked={this.state.race === "African American"}
                             onChange={this.handleRace} />
                             African American
                         </label>
                     </div>
                     <div>
-                        <label>
-                            <input type="radio" value="Asian"
+                        <label className="form-check-label">
+                            <input className="form-check-input" type="radio" value="Asian"
                             checked={this.state.race === "Asian"}
                             onChange={this.handleRace} />
                             Asian
                         </label>
                     </div>
                     <div>
-                        <label>
-                            <input type="radio" value="Hispanic/Latino"
+                        <label className="form-check-label">
+                            <input className="form-check-input" type="radio" value="Hispanic/Latino"
                             checked={this.state.race === "Hispanic/Latino"}
                             onChange={this.handleRace} />
                             Hispanic/Latino
                         </label>
                     </div>
                     <div>
-                        <label>
-                            <input type="radio" value="Caucasian"
+                        <label className="form-check-label"> 
+                            <input className="form-check-input" type="radio" value="Caucasian"
                             checked={this.state.race === "Caucasian"}
                             onChange={this.handleRace} />
                             Caucasian
                         </label>
                     </div>
                     <div>
-                        <label>
-                            <input type="radio" value="Middle Eastern"
+                        <label className="form-check-label">
+                            <input className="form-check-input" type="radio" value="Middle Eastern"
                             checked={this.state.race === "Middle Eastern"}
                             onChange={this.handleRace} />
                             Middle Eastern
                         </label>
                     </div>
                     <div>
-                        <label>
-                            <input type="radio" value="Two or More Races; Other"
+                        <label className="form-check-label">
+                            <input className="form-check-input" type="radio" value="Two or More Races; Other"
                             checked={this.state.race === "Two or More Races; Other"}
                             onChange={this.handleRace} />
                             Two or More Races; Other
                         </label>
                     </div>
                     <div>
-                        <label>
-                            <input type="radio" value="Prefer not to say"
+                        <label className="form-check-label">
+                            <input className="form-check-input" type="radio" value="Prefer not to say"
                             checked={this.state.race === "Prefer not to say"}
                             onChange={this.handleRace} />
                             Prefer not to say
@@ -290,25 +295,25 @@ class Form2 extends Component {
                     </div>
 
                     <div>
-                        Preferred language:
-                        <label>
-                            <input type="radio" value="English"
+                        <p>Preferred language:</p>
+                        <label className="form-check-label">
+                            <input className="form-check-input" type="radio" value="English"
                             checked={this.state.language === "English"}
                             onChange={this.handleLanguage} />
                             English
                         </label>
                     </div>
                     <div>
-                        <label>
-                            <input type="radio" value="Spanish"
+                        <label className="form-check-label">
+                            <input className="form-check-input" type="radio" value="Spanish"
                             checked={this.state.language === "Spanish"}
                             onChange={this.handleLanguage} />
                             Spanish
                         </label>
                     </div>
                     <div>
-                        <label>
-                            <input type="radio" value="Other"
+                        <label className="form-check-label">
+                            <input className="form-check-input" type="radio" value="Other"
                             checked={this.state.language !== "English" && this.state.language !== "Spanish"}
                             onChange={this.handleLanguage} />
                             Other
@@ -318,17 +323,17 @@ class Form2 extends Component {
                     {language}
 
                     <div>
-                        Are you a veteran ?
-                        <label>
-                            <input type="radio" value="true"
+                        <p>Are you a veteran ?</p>
+                        <label className="form-check-label">
+                            <input className="form-check-input" type="radio" value="true"
                                 checked={this.state.veteran === true} 
                                 onChange={this.handleVeteran} />
                             Yes
                         </label>
                     </div>
                     <div className="radio">
-                        <label>
-                            <input type="radio" value="false"
+                        <label className="form-check-label">
+                            <input className="form-check-input" type="radio" value="false"
                                 checked={this.state.veteran === false} 
                                 onChange={this.handleVeteran} />
                             No
@@ -340,48 +345,48 @@ class Form2 extends Component {
                     <div>Current Situation</div>
 
                     <div>
-                        What kind of vehicle are you driving?
-                        <label>
-                            <input type="radio" value="Compact"
+                        <p>What kind of vehicle are you driving?</p>
+                        <label className="form-check-label">
+                            <input className="form-check-input" type="radio" value="Compact"
                             checked={this.state.vehicleType === "Compact"} 
                             onChange={this.handleVehicleType} />
                             Compact
                         </label>
                     </div>
                     <div>
-                        <label>
-                            <input type="radio" value="SUV"
+                        <label className="form-check-label">
+                            <input className="form-check-input" type="radio" value="SUV"
                             checked={this.state.vehicleType === "SUV"} 
                             onChange={this.handleVehicleType} />
                             SUV
                         </label>
                     </div>
                     <div>
-                        <label>
-                            <input type="radio" value="Truck"
+                        <label className="form-check-label">
+                            <input className="form-check-input" type="radio" value="Truck"
                             checked={this.state.vehicleType === "Truck"} 
                             onChange={this.handleVehicleType} />
                             Truck
                         </label>
                     </div>
                     <div>
-                        <label>
-                            <input type="radio" value="RV"
+                        <label className="form-check-label">
+                            <input className="form-check-input" type="radio" value="RV"
                             checked={this.state.vehicleType === "RV"} 
                             onChange={this.handleVehicleType} />
                             RV
                         </label>
                     </div>
 
-                    <div>
-                        How many people live in the vehicle including yourself?
+                    <div className="num-people">
+                        <p>How many people live in the vehicle including yourself?</p>
                         {/* <label>
                             <input type="radio" value="false"
                             checked={this.state.extraPeople === false} 
                             onChange={this.handleExtraPeople} />
                             Just myself
                         </label> */}
-                        <input type="number" value={this.state.people} onChange={this.handlePeople} />
+                        <input className="form-control"  id="num-people" type="number" value={this.state.people} onChange={this.handlePeople} />
                     </div>
                     {/* <div>
                         <label>
@@ -395,14 +400,16 @@ class Form2 extends Component {
                     {/* {people} */}
 
                     <div>
-                        Do any pets live in the vehicle?
+                        <p>
+                            Do any pets live in the vehicle?
+                        </p>
                         {/* <label>
                             <input type="radio" value="true"
                             checked={this.state.pets === true} 
                             onChange={this.handlePets} />
                             Yes
                         </label> */}
-                        <input type="number" value={this.state.pets} onChange={this.handlePets}/>
+                        <input className="form-control" type="number" value={this.state.pets} onChange={this.handlePets}/>
                     </div>
 
                     {/* {pets} */}
@@ -416,47 +423,56 @@ class Form2 extends Component {
                         </label>
                     </div>                     */}
                     <div>
+                        <p>
+
                         Current night parking situation:
                         Please be as specific as possible
-                        <input type="text" name="street" placeholder="Street" onChange={this.handleParking}/>
-                        <input type="text" name="city" placeholder="City" onChange={this.handleParking}/>
-                        <input type="text" name="zip" placeholder="Zip" onChange={this.handleParking}/>
+                        </p>
+                        <input className="form-control" type="text" name="street" placeholder="Street" onChange={this.handleParking}/>
+                        <input className="form-control" type="text" name="city" placeholder="City" onChange={this.handleParking}/>
+                        <input className="form-control" type="text" name="zip" placeholder="Zip" onChange={this.handleParking}/>
                         Other; explain:
-                        <input type="text" name="other" placeholder="Other" onChange={this.handleParking}/>
+                        <input className="form-control" type="text" name="other" placeholder="Other" onChange={this.handleParking}/>
                     </div>
 
                     <div>
                         <label>What is your desired neighborhood?
-                        <input type="text" name="desired" onChange={this.handleNeighborhood}/>
+                        <input className="form-control" type="text" name="desired" onChange={this.handleNeighborhood}/>
                         </label>
                     </div>
 
                     <div>
+                        <p>
+
                         What factors are associated with your chosen neighborhood? *Select all that apply
+                        </p>
                         <label>
-                        <input type="checkbox" name="work" onChange={this.handleNeighborhood} />
+                        <input className="form-check-input" type="checkbox" name="work" onChange={this.handleNeighborhood} />
                         Work
                         </label>
                     </div>
                     <div>
                         <label>
-                        <input type="checkbox" name="school" onChange={this.handleNeighborhood} />
+                        <input className="form-check-input" type="checkbox" name="school" onChange={this.handleNeighborhood} />
                         School
                         </label>
                     </div>
                     <div>
                         <label>
-                        <input type="checkbox" name="family" onChange={this.handleNeighborhood} />
+                        <input className="form-check-input" type="checkbox" name="family" onChange={this.handleNeighborhood} />
                         Family/Friends
                         </label>
                     </div>
                     <div>
                         <label>
-                        Other; brief explanation:
-                        <input type="text" name="other" onChange={this.handleNeighborhood} />
+                            <p>
+
+                                Other; brief explanation:
+                            </p>
+                        <input className="form-control" type="text" name="other" onChange={this.handleNeighborhood} />
                         </label>
                     </div>
-                    <input type="submit" value="NEXT" />
+                    <input className="btn btn-primary btn-lg btn-form2" type="submit" value="NEXT" />
                 </form>
 
             </div>
