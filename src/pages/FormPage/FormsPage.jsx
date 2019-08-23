@@ -5,6 +5,8 @@ import InterestForm from "../../components/InterestForm/InterestForm";
 import Form2 from "../../components/Form2/Form2";
 import Form3 from "../../components/Form3/Form3";
 import Form4 from "../../components/Form4/Form4";
+import FormEnd from "../../components/FormEnd/FormEnd";
+
 
 
 class FormsPage extends Component {
@@ -32,6 +34,9 @@ class FormsPage extends Component {
                     exact path="/forms/4"
                     render={(props) => <Form4 {...props} />}
                     />
+                    <Route
+                    exact path="/forms/end"
+                    render={(props) => <FormEnd {...props} />} />
                 </Switch>
             </div>
         )

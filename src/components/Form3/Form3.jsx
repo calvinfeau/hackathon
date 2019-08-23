@@ -38,7 +38,7 @@ class Form3 extends Component {
   };
 
   handleGovIncome = e => {
-    this.setState({ govIncome:{[e.target.name]: e.target.value}});
+    this.setState({ govIncome:{[e.target.name]: e.target.value}, ...rest});
   };
 
   handleSubmit = e => {

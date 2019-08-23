@@ -117,7 +117,7 @@ class Form2 extends Component {
     }
 
     handleNeighborhood = e => {
-        this.setState({neighborhood: {[e.target.name]: e.target.value}})
+        this.setState({neighborhood: {[e.target.name]: strToBool(e.target.value)}})
     }
 
     handleSubmit = e => {
@@ -433,19 +433,19 @@ class Form2 extends Component {
                     <div>
                         What factors are associated with your chosen neighborhood? *Select all that apply
                         <label>
-                        <input type="radio" name="work" onChange={this.handleNeighborhood} />
+                        <input type="checkbox" name="work" onChange={this.handleNeighborhood} />
                         Work
                         </label>
                     </div>
                     <div>
                         <label>
-                        <input type="radio" name="school" onChange={this.handleNeighborhood} />
+                        <input type="checkbox" name="school" onChange={this.handleNeighborhood} />
                         School
                         </label>
                     </div>
                     <div>
                         <label>
-                        <input type="radio" name="family" onChange={this.handleNeighborhood} />
+                        <input type="checkbox" name="family" onChange={this.handleNeighborhood} />
                         Family/Friends
                         </label>
                     </div>
