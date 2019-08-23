@@ -1,5 +1,6 @@
 import React from "react";
 import NavBar from "../../components/NavBar/NavBar";
+import Footer from "../../components/Footer/Footer";
 import FormsPage from "../FormPage/FormsPage";
 import { Route, Switch, Link } from "react-router-dom";
 import image1 from "./image1.png";
@@ -143,6 +144,7 @@ function App() {
 
         <Route exact path={"/forms/:form"} render={() => <FormsPage />} />
       </Switch>
+      <Footer />
     </div>
   );
 }
