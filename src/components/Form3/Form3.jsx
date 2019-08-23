@@ -1,35 +1,52 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
+import {updateUser} from "../../services/api"
 
 class Form3 extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      employed: false,
+      employerLocation: "",
       otherIncome: "",
-      govAsistance: false,
-      govIncome: "",
-      employerLocation: ""
+      govIncome: {
+        calworks: false,
+        cashProgImmigrants: false,
+        ebt: false,
+        gr: false,
+        medIncome: false,
+        other: ""
+      }
     };
   }
 
+  componentDidMount() {
+    var self = this;
+    var userId = this.props.location.state.id;
+    self.setState({userId: userId})
+  }
+
   handleChange = e => {
-    // this.props.updateMessage("");
-    this.setState({
-      [e.target.name]: e.target.value
-    });
+    this.setState({[e.target.name]: e.target.value});
   };
 
   handleEmployment = e => {
     this.setState({ employed: this.strToBool(e.target.value) });
   };
 
-  handleGovAsistance = e => {
-    this.setState({ govAsistance: this.strToBool(e.target.value) });
+  handleGovAssistance = e => {
+    this.setState({ govAssistance: this.strToBool(e.target.value) });
   };
 
   handleGovIncome = e => {
-    this.setState({ govIncome: e.target.value });
+    this.setState({ govIncome:{[e.target.name]: e.target.value}});
   };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    console.log('submit button hit')
+    updateUser(this.state);
+    this.setState({completed: true})
+  }
 
   strToBool = value => {
     if (value && typeof value === "string") {
@@ -40,57 +57,22 @@ class Form3 extends Component {
   };
 
   render() {
-    return (
+    var employed;
+    if(this.state.employed) {
+      employed = 
       <div>
-        <div>
-          <h3>INTEREST FORM</h3>
-        </div>
-        <div className="copy-top">
-          <p id="p1">
-            This form is the first step in the application process for a Safe
-            Parking LA program.
-          </p>
-          <p id="p2">
-            Please fill out <span>ALL</span>of the following information so we
-            can best assist your specific needs.
-          </p>
-        </div>
-        <form>
-          <div className="form-group">
-            <p>Are you currently employed?</p>
-            <div>
-              <input
-                className="form-check-input"
-                type="radio"
-                value="option1"
-                checked={this.state.employed === true}
-                onChange={this.handleEmployment}
-              />
-              <label className="form-check-label">Yes</label>
-            </div>
-            <div className="form-group">
-              <input
-                className="form-check-input"
-                type="radio"
-                value="option1"
-                checked={this.state.employed === false}
-                onChange={this.handleEmployment}
-              />
-              <label className="form-check-label">No</label>
-            </div>
-          </div>
           <div className="form-group">
             <label className="form-check-label">
               Where is your employer located?
-            </label>
             <input
               className="form-control"
               type="text"
               name="employerLocation"
               onChange={this.handleChange}
-            />
+              />
+              </label>
           </div>
-          <div className="form-group">
+            <div className="form-group">
             <label className="form-check-label">
               Please list any other sources of income.
             </label>
@@ -101,118 +83,175 @@ class Form3 extends Component {
               onChange={this.handleChange}
             />
           </div>
+      </div>
+    }
+
+    var gov;
+    if(this.state.govAssistance) {
+      gov = 
           <div className="form-group">
-            <p>
-              Are you currently recieving any form of government assistance?
-            </p>
-            <div>
-              <input
-                className="form-check-input"
-                type="radio"
-                value="option1"
-                checked={this.state.govAsistance === true}
-                onChange={this.handleGovAsistance}
-              />
-              <label className="form-check-label">Yes</label>
-            </div>
-            <div className="form-group">
-              <input
-                className="form-check-input"
-                type="radio"
-                value="option1"
-                checked={this.state.govAsistance === false}
-                onChange={this.handleGovAsistance}
-              />
-              <label className="form-check-label">No</label>
-            </div>
-          </div>
-          <div className="form-group">
+
             <div>
               <p>Please select all that apply.</p>
             </div>
             <div className="form-check">
+            <label className="form-check-label">
               <input
                 type="checkbox"
                 className="form-check-input"
-                value="CalWorks"
-                checked={this.state.govIncome === "CalWorks"}
+                name="calworks"
                 onChange={this.handleGovIncome}
               />
-              <label className="form-check-label">CalWorks</label>
+              CalWorks</label>
             </div>
             <div className="form-check">
+            <label className="form-check-label">
               <input
                 type="checkbox"
                 className="form-check-input"
-                value=""
-                checked={
-                  this.state.govIncome ===
-                  "Cash Asisstance Program for Immigrants"
-                }
+                name="cashProgImmigrants"
                 onChange={this.handleGovIncome}
               />
-              <label className="form-check-label">
                 Cash Assistance Program for Immigrants
               </label>
             </div>
             <div className="form-check">
+            <label className="form-check-label">
               <input
                 type="checkbox"
                 className="form-check-input"
-                value=""
-                checked={
-                  this.state.govIncome === "Electronic Benefit Transfer (EBT)"
-                }
+                name="ebt"
                 onChange={this.handleGovIncome}
               />
-              <label className="form-check-label">
                 Electronic Benefit Transfer (EBT)
               </label>
             </div>
             <div className="form-check">
+            <label className="form-check-label">
               <input
                 type="checkbox"
                 className="form-check-input"
-                value=""
-                checked={this.state.govIncome === "General Relief"}
+                name="gr"
                 onChange={this.handleGovIncome}
               />
-              <label className="form-check-label">General Relief (GR)</label>
+              General Relief (GR)</label>
             </div>
             <div className="form-check">
+            <label className="form-check-label">
               <input
                 type="checkbox"
                 className="form-check-input"
-                value=""
-                checked={
-                  this.state.govIncome ===
-                  "Supplemental Security Income Medi- Cal Advocacy Program"
-                }
+                name="medIncome"
                 onChange={this.handleGovIncome}
               />
-              <label className="form-check-label">
                 Supplemental Security Income Medi- Cal Advocacy Program
               </label>
               <div>
                 <label className="form-check-label">
                   Please list any other sources of income.
-                </label>
                 <textarea
                   className="form-control"
                   rows="3"
+                  name="other"
                   onChange={this.handleChange}
                 />
+                </label>
               </div>
-            </div>
           </div>
-          <input
-            className="btn btn-primary btn-lg"
-            type="submit"
-            value="NEXT"
-          />
-        </form>
+        </div>
+    }
+
+    var form3;
+    if(this.state.completed) {
+        form3 = <Redirect to={{pathname: '/forms/4', state:{id: this.state.userId}}} />
+    }
+    else {
+        form3 =
+      <div>
+        <div>
+        <h3>INTEREST FORM</h3>
       </div>
-    );
+      <div className="copy-top">
+        <p id="p1">
+          This form is the first step in the application process for a Safe
+          Parking LA program.
+        </p>
+        <p id="p2">
+          Please fill out <span>ALL</span>of the following information so we
+          can best assist your specific needs.
+        </p>
+      </div>
+      <form onSubmit={this.handleSubmit}>
+        <div className="form-group">
+          <p>Are you currently employed?</p>
+          <div>
+          <label className="form-check-label">
+            <input
+              className="form-check-input"
+              type="radio"
+              value="true"
+              checked={this.state.employed === true}
+              onChange={this.handleEmployment}
+            />
+            Yes</label>
+          </div>
+          <div className="form-group">
+            <input
+              className="form-check-input"
+              type="radio"
+              value="false"
+              checked={this.state.employed === false}
+              onChange={this.handleEmployment}
+            />
+            <label className="form-check-label">No</label>
+          </div>
+        </div>
+
+        {employed}
+
+        <div className="form-group">
+          <p>
+            Are you currently recieving any form of government assistance?
+          </p>
+          <div>
+          <label className="form-check-label">
+            <input
+              className="form-check-input"
+              type="radio"
+              value="true"
+              checked={this.state.govAssistance === true}
+              onChange={this.handleGovAssistance}
+            />
+            Yes</label>
+          </div>
+          <div className="form-group">
+          <label className="form-check-label">
+            <input
+              className="form-check-input"
+              type="radio"
+              value="false"
+              checked={this.state.govAssistance === false}
+              onChange={this.handleGovAssistance}
+            />
+            No</label>
+          </div>
+        </div>
+
+        {gov}
+
+        <input
+          className="btn btn-primary btn-lg"
+          type="submit"
+          value="NEXT"
+        />
+      </form>
+      </div>
+    }
+    return (
+      <div>
+        {form3}
+      </div>
+    )
   }
 }
 

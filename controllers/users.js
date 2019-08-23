@@ -22,6 +22,9 @@ async function updateUser(req, res) {
         await
         console.log('req body passed in controller: ', req.body);
         console.log('req body userId passed in controller: ', req.body.userId);
-        User.findByIdAndUpdate(req.body.userId, req.body, {new: true}, function(err) {return res.status(200).json()})
+        User.findById(req.body.userId).then(user => {
+            user.set(req.body);
+            return user.save(item => res.status(200).json(item))
+        })
     } catch(err) {console.log('error in createUser mongoose')}
 }

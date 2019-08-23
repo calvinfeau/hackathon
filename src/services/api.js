@@ -11,7 +11,7 @@ export function createUser(item) {
 export function updateUser(item) {
     console.log('updateUser api reached')
     console.log('item passed: ', item)
-    return fetch('/api/:userId', {
+    return fetch('/api/update', {
         method:'PUT',
         headers: {'content-type': 'application/json'},
         body: JSON.stringify(item)

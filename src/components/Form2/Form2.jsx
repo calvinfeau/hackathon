@@ -124,6 +124,7 @@ class Form2 extends Component {
         e.preventDefault();
         console.log('submit button hit')
         updateUser(this.state);
+        this.setState({completed: true})
     }
 
     strToBool = (value) => {
@@ -154,7 +155,7 @@ class Form2 extends Component {
                 Are you healthcare eligible?
                 <label>
                     <input type="radio" value="Yes"
-                    checked={this.state.healthcare}
+                    checked={this.state.healthcare === "Yes"}
                     onChange={this.handleHealthcare}  />
                     Yes
                 </label>
@@ -162,7 +163,7 @@ class Form2 extends Component {
             <div>
                 <label>
                     <input type="radio" value="No"
-                    checked={this.state.healthcare}
+                    checked={this.state.healthcare === "No"}
                     onChange={this.handleHealthcare}  />
                     No
                 </label>
@@ -170,7 +171,7 @@ class Form2 extends Component {
             <div>
                 <label>
                     <input type="radio" value="Unsure"
-                    checked={this.state.healthcare}
+                    checked={this.state.healthcare === "Unsure"}
                     onChange={this.handleHealthcare}  />
                     Unsure
                 </label>
@@ -307,7 +308,7 @@ class Form2 extends Component {
                     <div>
                         <label>
                             <input type="radio" value="Other"
-                            checked={this.state.language === "Other"}
+                            checked={this.state.language !== "English" && this.state.language !== "Spanish"}
                             onChange={this.handleLanguage} />
                             Other
                         </label>
