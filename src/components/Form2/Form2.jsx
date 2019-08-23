@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
+import {updateUser} from "../../services/api"
 
 
 class Form2 extends Component {
@@ -8,16 +9,19 @@ class Form2 extends Component {
         this.state = {
             gender: "",
             race: "",
-            language: "",
+            language: "English",
             veteran: false,
-            healthcareEligible: "",
+            healthcare: "",
             vehicleType: "",
-            people: [],
-            pet: [],
+            // extraPeople: false,
+            people: 1,
+            // extraPets: false,
+            pets: 0,
             currParking: {
                 street: "",
                 city: "",
-                zip: ""
+                zip: "",
+                other: ""
             },
             neighborhood: {
                 desired: "",
@@ -46,11 +50,80 @@ class Form2 extends Component {
     }
 
     handleRace = e => {
+        this.setState({race: e.target.value})
+    }
 
+    handleHealthcare = e => {
+        this.setState({healthcare: e.target.value})
+    }
+
+    handleVehicleType = e => {
+        this.setState({vehicleType: e.target.value})
     }
 
     handleVeteran = e => {
         this.setState({veteran: this.strToBool(e.target.value)})
+    }
+
+    // handleExtraPeople = e => {
+    //     this.setState({extraPeople: this.strToBool(e.target.value)})
+    // }
+
+    // addPeopleField() {
+    //     return (
+    //         <div>
+    //         <fieldset name="People">
+    //             <input type="text" name="Name" placeholder="Name" onChange={this.handlePeople} />
+    //             <input type="text" name="Age" placeholder="Age" onChange={this.handlePeople} />
+    //         </fieldset>
+    //         <div onClick={this.addPeopleField}>Add More</div>
+    //         </div>
+    //     )
+    // }
+
+    handlePeople = e => {
+        // let person = {name: "", age: ""};
+        // let peopleArray = [];
+        // person = {[e.target.name]: e.target.value}
+        // if (person.name && person.age) {
+        //     peopleArray.push(person)}
+        this.setState({people: e.target.value})
+    }
+
+    // handleExtraPets = e => {
+    //     this.setState({extraPets: this.strToBool(e.target.value)})
+    // }
+
+    // addPetField() {
+    //     return (
+    //         <div>
+    //         <fieldset name="Pet">
+    //             <input type="text" name="kind" placeholder="What kind?" onChange={this.handlePets} />
+    //             <input type="text" name="Age" placeholder="Qty" onChange={this.handlePets} />
+    //         </fieldset>
+    //         <div onClick={this.addPeopleField}>Add More</div>
+    //         </div>
+    //     )
+    // }
+
+    handlePets = e => {
+        // let petsArray = [];
+        // if (e.target.value) {petsArray.push({[e.target.name]: e.target.value})}
+        this.setState({pets: e.target.value})
+    }
+
+    handleParking = e => {
+        this.setState({currParking: {[e.target.name]: this.strToBool(e.target.value)}})
+    }
+
+    handleNeighborhood = e => {
+        this.setState({neighborhood: {[e.target.name]: e.target.value}})
+    }
+
+    handleSubmit = e => {
+        e.preventDefault();
+        console.log('submit button hit')
+        updateUser(this.state);
     }
 
     strToBool = (value) => {
@@ -64,11 +137,11 @@ class Form2 extends Component {
     render() {
 
         var language;
-        if(this.state.language === "Other") {
+        if(this.state.language !== "English" && this.state.language !== "Spanish") {
             language = 
             <div>
                 <label>
-                    <input type="text" onChange={this.handleLanguage}></input>
+                    <input type="text" required onChange={this.handleLanguage} />
                 </label>
             </div>
         }
@@ -81,37 +154,39 @@ class Form2 extends Component {
                 Are you healthcare eligible?
                 <label>
                     <input type="radio" value="Yes"
-                    checked= />
+                    checked={this.state.healthcare}
+                    onChange={this.handleHealthcare}  />
                     Yes
                 </label>
             </div>
             <div>
                 <label>
-                    <input type="radio" value="No" />
+                    <input type="radio" value="No"
+                    checked={this.state.healthcare}
+                    onChange={this.handleHealthcare}  />
                     No
                 </label>
             </div>
             <div>
                 <label>
-                    <input type="radio" value="Unsure" />
+                    <input type="radio" value="Unsure"
+                    checked={this.state.healthcare}
+                    onChange={this.handleHealthcare}  />
                     Unsure
                 </label>
             </div>
             </div>
         }
 
-        var people;
-        if(this.state.people) {
-            people = 
-            <div>
-                <div>
-                    <input type="text" placeholder="Name"/>
-                    <input type="text" placeholder="Age" />
-                </div>
-            </div>
-        }
+        // var people;
+        // if(this.state.extraPeople) {
+        //     people = this.addPeopleField();
+        // }
 
-        var pets;
+        // var pets;
+        // if(this.state.extraPets) {
+        //     pets = this.addPetField();
+        // }
 
         var form2;
         if(this.state.completed) {
@@ -265,44 +340,121 @@ class Form2 extends Component {
                     <div>
                         What kind of vehicle are you driving?
                         <label>
-                            <input type="radio" value="Compact"/>
+                            <input type="radio" value="Compact"
+                            checked={this.state.vehicleType === "Compact"} 
+                            onChange={this.handleVehicleType} />
                             Compact
                         </label>
                     </div>
                     <div>
                         <label>
-                            <input type="radio" value="SUV"/>
+                            <input type="radio" value="SUV"
+                            checked={this.state.vehicleType === "SUV"} 
+                            onChange={this.handleVehicleType} />
                             SUV
                         </label>
                     </div>
                     <div>
                         <label>
-                            <input type="radio" value="Truck"/>
+                            <input type="radio" value="Truck"
+                            checked={this.state.vehicleType === "Truck"} 
+                            onChange={this.handleVehicleType} />
                             Truck
                         </label>
                     </div>
                     <div>
                         <label>
-                            <input type="radio" value="RV"/>
+                            <input type="radio" value="RV"
+                            checked={this.state.vehicleType === "RV"} 
+                            onChange={this.handleVehicleType} />
                             RV
                         </label>
                     </div>
 
                     <div>
-                        How many people live in the vehicle?
-                        <label>
-                            <input type="radio" value="false" />
+                        How many people live in the vehicle including yourself?
+                        {/* <label>
+                            <input type="radio" value="false"
+                            checked={this.state.extraPeople === false} 
+                            onChange={this.handleExtraPeople} />
                             Just myself
+                        </label> */}
+                        <input type="number" value={this.state.people} onChange={this.handlePeople} />
+                    </div>
+                    {/* <div>
+                        <label>
+                            <input type="radio" value="true"
+                            checked={this.state.extraPeople === true} 
+                            onChange={this.handleExtraPeople} />
+                            Others with me
+                        </label>
+                    </div> */}
+
+                    {/* {people} */}
+
+                    <div>
+                        Do any pets live in the vehicle?
+                        {/* <label>
+                            <input type="radio" value="true"
+                            checked={this.state.pets === true} 
+                            onChange={this.handlePets} />
+                            Yes
+                        </label> */}
+                        <input type="number" value={this.state.pets} onChange={this.handlePets}/>
+                    </div>
+
+                    {/* {pets} */}
+
+                    {/* <div>
+                        <label>
+                            <input type="radio" value="false"
+                            checked={this.state.pets === false} 
+                            onChange={this.handlePets} />
+                            No
+                        </label>
+                    </div>                     */}
+                    <div>
+                        Current night parking situation:
+                        Please be as specific as possible
+                        <input type="text" name="street" placeholder="Street" onChange={this.handleParking}/>
+                        <input type="text" name="city" placeholder="City" onChange={this.handleParking}/>
+                        <input type="text" name="zip" placeholder="Zip" onChange={this.handleParking}/>
+                        Other; explain:
+                        <input type="text" name="other" placeholder="Other" onChange={this.handleParking}/>
+                    </div>
+
+                    <div>
+                        <label>What is your desired neighborhood?
+                        <input type="text" name="desired" onChange={this.handleNeighborhood}/>
+                        </label>
+                    </div>
+
+                    <div>
+                        What factors are associated with your chosen neighborhood? *Select all that apply
+                        <label>
+                        <input type="radio" name="work" onChange={this.handleNeighborhood} />
+                        Work
                         </label>
                     </div>
                     <div>
                         <label>
-                            <input type="radio" value="false" />
-                            Others with me
+                        <input type="radio" name="school" onChange={this.handleNeighborhood} />
+                        School
                         </label>
                     </div>
-                    {people}
-                    <div onClick={}>Add More</div>
+                    <div>
+                        <label>
+                        <input type="radio" name="family" onChange={this.handleNeighborhood} />
+                        Family/Friends
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                        Other; brief explanation:
+                        <input type="text" name="other" onChange={this.handleNeighborhood} />
+                        </label>
+                    </div>
+                    <input type="submit" value="NEXT" />
                 </form>
 
             </div>
