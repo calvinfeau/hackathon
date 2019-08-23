@@ -20,27 +20,20 @@ class InterestForm extends Component {
     }
 
     handleChange = e => {
-        // this.props.updateMessage("");
-        this.setState({
-          [e.target.name]: e.target.value
-        });
+        this.setState({[e.target.name]: e.target.value});
       };
 
     handleDriverStatus = e => {
-        this.setState({
-            driverStatus: e.target.value
-        })
+        this.setState({driverStatus: e.target.value})
     }
 
     handleDrivable = e => {
-        this.setState({drivable: this.strToBool(e.target.value)
-        })
+        this.setState({drivable: this.strToBool(e.target.value)})
     }
 
     handleSubmit = e => {
         e.preventDefault();
         console.log('submit button hit')
-        // this.isFormValid() ? 
         createUser(this.state).then((item) => {
             console.log('item._id: ', item._id)
 
