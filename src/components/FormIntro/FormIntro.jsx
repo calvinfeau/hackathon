@@ -2,6 +2,7 @@ import React from "react";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 import Step1 from "./step1-icon.png";
+import { Link } from "react-router-dom";
 import "./FormIntro.css";
 
 const FormIntro = props => {
@@ -27,7 +28,9 @@ const FormIntro = props => {
         </div>
       </div>
       <div className="button">
-        <button className="btn btn-primary btn-lg">Proceed</button>
+        <Link to="/forms/1" className="btn btn-primary btn-lg">
+          Proceed
+        </Link>
       </div>
     </div>
   );
