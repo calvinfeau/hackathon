@@ -84,67 +84,61 @@ class InterestForm extends Component {
 
           <div>
             <form className="interest-form" onSubmit={this.handleSubmit}>
-              <div className="boxes">
-                <label>
-                  <p>Applicant. First and last name of the vehicle driver.</p>
-                  <input
-                    type="text"
-                    required
-                    name="applicant"
-                    onChange={this.handleChange}
-                  />
-                </label>
+              <div className="form-group new-question">
+                <label>Applicant</label>
+                <label>First and last name of the vehicle driver.</label>
+                <input
+                  className="form-control"
+                  type="text"
+                  required
+                  name="applicant"
+                  onChange={this.handleChange}
+                />
               </div>
-              <div>
-                <label className="form-check-label">
-                  Date of Birth
-                  <input
-                    className="form-control"
-                    type="date"
-                    required
-                    name="birth"
-                    onChange={this.handleChange}
-                  />
-                </label>
+              <div className="form-group">
+                <label>Date of Birth</label>
+                <input
+                  className="form-control"
+                  type="date"
+                  required
+                  name="birth"
+                  onChange={this.handleChange}
+                />
               </div>
-              <div>
-                <label className="form-check-label">
-                  Phone Number
-                  <input
-                    className="form-control"
-                    type="text"
-                    required
-                    name="phone"
-                    onChange={this.handleChange}
-                  />
-                </label>
+              <div className="form-group">
+                <label>Phone Number</label>
+                <input
+                  className="form-control"
+                  type="text"
+                  required
+                  name="phone"
+                  onChange={this.handleChange}
+                />
               </div>
-              <div>
-                <label className="form-check-label">
-                  Email Address
-                  <input
-                    className="form-control"
-                    type="text"
-                    required
-                    name="email"
-                    onChange={this.handleChange}
-                  />
-                </label>
+              <div className="form-group">
+                <label>Email Address</label>
+                <input
+                  className="form-control"
+                  type="text"
+                  required
+                  name="email"
+                  onChange={this.handleChange}
+                />
               </div>
-              <div className="radio">
-                <p>Driver's License Status:</p>
-                <label className="form-check-label">
-                  <input
-                    className="form-check-input"
-                    type="radio"
-                    value="Valid"
-                    checked={this.state.driverStatus === "Valid"}
-                    onChange={this.handleDriverStatus}
-                  />
-                  Valid
-                </label>
+              <div className="form-group new-question">
+                <label>Drivers License Status</label>
               </div>
-              <div className="radio">
+              <div className="form-group radio">
+                <label>Valid</label>
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  value="Valid"
+                  checked={this.state.driverStatus === "Valid"}
+                  onChange={this.handleDriverStatus}
+                />
+              </div>
+              <div className="form-group radio">
                 <label className="form-check-label">
                   <input
                     className="form-check-input"
@@ -156,7 +150,7 @@ class InterestForm extends Component {
                   Expired
                 </label>
               </div>
-              <div className="radio">
+              <div className="form-group radio">
                 <label className="form-check-label">
                   <input
                     className="form-check-input"
@@ -168,7 +162,7 @@ class InterestForm extends Component {
                   Suspended
                 </label>
               </div>
-              <div className="radio">
+              <div className="form-group radio">
                 <label className="form-check-label">
                   <input
                     className="form-check-input test"
@@ -181,20 +175,20 @@ class InterestForm extends Component {
                 </label>
               </div>
               {driverIdInput}
-              <div className="radio">
-                <p>Is your vehicle driveable ?</p>
-                <label className="form-check-label">
-                  <input
-                    className="form-check-input"
-                    type="radio"
-                    value="true"
-                    checked={this.state.drivable === true}
-                    onChange={this.handleDrivable}
-                  />
-                  Yes
-                </label>
+              <div className="form-group new-question">
+                <label className="vehicle">Is your vehicle driveable ?</label>
               </div>
-              <div className="radio">
+              <div className="form-group radio">
+                <label>YES</label>
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  value="true"
+                  checked={this.state.drivable === true}
+                  onChange={this.handleDrivable}
+                />
+              </div>
+              <div className="form-group radio">
                 <label className="form-check-label">
                   <input
                     className="form-check-input"
