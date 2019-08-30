@@ -32,7 +32,10 @@ function App() {
                   include access to a restroom facility and the security of a
                   guard.
                 </p>
-                <Link className="btn btn-primary btn-lg links" to="/forms/intro">
+                <Link
+                  className="btn btn-primary btn-lg links"
+                  to="/forms/intro"
+                >
                   FIND YOUR SPOT
                 </Link>
               </div>
@@ -61,7 +64,7 @@ function App() {
                   in LA County.
                 </p>
                 <a
-                  className="btn btn-outline-warning btn-lg links"
+                  className="btn btn-outline-warning btn-sm links"
                   href="https://www.safeparkingla.org/who-we-serve"
                   target="_blank"
                 >
@@ -79,7 +82,7 @@ function App() {
                   for the first time.
                 </p>
                 <a
-                  className="btn btn-outline-success btn-lg links"
+                  className="btn btn-outline-success btn-sm links"
                   href="https://www.safeparkingla.org/news"
                   target="_blank"
                 >
@@ -96,11 +99,11 @@ function App() {
                   bathroom and wash station.
                 </p>
                 <Link
-                  className="btn btn-outline-warning btn-lg links"
+                  className="btn btn-outline-warning btn-sm links"
                   href="https://www.safeparkingla.org/resources-for-veterans"
                   target="_blank"
                 >
-                  MORE INFO
+                  FIND MORE INFO
                 </Link>
               </div>
             </div>
