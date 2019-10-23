@@ -67,6 +67,7 @@ function App() {
                   className="btn btn-outline-warning btn-sm links"
                   href="https://www.safeparkingla.org/who-we-serve"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   READ MORE STORIES
                 </a>
@@ -85,6 +86,7 @@ function App() {
                   className="btn btn-outline-success btn-sm links"
                   href="https://www.safeparkingla.org/news"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   READ MORE NEWS
                 </a>
@@ -102,6 +104,7 @@ function App() {
                   className="btn btn-outline-warning btn-sm links"
                   href="https://www.safeparkingla.org/resources-for-veterans"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   FIND MORE INFO
                 </Link>

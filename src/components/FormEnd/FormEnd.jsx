@@ -35,6 +35,7 @@ class FormEnd extends Component {
               href="https://www.safeparkingla.org/green-streets"
               className="btn btn-primary btn-lg"
               target="_blank"
+              rel="noopener noreferrer"
             >
               LA GREEN STREETS
             </a>

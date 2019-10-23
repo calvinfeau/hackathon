@@ -8,14 +8,16 @@ const Footer = props => {
           <a
             className="icon-links"
             href="https://www.facebook.com/SafeParkingLA/"
-            target="none"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <i class="fab fa-facebook-square footer-fabs" />
           </a>
           <a
             className="icon-links"
             href="https://www.instagram.com/safeparking_la/"
-            target="none"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <i class="fab fa-instagram footer-fabs" />
           </a>
@@ -24,19 +26,19 @@ const Footer = props => {
           </a>
         </div>
         <div className="footer-tags">
-          <a className="footer-links" href="https://www.safeparkingla.org/about">
+          <a className="footer-links" href="https://www.safeparkingla.org/about" target="_blank" rel="noopener noreferrer">
             About
           </a>
-          <a className="footer-links" href="https://www.safeparkingla.org/faq">
+          <a className="footer-links" href="https://www.safeparkingla.org/faq" target="_blank" rel="noopener noreferrer">
             FAQ
           </a>
-          <a className="footer-links" href="https://safeparkingla.networkforgood.com/projects/68953-safe-parking-la">
+          <a className="footer-links" href="https://safeparkingla.networkforgood.com/projects/68953-safe-parking-la" target="_blank" rel="noopener noreferrer">
             Donate
           </a>
           <a className="footer-links" href="#">
             Contribute
           </a>
-          <a className="footer-links" href="https://www.safeparkingla.org/contact">
+          <a className="footer-links" href="https://www.safeparkingla.org/contact" target="_blank" rel="noopener noreferrer">
             Contact
           </a>
         </div>
