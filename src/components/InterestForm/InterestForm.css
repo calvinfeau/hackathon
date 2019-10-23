@@ -1,6 +1,27 @@
+.interest-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 10px;
+  margin: 0;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 10px;
+  margin: 0 !important;
+}
+
 .radio {
   display: flex;
   flex-direction: column;
+  padding-left: 25px;
+}
+
+.new-question {
+  padding-top: 25px;
 }
 
 .next {
@@ -14,9 +35,9 @@
 }
 
 @media (min-width: 992px) {
-  .interest-form {
+  /* .interest-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-  }
+    align-items: ;
+  } */
 }

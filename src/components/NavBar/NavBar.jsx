@@ -8,7 +8,7 @@ const NavBar = props => {
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div className="nav-icons">
         <div className="donate">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="https://safeparkingla.networkforgood.com/projects/68953-safe-parking-la">
             <img id="heart-img" src={heart} alt="heart image" />
           </a>
           <img className="logo" src={logo} alt="logo" />
@@ -21,13 +21,13 @@ const NavBar = props => {
             <a class="nav-item nav-link active" href="#">
               Home <span class="sr-only">(current)</span>
             </a>
-            <a class="nav-item nav-link" href="#">
+            <a class="nav-item nav-link" href="https://www.safeparkingla.org/about">
               About
             </a>
-            <a class="nav-item nav-link" href="#">
+            <a class="nav-item nav-link" href="https://www.safeparkingla.org/green-streets">
               Find Spot
             </a>
-            <a class="nav-item nav-link disabled" href="#">
+            <a class="nav-item nav-link disabled" href="https://www.safeparkingla.org/who-we-serve">
               Stories
             </a>
           </div>
