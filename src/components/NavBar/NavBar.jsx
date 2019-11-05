@@ -7,8 +7,7 @@ const Wrapper = styled.div`
 top: 0;
 position: sticky;
 width: 100%;
-padding: 2% 5%;
-height: 10vh;
+padding: 30px;
 display: flex;
 justify-content: space-between;
 align-items: center;
@@ -19,11 +18,13 @@ letter-spacing: 1.5px;
   .material-icons {font-size: 36px;}
 }
 @media screen and (min-width: 1101px) {
+  padding: 40px;
   >span {
     display: none;
   }
 }
   @media screen and (max-width: 500px) {
+    padding: 20px;
     >span {
       .material-icons {font-size: 25px;}
     }

@@ -1,39 +1,51 @@
-import React from "react";
-import NavBar from "../NavBar/NavBar";
-import Footer from "../Footer/Footer";
-import Step1 from "./step1-icon.png";
+import React, {Component} from "react";
 import { Link } from "react-router-dom";
-import "./FormIntro.css";
+import styled from "styled-components";
+import formIcon from "./formIcon.png"
+// import "./FormIntro.css";
 
-const FormIntro = props => {
-  return (
-    <div className="form-int-div">
-      <div className="intro-wrap">
-        <h2 id="intro-head">Brief Intro</h2>
-        <p className="p-top">
+const Wrapper = styled.div`
+// FOR DESKTOP
+
+margin-top: 30px;
+height: 100%;
+background-color: #E3EDF3;
+display: flex;
+flex-direction: column;
+align-items: center;
+`;
+
+const Text = styled.div`
+width: 50%;
+height: 60%;
+
+>img {
+  height: 50px;
+}
+`;
+
+const Button = styled(Link)``;
+
+class FormIntro extends Component {
+  render() {
+    return (
+      <Wrapper>
+        <Text>
+          <div style={{fontWeight: "700"}}>Brief Intro</div>
           This is the beginning of the process to be part of a Safe Parking LA
           program.
-        </p>
-        <p className="p-top">
           It should take about 10 minutes maximum in order to finish this
           initial form. Upon submission, we will look into your general
           situation to figure out how we can best serve your needs.
-        </p>
-        <p id="p-bold">
-          We will need more technical information if and when accepted- but
-          let’s not worry about that right now. :)
-        </p>
-        <div className="img-intro">
-          <img src={Step1} alt="a form" />
-        </div>
-      </div>
-      <div className="button">
-        <Link to="/forms/1" className="btn btn-primary btn-lg">
+          <div style={{fontWeight: "700"}}>We will need more technical information if and when accepted- but let’s not worry about that right now. :)</div>
+          <img src={formIcon} alt="form icon" />
+        </Text>
+        <Button to="/forms/1">
           Proceed
-        </Link>
-      </div>
-    </div>
+        </Button>
+    </Wrapper>
   );
+  }
 };
 
 export default FormIntro;
