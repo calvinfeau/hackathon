@@ -19,11 +19,16 @@ background-size: cover;
 `;
 
 const Div1 = styled.div`
-width: 50%;
+width: 60%;
 height: 100%;
 padding: 10%;
 display: flex;
 flex-direction: column;
+justify-content: space-between;
+@media screen and (min-width: 2100px) {
+  padding: 7%;
+  width: 50%;
+}
 
 @media screen and (max-width: 1100px) {
   width: 100%;
@@ -41,7 +46,6 @@ font-size: 3.5vmax;
 line-height: 1.1;
 mix-blend-mode: normal;
 letter-spacing: 1.5px;
-padding-bottom: 15%;
 
 @media screen and (max-width: 1100px) {
   text-align: center;
@@ -62,13 +66,15 @@ const Text1 = styled.div`
 letter-spacing: 1.5px;
 font-size: 1.3vmax;
 line-height: 1.7;
-padding-bottom: 15%;
 
 @media screen and (max-width: 1100px) {
   padding: 0 10%;
   text-align: center;
-  font-size: 1.5vmax;
+  font-size: 1.8vmax;
   line-height: 1.7;
+}
+@media screen and (max-width: 500px) {
+  font-size: 1.5vmax;
 }
 `;
 
@@ -90,6 +96,11 @@ letter-spacing: 1.5px;
 }
 
 @media screen and (max-width: 1100px) {
+  width: 60%;
+  padding: 2%;
+  font-size: 1.8vmax;
+}
+@media screen and (max-width: 500px) {
   width: 85%;
   padding: 5%;
   font-size: 1.5vmax;
@@ -97,9 +108,6 @@ letter-spacing: 1.5px;
 `;
 
 class Section1 extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <Wrapper1>
@@ -137,7 +145,6 @@ align-items: flex-end;
 justify-content: center;
 font-size: 1.5vmax;
 letter-spacing: 1.5px;
-
 
 @media screen and (max-width: 1100px) {
   font-size: 1.7vmax;
@@ -178,6 +185,10 @@ padding: 5vw;
 display: flex;
 justify-content: space-between;
 
+@media screen and (min-width: 2100px) {
+  justify-content: space-around;
+  height: 110vh;
+}
 @media screen and (max-width: 1100px) {
   flex-direction: column;
   padding: 0;
@@ -199,6 +210,9 @@ ${props => props.card === 1 && css`background-color: #FFEEDA;`}
 ${props => props.card === 2 && css`background-color: #DBEDDD;`}
 ${props => props.card === 3 && css`background-color: #FFF7E2;`}
 
+@media screen and (min-width: 2100px) {
+  width: 25%;
+}
 @media screen and (max-width: 1100px) {
   width: 100vw;
   background-color: white;
@@ -225,16 +239,22 @@ letter-spacing: 1.5px;
   padding-bottom: 10%;
 }
 
+@media screen and (min-width: 2100px) {
+  padding-bottom: 5%;
+}
 @media screen and (max-width: 1100px) {
-  padding: 5%;
+  padding: 5% 10%;
   justify-content: start;
-  font-size: 1.5vmax;
+  font-size: 1.8vmax;
   text-align: center;
   line-height: 2;
   >span {
     font-size: 2.5vmax;
     padding-bottom: 5%;
-  }
+}
+@media screen and (max-width: 500px) {
+  padding: 5%;
+  font-size: 1.5vmax;
 }
 `;
 
@@ -256,6 +276,22 @@ border-radius: 30px;
 }
 
 @media screen and (max-width: 1100px) {
+  padding: 2%;
+  font-size: 1.8vmax;
+  width: 85%;
+  margin-top: 10%;
+  ${props => props.card === 1 && css`--current-color: #E59638;`}
+  ${props => props.card === 2 && css`--current-color: #297F32;`}
+  ${props => props.card === 3 && css`--current-color: #E2B731;`}
+  color: var(--current-color);
+  border-color: var(--current-color);
+  :hover{
+    color: white; 
+    background-color: var(--current-color);
+    text-decoration: none;
+  }
+}
+@media screen and (max-width: 500px) {
   font-size: 1.5vmax;
   width: 85%;
   margin-top: 10%;
@@ -316,6 +352,9 @@ flex-direction: column;
 align-items: center;
 margin: 5vh 0;
 >span {font-size: 1.3vmax;}
+@media screen and (max-width: 1100px) {
+  >span {font-size: 1.8vmax;}
+}
 `;
 
 const Title4 = styled.div`
@@ -334,8 +373,11 @@ const Text4 = styled(Text1)`
 padding: 3vh 0;
 
 @media screen and (max-width: 1100px) {
-  font-size: 1.5vmax;
+  font-size: 1.8vmax;
   padding: 5% 15%;
+}
+@media screen and (max-width: 1100px) and (orientation: landscape){
+  padding: 2% 15%;
 }
 `;
 
@@ -366,7 +408,7 @@ class Section4 extends Component {
     return (
       <Wrapper4>
         <Title4>HAVE AN OPEN LOT ?</Title4>
-        <Text4>Help contribute to our cause and join in a meaningful partnership with Safe Parking LA.</Text4>
+        <Text4>Help contribute to our cause and join in a meaningful partnership with Safe&nbsp;Parking&nbsp;LA.</Text4>
         <Button2 onClick={this.handleClick} clicked={`${this.state.clicked}`}>Find out details</Button2>
         {this.state.clicked ? 
         <span clicked={`${this.state.clicked}`}>Coming soon!</span> : <span></span>

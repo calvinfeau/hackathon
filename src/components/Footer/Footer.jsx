@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
 background-color: #1b1b1b
@@ -12,6 +12,9 @@ align-items: center;
 @media screen and (max-width: 1100px) {
   height: 20vh;
   padding: 0;
+}
+@media screen and (max-width: 1100px) and (orientation: landscape) {
+  height: 30vh;
 }
 `;
 
@@ -35,7 +38,7 @@ padding: 0 0 5vh;
 }
 
 @media screen and (max-width: 1100px) {
-  width: 75%;
+  width: 50%;
   padding: 0;
   >a {
     font-size: 2.5vmax;
@@ -44,6 +47,9 @@ padding: 0 0 5vh;
     color: #1b1b1b;
     border-radius: 50%;
   }
+}
+@media screen and (max-width: 500px) {
+  width: 75%;
 }
 `;
 
@@ -64,12 +70,16 @@ width: 50%;
   }
 }
 @media screen and (max-width: 1100px) {
-  width: 90%;
-  font-size: 1.2vmax;
+  width: 70%;
+  font-size: 1.5vmax;
   >a, >span {
     width: 20%;
     text-align: center;
   }
+}
+@media screen and (max-width: 500px) {
+  width: 90%;
+  font-size: 1.2vmax;
 }
 `;
 

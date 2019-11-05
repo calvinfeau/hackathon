@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 import heart from "./heart.png";
 import logo from "./logo.png";
 
@@ -15,14 +15,26 @@ align-items: center;
 background-color: white;
 z-index: 10;
 letter-spacing: 1.5px;
-
+>span {
+  .material-icons {font-size: 36px;}
+}
 @media screen and (min-width: 1101px) {
-  >span {display: none;}
+  >span {
+    display: none;
+  }
+}
+  @media screen and (max-width: 500px) {
+    >span {
+      .material-icons {font-size: 25px;}
+    }
 }
 `;
 
 const Img = styled.img`
 @media screen and (max-width: 1100px) {
+  height: 36px;
+}
+@media screen and (max-width: 500px) {
   height: 25px;
 }
 height: 50px;
@@ -37,13 +49,14 @@ display: none;
 
 const Div2 = styled.div`
 display: flex;
+justify-content: space-between;
 align-items: flex-end;
+width: 30%;
 color: black;
 >a {
   color: black;
   font-weight: 700;
   font-size: 0.75vmax;
-  padding: 0 5%;
   font-family: 'Montserrat', sans-serif;
 }
 >a:hover {
@@ -71,6 +84,9 @@ const Div3 = styled(Div2)`
     color: white;
     font-size: 1.5vmax;
     padding: 0;
+  }
+  >span {font-weight: 700;
+    font-size: 1.5vmax;
   }
 }
   // animation: 10s menuOpen;
