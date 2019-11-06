@@ -13,15 +13,14 @@ display: flex;
 align-items: center;
 justify-content: center;
 height: 5vh;
+margin-bottom: 3vh;
 background-color: #F4F4F4;
 color: #12679B;
 font-weight: 700;
+font-size: 1.5vmax;
 `;
 
-const Wrapper = styled.div`
-// DESKTOP
-height: calc(100vh - 30vh - 130px);
-`;
+const Wrapper = styled.div``;
 
 class FormsPage extends Component {
   constructor(props) {

@@ -180,7 +180,7 @@ class Section2 extends Component {
 
 const Wrapper3 = styled.div`
 width: 100vw;
-height: 90vh;
+// height: 90vh;
 padding: 5vw;
 display: flex;
 justify-content: space-between;
@@ -199,6 +199,7 @@ justify-content: space-between;
 
 const Card = styled.div`
 width: 30%;
+// height: 100%;
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -392,6 +393,12 @@ padding: 0;
 }
 `;
 
+
+const Wrapper = styled.div`
+display: flex;
+flex-direction: column;
+`;
+
 class Section4 extends Component {
   constructor(props) {
     super(props);
@@ -421,12 +428,12 @@ class Section4 extends Component {
 class HomePage extends Component {
     render() {
         return (
-            <>
+            <Wrapper>
             <Section1 />
             <Section2 />
             <Section3 />
             <Section4 />
-            </>
+            </Wrapper>
         )
     }
 }

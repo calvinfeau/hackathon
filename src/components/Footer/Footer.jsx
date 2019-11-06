@@ -3,14 +3,14 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
 background-color: #1b1b1b
-height: 30vh;
+height: 20vh;
 width: 100vw;
 padding: 5vh 0;
 display: flex;
 flex-direction: column;
 align-items: center;
 @media screen and (max-width: 1100px) {
-  height: 20vh;
+  // height: 20vh;
   padding: 0;
 }
 @media screen and (max-width: 1100px) and (orientation: landscape) {
@@ -30,8 +30,8 @@ width: 20%;
 align-items: center;
 padding: 0 0 5vh;
 >a {
-  font-size: 2vmax;
-  padding: 0.4vmax 1vmax;
+  font-size: 1.5vmax;
+  padding: 0.3vmax 0.8vmax;
   background-color: white;
   color: #1b1b1b;
   border-radius: 50%;
@@ -56,6 +56,7 @@ padding: 0 0 5vh;
 const Links = styled(Flex)`
 height: 40%;
 width: 50%;
+align-items: center;
 >a, >span {
   width: 10%;
   color: white;
