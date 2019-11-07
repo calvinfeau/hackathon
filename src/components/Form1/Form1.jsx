@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Route, Switch, Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import styled from "styled-components";
 import { createUser } from "../../services/api";
-import progress1 from "./progress1.png"
+import progress1 from "./progress1.png";
 // import "./Form1.css";
 import FormHeader from "../FormHeader/FormHeader";
 
@@ -108,11 +108,6 @@ const Item = styled.div`
   display: flex;
 `;
 
-const Button = styled(Radio)`
-  grid-area: next;
-  align-self: end;
-`;
-
 const TextInput = styled.input`
   padding: 5px;
   border: 1px #12679b solid;
@@ -163,6 +158,11 @@ const RadioButton = styled.input`
       background: white;
     }
   }
+`;
+
+const Button = styled(Radio)`
+  grid-area: next;
+  align-self: end;
 `;
 
 const Submit = styled.input`
@@ -259,11 +259,11 @@ class Form1 extends Component {
 
     var form1;
     if (this.state.id) {
-      form1 = (
+      form1 = 
         <Redirect to={{ pathname: "/forms/2", state: { id: this.state.id } }} />
-      );
+      ;
     } else {
-      form1 = (
+      form1 = 
         <div>
           <FormHeader />
           <Wrapper>
@@ -383,10 +383,9 @@ class Form1 extends Component {
               <Button><Submit type="submit" value="NEXT" /></Button>
             </Form>
           </Wrapper>
-        </div>
-      );
+        </div>;
     }
-    return <div>{form1}</div>;
+    return (<div>{form1}</div>);
   }
 }
 
