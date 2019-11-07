@@ -58,7 +58,7 @@ color: black;
 >a {
   color: black;
   font-weight: 700;
-  font-size: 0.75vmax;
+  font-size: 1vmax;
   font-family: 'Montserrat', sans-serif;
 }
 >a:hover {
