@@ -4,7 +4,6 @@ import styled from "styled-components";
 import formIcon from "./formIcon.png"
 
 const Wrapper = styled.div`
-// FOR DESKTOP
 height: calc(100vh - 10vh - 20vh - 8vh);
 background-color: #E3EDF3;
 display: flex;
@@ -19,7 +18,6 @@ font-size: 1.2vmax;
 }
 
 @media screen and (max-width: 1100px) and (orientation: portrait) {
-  height: calc(100vh - 10vh - 20vh - 8vh);
   font-size: 1.5vmax;
   #title {
     font-size: 1.8vmax;

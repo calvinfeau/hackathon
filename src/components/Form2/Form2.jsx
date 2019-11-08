@@ -18,6 +18,20 @@ const Wrapper = styled.div`
       height: 50px;
     }
   }
+
+  @media screen and (max-width: 1100px) and (orientation: portrait) {
+    padding: 0 20vw;
+    font-size: 1.5vmax;
+  }
+  @media screen and (max-width: 500px) and (orientation: portrait) {
+    padding: 3vh 20vw;
+    >div {
+      >img {
+        width: auto;
+        height: 25px;
+      }
+    }
+  }
 `;
 
 const Title = styled.div`
@@ -25,6 +39,10 @@ const Title = styled.div`
   font-weight: 700;
   text-align: center;
   padding: 3vh 0 3vh;
+
+  @media screen and (max-width: 1100px) and (orientation: portrait) {
+    font-size: 2vmax;
+  }
 `;
 
 const Text = styled.div`
@@ -41,6 +59,18 @@ const Text = styled.div`
   >input {
     width: 80%;
   }
+
+  @media screen and (max-width: 1100px) and (orientation: portrait) {
+    >input {
+      width: 100%;
+    }
+    >div {
+      padding-bottom: 1vh;
+    }  
+  }
+  @media screen and (max-width: 500px) and (orientation: portrait) {
+    width: 100%;
+  }
 `;
 
 const Radio = styled.div`
@@ -51,6 +81,15 @@ const Radio = styled.div`
     >span {
     font-weight: 700;
     }
+  }
+
+  @media screen and (max-width: 1100px) and (orientation: portrait) {
+    >div {
+      padding-bottom: 1vh;
+    }  
+  }
+  @media screen and (max-width: 500px) and (orientation: portrait) {
+    width: 100%;
   }
 `;
 
@@ -64,6 +103,12 @@ grid-template-areas:
 "race veteran"
 "race healthcare";
 justify-content: space-between;
+
+@media screen and (max-width: 1100px) and (orientation: portrait) {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
 `;
 
 const Gender = styled(Radio)`
@@ -92,6 +137,11 @@ grid-template-areas:
 "parking factors";
 justify-content: space-between;
 margin-bottom: 6vh;
+
+@media screen and (max-width: 1100px) and (orientation: portrait) {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 `;
 
 const Vehicle = styled(Radio)`
@@ -115,11 +165,18 @@ grid-area: factors;
 
 const Choices = styled.div`
   display: flex;
+
+  @media screen and (max-width: 500px) and (orientation: portrait) {
+    flex-direction: column;
+  }
 `;
 
 const Choice = styled.div`
 width: 50%;
   >div {padding: 0.5vh 0;}
+  @media screen and (max-width: 500px) and (orientation: portrait) {
+      width: 100%;
+  }
 `;
 
 const Item = styled.div`
@@ -564,9 +621,7 @@ class Form2 extends Component {
 
                     <Pets>
                     <div><span>Do any pets live in the vehicle ?</span></div>
-                    <Item>
-                        <TextInput type="number" value={this.state.pets} onChange={this.handlePets}/>
-                    </Item>
+                    <Item><TextInput type="number" value={this.state.pets} onChange={this.handlePets}/></Item>
                     </Pets>
 
                     <Parking>

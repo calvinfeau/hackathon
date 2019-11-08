@@ -18,9 +18,15 @@ background-color: #F4F4F4;
 color: #12679B;
 font-weight: 700;
 font-size: 1.2vmax;
+
+@media screen and (max-width: 1100px) and (orientation: portrait) {
+  font-size: 1.5vmax;
+}
 `;
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+min-height: 70vh;
+`;
 
 class FormsPage extends Component {
   constructor(props) {

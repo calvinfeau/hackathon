@@ -127,7 +127,7 @@ class Nav extends Component {
     return (
       <Wrapper>
         <Div1><a href="https://safeparkingla.networkforgood.com/projects/68953-safe-parking-la" target="_blank" rel="noopener noreferrer"><Img src={heart} alt="heart image" /></a></Div1>
-        <a href="https://safeparkingla.networkforgood.com/projects/68953-safe-parking-la" target="_blank" rel="noopener noreferrer"><Img src={logo} alt="safeparking logo" /></a>
+        <a href="https://www.safeparkingla.org/" target="_blank" rel="noopener noreferrer"><Img src={logo} alt="safeparking logo" /></a>
         <Div2>
           <a href="https://www.safeparkingla.org/green-streets" target="_blank" rel="noopener noreferrer">FIND&nbsp;SPOT</a>
           <a href="https://www.safeparkingla.org/who-we-serve" target="_blank" rel="noopener noreferrer">STORIES</a>

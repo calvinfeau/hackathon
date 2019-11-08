@@ -18,11 +18,27 @@ const Wrapper = styled.div`
       height: 50px;
     }
   }
+
+  @media screen and (max-width: 1100px) and (orientation: portrait) {
+    padding: 0 15vw;
+    font-size: 1.5vmax;
+  }
+  @media screen and (max-width: 500px) and (orientation: portrait) {
+    >div {
+      >img {
+        width: auto;
+        height: 25px;
+      }
+    }
+  }
 `;
 
 const Title = styled.div`
   font-size: 1.5vmax;
   font-weight: 700;
+  @media screen and (max-width: 1100px) and (orientation: portrait) {
+    font-size: 2vmax;
+  }
 `;
 
 const Form = styled.form`
@@ -36,6 +52,14 @@ const Form = styled.form`
   "phone license"
   "email next";
   justify-content: space-between;
+
+  @media screen and (max-width: 1100px) and (orientation: portrait) {
+    padding: 3vh 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 const Text = styled.div`
@@ -52,6 +76,19 @@ const Text = styled.div`
   >input {
     width: 80%;
   }
+
+  @media screen and (max-width: 1100px) and (orientation: portrait) {
+    width: 50%;
+    >input {
+      width: 100%;
+    }
+    >div {
+      padding-bottom: 1vh;
+    }  
+  }
+  @media screen and (max-width: 500px) and (orientation: portrait) {
+    width: 100%;
+  }
 `;
 
 const Radio = styled.div`
@@ -62,6 +99,15 @@ const Radio = styled.div`
     >span {
     font-weight: 700;
     }
+  }
+  @media screen and (max-width: 1100px) and (orientation: portrait) {
+    width: 50%;
+    >div {
+      padding-bottom: 1vh;
+    }  
+  }
+  @media screen and (max-width: 500px) and (orientation: portrait) {
+    width: 100%;
   }
 `;
 
@@ -163,6 +209,11 @@ const RadioButton = styled.input`
 const Button = styled(Radio)`
   grid-area: next;
   align-self: end;
+
+  @media screen and (max-width: 1100px) and (orientation: portrait) {
+    width: 100%;
+    text-align: center;
+  }
 `;
 
 const Submit = styled.input`
