@@ -2,10 +2,8 @@ import React, {Component} from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import formIcon from "./formIcon.png"
-// import "./FormIntro.css";
 
 const Wrapper = styled.div`
-// FOR DESKTOP
 height: calc(100vh - 10vh - 20vh - 8vh);
 background-color: #E3EDF3;
 display: flex;
@@ -19,14 +17,11 @@ font-size: 1.2vmax;
   text-align: center;
 }
 
-@media screen and (max-width: 1100px) {
-  height: calc(100vh - 10vh - 20vh - 8vh);
+@media screen and (max-width: 1100px) and (orientation: portrait) {
   font-size: 1.5vmax;
   #title {
     font-size: 1.8vmax;
   }
-}
-@media screen and (max-width: 500px) {
 }
 `;
 
@@ -57,7 +52,7 @@ width: 50%;
   }
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1100px) and (orientation: portrait) {
   text-align: center;
   #last {
     padding: 2vmax 0;
@@ -69,7 +64,7 @@ width: 50%;
     }
   }
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 500px) and (orientation: portrait) {
   width: 60%;
 }
 `;
@@ -85,16 +80,17 @@ font-weight: 700;
 border-radius: 30px;
 border: 1px #12679b solid;
 letter-spacing: 1.5px;
+
 :hover{
   color: #12679b; 
   background-color: transparent; 
   text-decoration: none;
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1100px) and (orientation: portrait) {
   width: 30%;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 500px) and (orientation: portrait) {
   width: 50%;
   font-size: 1.5vmax;
 }

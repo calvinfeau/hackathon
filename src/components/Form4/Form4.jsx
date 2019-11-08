@@ -1,7 +1,213 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import {updateUser} from "../../services/api"
-import "./Form4.css";
+import {updateUser} from "../../services/api";
+import styled from "styled-components";
+import progress4 from "./progress4.png";
+import FormHeader from "../FormHeader/FormHeader";
+
+// import "./Form4.css";
+
+const Wrapper = styled.div`
+  background-color: #E5EDF2;
+  padding: 3vh 20vw 6vh;
+  font-size: 1.2vmax;
+  >div {
+    text-align: center;
+    padding: 3vh 0 3vh;
+    >img {
+      width: auto;
+      height: 50px;
+    }
+  }
+  >form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media screen and (max-width: 1100px) and (orientation: portrait) {
+    padding: 0 20vw 3vh;
+    font-size: 1.5vmax;
+  }
+  @media screen and (max-width: 500px) and (orientation: portrait) {
+    padding: 3vh 20vw;
+    >div {
+      >img {
+        width: auto;
+        height: 25px;
+      }
+    }
+  }
+`;
+
+const Title = styled.div`
+  font-size: 1.5vmax;
+  font-weight: 700;
+  text-align: center;
+  padding: 3vh 0 3vh;
+
+  @media screen and (max-width: 1100px) and (orientation: portrait) {
+    font-size: 2vmax;
+  }
+`;
+
+const Text = styled.div`
+  width: 75%;
+  padding: 1vh 0;
+  display: flex;
+  flex-direction: column;
+  >div {
+    padding-bottom: 0.5vh;
+    >span {
+      font-weight: 700;
+    }
+  }
+  >input {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 1100px) and (orientation: portrait) {
+    width: 100%;
+    >input {
+      width: 75%;
+    }
+    >div {
+      padding-bottom: 1vh;
+    }  
+  }
+  @media screen and (max-width: 500px) and (orientation: portrait) {
+    width: 100%;
+  }
+`;
+
+const Radio = styled.div`
+  width: 75%;
+  padding: 1vh 0;
+  >div {
+    padding-bottom: 0.5vh;
+    >span {
+    font-weight: 700;
+    }
+  }
+
+  @media screen and (max-width: 1100px) and (orientation: portrait) {
+    width: 100%;
+    >div {
+      padding-bottom: 1vh;
+    }  
+  }
+  @media screen and (max-width: 500px) and (orientation: portrait) {
+    width: 100%;
+  }
+`;
+
+const Choices = styled.div`
+  display: flex;
+
+  @media screen and (max-width: 500px) and (orientation: portrait) {
+    flex-direction: column;
+  }
+`;
+
+const Choice = styled.div`
+  width: 50%;
+  padding-right: 1vw;
+  >div {padding: 0.5vh 0;}
+  @media screen and (max-width: 500px) and (orientation: portrait) {
+    width: 100%;
+  }
+`;
+
+const Item = styled.div`
+  display: flex;
+`;
+
+const TextInput = styled.input`
+  padding: 5px 10px;
+  border: 1px #12679b solid;
+  letter-spacing: 1.5px;
+  border-radius: 2px;
+  color: #12679b;
+`;
+
+const TextArea = styled.textarea`
+padding: 5px 10px;
+border: 1px #12679b solid;
+letter-spacing: 1.5px;
+border-radius: 2px;
+color: #12679b;
+`;
+
+const RadioButtonLabel = styled.label`
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid #bebebe;
+`;
+
+const RadioButton = styled.input`
+  opacity: 0;
+  z-index: 1;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  &:hover ~ ${RadioButtonLabel} {
+    background: #bebebe;
+    &::after {
+      content: "";
+      display: block;
+      border-radius: 50%;
+      width: 12px;
+      height: 12px;
+      margin: 6px;
+      background: #eeeeee;
+    }
+  }
+  &:checked + ${RadioButtonLabel} {
+    background: #12679B;
+    border: 1px solid #12679B;
+    &::after {
+      content: "";
+      display: block;
+      border-radius: 50%;
+      width: 12px;
+      height: 12px;
+      margin: 6px;
+      box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.1);
+      background: white;
+    }
+  }
+`;
+
+const Button = styled(Radio)`
+  text-align: center;
+`;
+
+const Submit = styled.input`
+  width: 50%;
+  font-size: 1.2vmax;
+  padding: 0.6vmax;
+  color: white;
+  background-color: #12679b;
+  text-align: center;
+  font-weight: 700;
+  border-radius: 30px;
+  border: 1px #12679b solid;
+  letter-spacing: 1.5px;
+
+  :hover{
+    color: #12679b; 
+    background-color: transparent; 
+    text-decoration: none;
+  }
+
+  @media screen and (max-width: 500px) and (orientation: portrait) {
+    font-size: 1.5vmax;
+  }
+`;
 
 class Form4 extends Component {
   constructor(props) {
@@ -45,7 +251,6 @@ class Form4 extends Component {
     self.setState({userId: userId})
   }
 
-
   handleSituation = e => {
     let property = e.target;
     this.setState(prevState => ({...prevState, situation: {...prevState.situation, [property.name]: property.value}}))
@@ -78,7 +283,6 @@ class Form4 extends Component {
   }
 
   render() {
-
     var form4;
     if(this.state.completed) {
         form4 = <Redirect to={{pathname: '/forms/end', state:{id: this.state.userId}}} />
@@ -86,277 +290,177 @@ class Form4 extends Component {
     else {
       form4 = 
       <div>
-        <div className="form-4-header">
-          <h3 id="head1">FIND YOUR SPOT</h3>
-        </div>
-        <div className="copy-top">
-          <p id="p1">
-            This form is the first step in the application process for a Safe
-            Parking LA program.
-          </p>
-          <p id="p2">
-            Please fill out <span id="span1">ALL</span> of the following
-            information so we can best assist your specific needs.
-          </p>
-        </div>
+        <FormHeader />
+        <Wrapper>
+        <div><img src={progress4} /></div>
+        <Title>Origin</Title>
         <form id="form-4" onSubmit={this.handleSubmit}>
-          <h3 className="secondary-header">Origin</h3>
-          <div className="form-group form-4">
-            <p>
-              What are the main reasons for your current situation?{" "}
-              <span>*Select All That Apply</span>
-            </p>
-            <div className="checkbox1">
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  name="jobLoss"
-                  onChange={this.handleSituation}
-                />
-                <label className="form-check-label">Loss of Job</label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  name="highBills"
-                  onChange={this.handleSituation}
-                />
-                <label className="form-check-label">
-                  Bills Higher than Earning
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  name="eviction"
-                  onChange={this.handleSituation}
-                />
-                <label className="form-check-label">Eviction</label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  name="homeAbuse"
-                  onChange={this.handleSituation}
-                />
-                <label className="form-check-label">Abuse at Home</label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  name="incarceration"
-                  onChange={this.handleSituation}
-                />
-                <label className="form-check-label">Incarceration</label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  name="sick"
-                  onChange={this.handleSituation}
-                />
-                <label className="form-check-label">
-                  Sick/Disabled/Mental Illness
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  name="familyChange"
-                  onChange={this.handleSituation}
-                />
-                <label className="form-check-label">
-                  Change in Family Status
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  name="substance"
-                  onChange={this.handleSituation}
-                />
-                <label className="form-check-label">Substance Abuse</label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  name="expensiveHouse"
-                  onChange={this.handleSituation}
-                />
-                <label className="form-check-label">
-                  Lack of Affordable Housing
-                </label>
-              </div>
-            </div>
-            <div className="form-check other-box1" id="other-box1">
-              <label className="form-check-label otherLabels">
-                Other;{" "}
-                <span className="fine-print">Please list Specific Reasons</span>
-              </label>
-              <textarea
-                id="other-box"
-                className="form-control other-box"
-                rows="3"
-                name="other"
-                onChange={this.handleSituation}
-              />
-            </div>
-            <div className="form-check other-box1">
-              <label className="form-check-label otherLabels">
-                Tell us your story in as much or as little detail as you feel
-                comfortable sharing.
-              </label>
-              <textarea className="form-control other-box" rows="3" onChange={this.handleStory} />
-            </div>
-            <div className="form-check">
-              <h3 className="secondary-header">As It Stands</h3>
-              <p>How long have you been sleeping in your vehicle?</p>
-              <div className="vehicle-box">
-                <div>
-                  <input
-                    type="radio"
-                    value="Less than a month"
-                    checked={this.state.homelessness.length === "Less than a month"}
-                    onChange={this.handleHomelessness}
-                    name="length"
-                    className="form-check-input"
-                  />
-                  <label className="form-check-label">Less than a month</label>
-                </div>
-                <div>
-                  <input
-                    type="radio"
-                    value="Between two and six months"
-                    checked={this.state.homelessness.length === "Between two and six months"}
-                    onChange={this.handleHomelessness}
-                    name="length"
-                    className="form-check-input"
-                  />
-                  <label className="form-check-label">
-                    Between two and six months
-                  </label>
-                </div>
-                <div>
-                  <input
-                    type="radio"
-                    value="Six months to one year"
-                    checked={this.state.homelessness.length === "Six months to one year"}
-                    onChange={this.handleHomelessness}
-                    name="length"
-                    className="form-check-input"
-                  />
-                  <label className="form-check-label">
-                    Six months to one year
-                  </label>
-                </div>
-                <div>
-                  <input
-                    type="radio"
-                    value="More than one year"
-                    checked={this.state.homelessness.length === "More than one year"}
-                    onChange={this.handleHomelessness}
-                    name="length"
-                    className="form-check-input"
-                  />
-                  <label className="form-check-label">More than one year</label>
-                </div>
-              </div>
+          <Radio>
+          <div><span>What are the main reasons for your current situation?</span></div>
+          <div>*Select all that apply</div>
+          <Choices>
+            <Choice>
+            <Item>
+              <RadioButton type="checkbox" name="jobLoss" onChange={this.handleSituation} />
+              <RadioButtonLabel />
+              <div>Loss of Job</div>
+            </Item>
+            <Item>
+              <RadioButton type="checkbox" name="highBills" onChange={this.handleSituation} />
+              <RadioButtonLabel />
+              <div>Bills Higher than Earning</div>
+            </Item>
+            <Item>
+              <RadioButton type="checkbox" name="eviction" onChange={this.handleSituation} />
+              <RadioButtonLabel />
+              <div>Eviction</div>
+            </Item>
+            <Item>
+              <RadioButton type="checkbox" name="homeAbuse" onChange={this.handleSituation} />
+              <RadioButtonLabel />
+              <div>Abuse at Home</div>
+            </Item>
+            <Item>
+              <RadioButton type="checkbox" name="expensiveHouse" onChange={this.handleSituation} />
+              <RadioButtonLabel />
+              <div>Lack of Affordable Housing</div>
+            </Item>
+            </Choice>
+            <Choice>
+            <Item>
+              <RadioButton type="checkbox" name="incarceration" onChange={this.handleSituation} />
+              <RadioButtonLabel />
+              <div>Incarceration</div>
+            </Item>
+            <Item>
+              <RadioButton type="checkbox" name="sick" onChange={this.handleSituation} />
+              <RadioButtonLabel />
+              <div>Sick/Disabled/Mental Illness</div>
+            </Item>
+            <Item>
+              <RadioButton type="checkbox" name="familyChange" onChange={this.handleSituation} />
+              <RadioButtonLabel />
+              <div>Change in Family Status</div>
+            </Item>
+            <Item>
+              <RadioButton type="checkbox" name="substance" onChange={this.handleSituation} />
+              <RadioButtonLabel />
+              <div>Substance Abuse</div>
+            </Item>
+            </Choice>
+            </Choices>
+            <Text>
+              <div><span>Other;</span> please list specific reasons</div>
+              <TextArea rows="3" name="other" onChange={this.handleSituation} />
+            </Text>
+            </Radio>
 
-              <div className="form-group">
-                <label className="form-check-label">
-                  Approximate start date of homelessness
-                </label>
-                <input 
-                type="date" 
-                className="form-control"
-                onChange={this.handleHomelessness}
-                name="date"
-                 />
-              </div>
-              <div className="form-check">
-                <div className="test">
-                  <p>
-                    Do you have any major or immediate health concerns?
-                    <span>*Select All That Apply</span>
-                  </p>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      onChange={this.handleHealthConcern}
-                      name="none"
-                    />
-                    <label className="form-check-label">None</label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      onChange={this.handleHealthConcern}
-                      name="pregnancy"
-                    />
-                    <label className="form-check-label">Pregnancy</label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      onChange={this.handleHealthConcern}
-                      name="handicapped"
-                    />
-                    <label className="form-check-label">
-                      Handicapped/Disabled
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <label className="form-check-label">
-                      Other;{" "}
-                      <span className="fine-print">
-                        Please list Specific Reasons
-                      </span>
-                    </label>
-                    <textarea className="form-control" rows="3" name="other" onChange={this.handleHealthConcern} />
-                  </div>
-                </div>
-                <div className="emerg">
-                  <div className="form-group emerg-grp">
-                    <h3>Emergency Contact</h3>
-                    <label className="form-check-label">
-                      First, Last name:
-                    </label>
-                    <input type="text" name="name" className="form-control" onChange={this.handleEmergencyContact} />
-                  </div>
-                  <div className="form-group emerg-grp">
-                    <label className="form-check-label">Relationship:</label>
-                    <input type="text" name="relation" className="form-control" onChange={this.handleEmergencyContact} />
-                  </div>
-                  <div className="form-group emerg-grp">
-                    <label className="form-check-label">Phone number:</label>
-                    <input type="text" name="phone" className="form-control" onChange={this.handleEmergencyContact} />
-                  </div>
-                  <div className="form-group emerg-grp">
-                    <label className="form-check-label">Email:</label>
-                    <input type="text" name="email" className="form-control" onChange={this.handleEmergencyContact} />
-                  </div>
-                </div>
-                <input
-                  className="btn btn-primary btn-lg"
-                  type="submit"
-                  value="NEXT"
-                />
-              </div>
-            </div>
-          </div>
+            <Text>
+              <Text>
+              <div><span>Tell us your story in as much or as little detail as you feel comfortable&nbsp;sharing.</span></div>
+              <TextArea rows="3" onChange={this.handleStory} />
+              </Text>
+            </Text>
+
+            <Title>As It Stands</Title>
+
+            <Radio>
+            <div><span>How long have you been sleeping in your vehicle ?</span></div>
+              <Choices>
+                <Choice>
+                <Item>
+                  <RadioButton type="radio" value="Less than a month" checked={this.state.homelessness.length === "Less than a month"} onChange={this.handleHomelessness} name="length" />
+                  <RadioButtonLabel />
+                  <div>Less than a month</div>
+                </Item>
+                <Item>
+                  <RadioButton type="radio" value="Between two and six months" checked={this.state.homelessness.length === "Between two and six months"} onChange={this.handleHomelessness} name="length" />
+                  <RadioButtonLabel />
+                  <div>Between two and six months</div>
+                </Item>
+                </Choice>
+                <Choice>
+                <Item>
+                  <RadioButton type="radio" value="Six months to one year" checked={this.state.homelessness.length === "Six months to one year"} onChange={this.handleHomelessness} name="length" />
+                  <RadioButtonLabel />
+                  <div>Six months to one year</div>
+                </Item>
+                <Item>
+                  <RadioButton type="radio" value="More than one year" checked={this.state.homelessness.length === "More than one year"} onChange={this.handleHomelessness} name="length" />
+                  <RadioButtonLabel />
+                  <div>More than one year</div>
+                </Item>
+                </Choice>
+              </Choices>
+
+            </Radio>
+
+            <Text>
+              <Text>
+              <div><span>Approximate start date of homelessness</span></div>
+              <TextInput type="date" onChange={this.handleHomelessness} name="date" />
+              </Text>
+            </Text>
+
+            <Radio>
+            <div><span>Do you have any major or immediate health concerns ?</span></div>
+            <div>*Select all that apply</div>
+            <Choices>
+              <Choice>
+              <Item>
+                <RadioButton type="checkbox" onChange={this.handleHealthConcern} name="none" />
+                <RadioButtonLabel />
+                <div>None</div>
+              </Item>
+              <Item>
+                <RadioButton type="checkbox" onChange={this.handleHealthConcern} name="pregnancy" />
+                <RadioButtonLabel />
+                <div>Pregnancy</div>
+              </Item>
+              </Choice>
+              <Choice>
+              <Item>
+                <RadioButton type="checkbox" onChange={this.handleHealthConcern} name="handicapped" />
+                <RadioButtonLabel />
+                <div>Handicapped/Disabled</div>
+              </Item>
+              </Choice>
+              </Choices>
+              <Text>
+                <div><span>Other;</span> please list specific reasons</div>
+                <TextArea rows="3" name="other" onChange={this.handleHealthConcern} />
+              </Text>
+            </Radio>
+
+            <Text>
+            <div><span>Emergency Contact</span></div>
+            <Choices>
+              <Choice>
+              <Text>
+                <div>First & Last name:</div>
+                <TextInput type="text" name="name" onChange={this.handleEmergencyContact} />
+              </Text>
+              <Text>
+                <div>Relationship:</div>
+                <TextInput type="text" name="relation" onChange={this.handleEmergencyContact} />
+              </Text>
+              </Choice>
+              <Choice>
+              <Text>
+                <div>Phone number:</div>
+                <TextInput type="text" name="phone" onChange={this.handleEmergencyContact} />
+              </Text>
+              <Text>
+                <div>Email:</div>
+                <TextInput type="text" name="email" onChange={this.handleEmergencyContact} />
+              </Text>
+              </Choice>
+            </Choices>
+            </Text>
+
+            <Button><Submit type="submit" value="NEXT"/></Button>
         </form>
+        </Wrapper>
       </div>
     }
     return (
