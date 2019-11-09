@@ -5,8 +5,6 @@ import styled from "styled-components";
 import progress4 from "./progress4.png";
 import FormHeader from "../FormHeader/FormHeader";
 
-// import "./Form4.css";
-
 const Wrapper = styled.div`
   background-color: #E5EDF2;
   padding: 3vh 20vw 6vh;
@@ -292,7 +290,7 @@ class Form4 extends Component {
       <div>
         <FormHeader />
         <Wrapper>
-        <div><img src={progress4} /></div>
+        <div><img src={progress4} alt="progress bar"/></div>
         <Title>Origin</Title>
         <form id="form-4" onSubmit={this.handleSubmit}>
           <Radio>

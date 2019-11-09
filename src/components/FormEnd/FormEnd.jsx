@@ -3,9 +3,6 @@ import styled from "styled-components";
 import parkingIcon from "./parkingIcon.png";
 import progress5 from "./progress5.png";
 
-// import "./FormEnd.css";
-
-
 const Wrapper = styled.div`
 height: calc(100vh - 10vh - 20vh - 8vh);
 background-color: #E3EDF3;
@@ -116,7 +113,7 @@ class FormEnd extends Component {
     return (
       <div>
         <Wrapper>
-        <div><img src={progress5} /></div>
+        <div><img src={progress5} alt="progress bar"/></div>
         <Title>Thank You!</Title>
 
         <Text>
@@ -128,28 +125,11 @@ class FormEnd extends Component {
           <div id="last" style={{fontWeight: "700"}}>Meanwhile, please refer to the maps of <span id="green-text">green street parking zones</span> for alternative overnight parking.</div>
           <div id="icon"><img src={parkingIcon} alt="parking icon" /></div>
         </Text>
-
-
-        <div className="form-end-top">
-          <p>
-
+          <p id="end-italic">
+            *Always read signs and look out for “Real-time” hours
           </p>
-          <p>
-            
-          </p>
-          <div className="middle-text">
-            <p>
-
-            </p>
-            <p id="end-italic">
-              *Always read signs and look out for “Real-time” hours
-            </p>
-          </div>
-          <div className="btns">
-            <Button href="https://www.safeparkingla.org/green-streets" target="_blank" rel="noopener noreferrer">LA GREEN STREETS </Button>
-            <Button href="https://www.safeparkingla.org/" target="_blank" rel="noopener noreferrer">RESOURCES</Button>
-          </div>
-        </div>
+          <Button href="https://www.safeparkingla.org/green-streets" target="_blank" rel="noopener noreferrer">LA GREEN STREETS </Button>
+          <Button href="https://www.safeparkingla.org/" target="_blank" rel="noopener noreferrer">RESOURCES</Button>
         </Wrapper>
       </div>
     );

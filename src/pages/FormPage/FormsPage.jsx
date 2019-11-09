@@ -38,7 +38,7 @@ class FormsPage extends Component {
         <Banner>FIND YOUR SPOT</Banner>
         <Switch>
           <Route exact path="/forms/intro" render={() => <FormIntro />} />
-          <Route exact path="/forms/1" render={() => <Form1 />} />
+          <Route exact path="/forms/1" render={(props) => <Form1 {...props}/>} />
           <Route exact path="/forms/2" render={props => <Form2 {...props} />} />
           <Route exact path="/forms/3" render={props => <Form3 {...props} />} />
           <Route exact path="/forms/4" render={props => <Form4 {...props} />} />

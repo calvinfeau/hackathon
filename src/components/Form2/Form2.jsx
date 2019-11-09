@@ -3,7 +3,6 @@ import { Redirect } from "react-router-dom";
 import styled from "styled-components";
 import {updateUser} from "../../services/api";
 import progress2 from "./progress2.png";
-// import './Form2.css';
 import FormHeader from "../FormHeader/FormHeader";
 
 const Wrapper = styled.div`
@@ -236,7 +235,11 @@ const RadioButton = styled.input`
 `;
 
 const Button = styled(Radio)`
-text-align: center;
+display: flex;
+justify-content: space-around;
+@media screen and (max-width: 1100px) and (orientation: portrait) {
+  flex-direction: column;
+}
 `;
 
 const Submit = styled.input`
@@ -264,6 +267,33 @@ const Submit = styled.input`
     width: 50%;
     font-size: 1.5vmax;
   }
+`;
+
+const Back = styled(Redirect)`
+width: 30%;
+font-size: 1.2vmax;
+padding: 0.6vmax;
+color: #12679b;
+background-color: transparent;
+text-align: center;
+font-weight: 700;
+border-radius: 30px;
+border: 1px #12679b solid;
+letter-spacing: 1.5px;
+
+:hover{
+  color: white; 
+  background-color: #12679b; 
+  text-decoration: none;
+}
+
+@media screen and (max-width: 1100px) and (orientation: portrait) {
+  width: 30%;
+}
+@media screen and (max-width: 500px) and (orientation: portrait) {
+  width: 50%;
+  font-size: 1.5vmax;
+}
 `;
 
 class Form2 extends Component {
@@ -345,7 +375,7 @@ class Form2 extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        console.log('submit button hit')
+        console.log('submit button hit');
         updateUser(this.state);
         this.setState({completed: true})
     }
@@ -361,11 +391,7 @@ class Form2 extends Component {
     render() {
         var language;
         if(this.state.language !== "English" && this.state.language !== "Spanish") {
-            language = (
-            <Item>
-                <TextInput type="text" required onChange={this.handleLanguage} />
-            </Item>
-            )
+            language = (<Item><TextInput type="text" required onChange={this.handleLanguage} /></Item>)
         }
         
         var veteran;
@@ -413,7 +439,7 @@ class Form2 extends Component {
             <div>
                 <FormHeader />
                 <Wrapper>
-                <div><img src={progress2} /></div>
+                <div><img src={progress2} alt="progress bar"/></div>
                 <Title>Basic Demographic</Title>
                 <form onSubmit={this.handleSubmit}>
                     <Grid1>
@@ -631,7 +657,7 @@ class Form2 extends Component {
                     <Item><TextInput type="text" name="city" placeholder="City" onChange={this.handleParking}/></Item>
                     <Item><TextInput type="text" name="zip" placeholder="Zip" onChange={this.handleParking}/></Item>
                     <div><span>Other;</span> explain:</div>
-                    <Item><TextInput type="text" name="other" placeholder="Other" onChange={this.handleParking}/></Item>
+                    <Item><TextInput type="text" name="other" onChange={this.handleParking}/></Item>
                     </Parking>
 
                     <Neighborhood>
@@ -661,15 +687,16 @@ class Form2 extends Component {
                     <Item><TextInput type="text" name="other" onChange={this.handleNeighborhood} /></Item>
                     </Factors>
                     </Grid2>
-                    <Button><Submit type="submit" value="NEXT" /></Button>
+                    <Button>
+                      <Back to={{ pathname: "/forms/1", state:{id: this.state.userId}}}>BACK</Back>
+                      <Submit type="submit" value="NEXT" />
+                    </Button>
                 </form>
                 </Wrapper>
             </div>;
         }
-
          return (<div>{form2}</div>);
     }
 }
-
 
 export default Form2;

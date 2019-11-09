@@ -18,3 +18,8 @@ export function updateUser(item) {
     }).then(res => res.json())
 }
 
+export function getUser(item) {
+    console.log('getUser api reached')
+    console.log('item passed: ', item)
+    return fetch('/api/get').then(res => res.json())
+}

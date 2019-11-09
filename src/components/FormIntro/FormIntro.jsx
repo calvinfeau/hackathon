@@ -106,7 +106,7 @@ class FormIntro extends Component {
           <div id="last" style={{fontWeight: "700"}}>We will need more technical information if and when accepted- but let’s not worry about that right now. :)</div>
           <div id="icon"><img src={formIcon} alt="form icon" /></div>
         </Text>
-        <Button to="/forms/1">PROCEED</Button>
+        <Button to={{ pathname: "/forms/1", state:{id: ""}}}>PROCEED</Button>
     </Wrapper>
   );
   }

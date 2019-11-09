@@ -2,7 +2,18 @@ const User = require('../models/User');
 
 module.exports = {
     createUser,
-    updateUser
+    updateUser,
+    getUser
+}
+
+async function getUser(req, res) {
+    try {
+        await User.findById(req.body, function(err, user) {
+            res.status(200).json(user)
+        });
+    } catch(err) {
+        res.json({err})
+    }
 }
 
 async function createUser(req, res) {

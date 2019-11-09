@@ -315,7 +315,7 @@ class Section3 extends Component {
     return (
       <Wrapper3>
           <Card card={1}>
-            <img src={image2}/>
+            <img src={image2} alt="couple checking hanfd with someone"/>
             <CardText>
               <span>WHO WE SERVE</span>
               In Los Angeles County, there are over 15,700 people living in their vehicles each night. These vehicle dwellers represent over 25% of the population of people experiencing homelessness&nbsp;in&nbsp;LA&nbsp;County.
@@ -324,7 +324,7 @@ class Section3 extends Component {
           </Card>
 
           <Card card={2}>
-            <img src={image3}/>
+            <img src={image3} alt="man holding a dog"/>
             <CardText>
             <span>CAR BUT NO HOME?</span>
             Safe Parking LA is an example of a relatively new effort on the West Coast to assist a specific group of individuals before they fall further to life on the street. Many of them may be working or have some source of income and are homeless for the&nbsp;first&nbsp;time. 
@@ -333,7 +333,7 @@ class Section3 extends Component {
           </Card>
 
           <Card card={3}>
-            <img src={image4}/>
+            <img src={image4} alt="veterans"/>
             <CardText>
             <span>FOR VETERANS</span>
             SafeParkingLA provides a safe and legal overnight parking place for veterans and their families who are currently living in their vehicles. We are in a secure lot with a portable bathroom&nbsp;and&nbsp;wash&nbsp;station.

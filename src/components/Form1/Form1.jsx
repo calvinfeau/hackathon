@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import styled from "styled-components";
-import { createUser } from "../../services/api";
+import { createUser, getUser, updateUser } from "../../services/api";
 import progress1 from "./progress1.png";
-// import "./Form1.css";
 import FormHeader from "../FormHeader/FormHeader";
 
 const Wrapper = styled.div`
@@ -254,8 +253,21 @@ class Form1 extends Component {
       driverId: "",
       driverStatus: "",
       drivable: true,
-      id: ""
+      userId: ""
     };
+  }
+
+  componentDidMount() {
+    var self = this;
+    this.props.location.state.id ? 
+    (getUser(this.props.location.state.id).then(item => {
+      console.log('item returned: ', item)
+      self.setState({item})
+    }))
+    :
+    console.log('no location.state.id');
+    console.log('this.state.completed on compdidmount', this.state.completed);
+    console.log('this.state.userId on', this.state.userId);
   }
 
   handleChange = e => {
@@ -273,12 +285,19 @@ class Form1 extends Component {
   handleSubmit = e => {
     e.preventDefault();
     console.log("submit button hit");
+    if (this.state.userId) {
+    console.log('updateUser hit');
+    updateUser(this.state);
+    this.setState({completed: true});
+    } else {
+    console.log('createUser hit')
     createUser(this.state).then(item => {
       console.log("item._id: ", item._id);
-
-      this.setState({ id: item._id });
-      console.log("id added- to state: ", this.state.id);
-    });
+      this.setState({userId: item._id, completed: true});
+      console.log("id added to state: ", this.state.userId);
+      console.log("completed added to state: ", this.state.completed);
+      });
+    }
   };
 
   strToBool = value => {
@@ -309,16 +328,16 @@ class Form1 extends Component {
     }
 
     var form1;
-    if (this.state.id) {
+    // change from state.id to state.completed
+    if (this.state.completed) {
       form1 = 
-        <Redirect to={{ pathname: "/forms/2", state: { id: this.state.id } }} />
-      ;
+        <Redirect to={{ pathname: "/forms/2", state: { id: this.state.userId } }} />
     } else {
       form1 = 
         <div>
           <FormHeader />
           <Wrapper>
-            <div><img src={progress1} /></div>
+            <div><img src={progress1} alt="progress bar"/></div>
             <Title>Personal Information</Title>
             <Form onSubmit={this.handleSubmit}>
               <Applicant>

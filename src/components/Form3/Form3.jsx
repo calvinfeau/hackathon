@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import {updateUser} from "../../services/api";
 import styled from "styled-components";
 import progress3 from "./progress3.png";
 import FormHeader from "../FormHeader/FormHeader";
-// import './Form3.css';
 
 const Wrapper = styled.div`
   background-color: #E5EDF2;
@@ -181,11 +180,15 @@ const RadioButton = styled.input`
 `;
 
 const Button = styled(Radio)`
-  text-align: center;
+display: flex;
+justify-content: space-around;
+@media screen and (max-width: 1100px) and (orientation: portrait) {
+  flex-direction: column;
+}
 `;
 
 const Submit = styled.input`
-  width: 50%;
+  width: 30%;
   font-size: 1.2vmax;
   padding: 0.6vmax;
   color: white;
@@ -205,6 +208,33 @@ const Submit = styled.input`
   @media screen and (max-width: 500px) and (orientation: portrait) {
     font-size: 1.5vmax;
   }
+`;
+
+const Back = styled(Link)`
+width: 30%;
+font-size: 1.2vmax;
+padding: 0.6vmax;
+color: #12679b;
+background-color: transparent;
+text-align: center;
+font-weight: 700;
+border-radius: 30px;
+border: 1px #12679b solid;
+letter-spacing: 1.5px;
+
+:hover{
+  color: white; 
+  background-color: #12679b; 
+  text-decoration: none;
+}
+
+@media screen and (max-width: 1100px) and (orientation: portrait) {
+  width: 30%;
+}
+@media screen and (max-width: 500px) and (orientation: portrait) {
+  width: 50%;
+  font-size: 1.5vmax;
+}
 `;
 
 class Form3 extends Component {
@@ -331,7 +361,7 @@ class Form3 extends Component {
       <div>
         <FormHeader />
         <Wrapper>
-        <div><img src={progress3} /></div>
+        <div><img src={progress3} alt="progress bar"/></div>  
         <Title>Interest Form</Title>
         <form onSubmit={this.handleSubmit}>
 
@@ -377,7 +407,10 @@ class Form3 extends Component {
 
         {gov}
 
-        <Button><Submit type="submit" value="NEXT" /></Button>
+        <Button>
+          <Back to='/forms/2'>BACK</Back>
+          <Submit type="submit" value="NEXT" />
+        </Button>
       </form>
       </Wrapper>
       </div>
