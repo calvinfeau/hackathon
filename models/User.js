@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-var validate = require('mongoose-validator');
-
 
 const userSchema = new mongoose.Schema({
     // FORM 1
@@ -19,21 +17,21 @@ const userSchema = new mongoose.Schema({
     },
     driverStatus: {
         type: String,
-        required: true,
-        enum: ['Valid', 'Expired', 'Suspended', 'Lost or Stolen']
+        required: true
+        // enum: ['Valid', 'Expired', 'Suspended', 'Lost or Stolen']
     },
     drivable: {
         type: Boolean,
         required: true
     },
     // FORM 2
-    gender: {type: String, enum: ['Male', 'Female', 'Other', 'Prefer not to say']},
-    race: {type: String, enum: ['African American', 'Asian', 'Hispanic/Latino', 'Caucasian', 'Middle Eastern', 'Two or More Races; Other', 'Prefer not to say']},
+    gender: String,
+    race: String,
     language: String,
     veteran: Boolean,
-    healthcare: {type: String, enum: ['Yes', 'No', 'Unsure']},
-    vehicleType: {type: String, enum: ['Compact', 'SUV', 'Truck', 'RV']},
-    people: {type: Number, max: 6},
+    healthcare: String,
+    vehicleType: String,
+    people: {type: Number, max: 10},
     pets: {type: Number, max: 10},
     currParking: {
         street: String,

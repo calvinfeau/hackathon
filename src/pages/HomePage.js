@@ -1,11 +1,11 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import styled, {css} from "styled-components"
-import image1 from "./image1.png";
-import image2 from "./image2.png";
-import image3 from "./image3.png";
-import image4 from "./image4.png";
-import mobile1 from "./mobile-image1.png";
+import image1 from "../assets/image1.png";
+import image2 from "../assets/image2.png";
+import image3 from "../assets/image3.png";
+import image4 from "../assets/image4.png";
+import mobile1 from "../assets/mobile-image1.png";
 
 const Wrapper1 = styled.div`
 height: 90vh;
@@ -115,7 +115,7 @@ class Section1 extends Component {
           <Title1>Nobody Plans To&nbsp;Be&nbsp;Homeless</Title1>
           <ImgMobile />
           <Text1>Safe Parking programs are a safe and legal homelessness intervention to stabilize and connect to resources for people who are living in&nbsp;their&nbsp;vehicles.<br />All program locations include access to  a restroom facility and the security of&nbsp;a&nbsp;guard.</Text1>
-          <Button1 to="/forms/intro">FIND YOUR SPOT</Button1>
+          <Button1 to="/form">FIND YOUR SPOT</Button1>
         </Div1>
       </Wrapper1>
     )

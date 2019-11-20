@@ -1,7 +1,25 @@
-import React, { Component } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import parkingIcon from "./parkingIcon.png";
-import progress5 from "./progress5.png";
+import formIcon from "../assets/formIcon.png"
+import { FormContext } from "../context/FormContext";
+
+const FormIntro = () => {
+  const { onNext } = useContext(FormContext);
+
+  return ( 
+    <Wrapper>
+      <div id="title" style={{fontWeight: "700"}}>Brief Intro</div>
+      <Text>
+        <div id="text">This is the beginning of the process to be part of a Safe Parking LA program. It should take about 10 minutes maximum in order to finish this initial form. Upon submission, we will look into your general situation to figure out how we can best serve your needs.</div>
+        <div id="last" style={{fontWeight: "700"}}>We will need more technical information if and when accepted- but let’s not worry about that right now. :)</div>
+        <div id="icon"><img src={formIcon} alt="form icon" /></div>
+      </Text>
+      <Button onClick={onNext}>PROCEED</Button>
+    </Wrapper>
+   );
+}
+
+export default FormIntro;
 
 const Wrapper = styled.div`
 height: calc(100vh - 10vh - 20vh - 8vh);
@@ -23,17 +41,6 @@ font-size: 1.2vmax;
     font-size: 1.8vmax;
   }
 }
-`;
-
-const Title = styled.div`
-  font-size: 1.5vmax;
-  font-weight: 700;
-  text-align: center;
-  padding: 3vh 0 3vh;
-
-  @media screen and (max-width: 1100px) and (orientation: portrait) {
-    font-size: 2vmax;
-  }
 `;
 
 const Text = styled.div`
@@ -80,7 +87,7 @@ width: 50%;
 }
 `;
 
-const Button = styled.a`
+const Button = styled.div`
 width: 25%;
 font-size: 1.2vmax;
 padding: 0.6vmax;
@@ -106,34 +113,3 @@ letter-spacing: 1.5px;
   font-size: 1.5vmax;
 }
 `;
-
-
-class FormEnd extends Component {
-  render() {
-    return (
-      <div>
-        <Wrapper>
-        <div><img src={progress5} alt="progress bar"/></div>
-        <Title>Thank You!</Title>
-
-        <Text>
-          <div id="text">
-            We are so happy that you’ve successfully taken the first steps in seeking assistance with Safe Parking LA. We are already working on assessing your situation.
-            <br />
-            Please allow for us to get back to you in approximately 24 hours.
-          </div>
-          <div id="last" style={{fontWeight: "700"}}>Meanwhile, please refer to the maps of <span id="green-text">green street parking zones</span> for alternative overnight parking.</div>
-          <div id="icon"><img src={parkingIcon} alt="parking icon" /></div>
-        </Text>
-          <p id="end-italic">
-            *Always read signs and look out for “Real-time” hours
-          </p>
-          <Button href="https://www.safeparkingla.org/green-streets" target="_blank" rel="noopener noreferrer">LA GREEN STREETS </Button>
-          <Button href="https://www.safeparkingla.org/" target="_blank" rel="noopener noreferrer">RESOURCES</Button>
-        </Wrapper>
-      </div>
-    );
-  }
-}
-
-export default FormEnd;
