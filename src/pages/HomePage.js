@@ -116,6 +116,7 @@ class Section1 extends Component {
           <ImgMobile />
           <Text1>Safe Parking programs are a safe and legal homelessness intervention to stabilize and connect to resources for people who are living in&nbsp;their&nbsp;vehicles.<br />All program locations include access to  a restroom facility and the security of&nbsp;a&nbsp;guard.</Text1>
           <Button1 to="/form">FIND YOUR SPOT</Button1>
+          <Button1 to="/profile">RETRIEVE YOUR APPLICATION</Button1>
         </Div1>
       </Wrapper1>
     )
@@ -393,12 +394,6 @@ padding: 0;
 }
 `;
 
-
-const Wrapper = styled.div`
-display: flex;
-flex-direction: column;
-`;
-
 class Section4 extends Component {
   constructor(props) {
     super(props);
@@ -425,6 +420,19 @@ class Section4 extends Component {
   }
 }
 
+const Title5 = styled(Title4)`
+padding: 3vh 0;
+>a {
+  text-decoration: none;
+  color: black;
+}
+`;
+
+const Wrapper = styled.div`
+display: flex;
+flex-direction: column;
+`;
+
 class HomePage extends Component {
     render() {
         return (
@@ -433,6 +441,7 @@ class HomePage extends Component {
             <Section2 />
             <Section3 />
             <Section4 />
+            <Title5><a href="https://www.safeparkingla.org" target="_blank" rel="noopener noreferrer">VISIT SAFEPARKINGLA.COM</a></Title5>
             </Wrapper>
         )
     }

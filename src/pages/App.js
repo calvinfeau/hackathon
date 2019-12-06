@@ -5,6 +5,7 @@ import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import FormsPage from "./FormsPage";
 import HomePage from "./HomePage";
+import ProfilePage from "./ProfilePage";
 import FormContextProvider from '../context/FormContext';
 
 const Wrapper = styled.div`
@@ -20,6 +21,7 @@ class App extends Component {
           <Route exact path="/" render={() => <HomePage />} />
           <FormContextProvider>
             <Route exact path="/form" render={() => <FormsPage />} />
+            <Route exact path="/profile" render={() => <ProfilePage />} />
           </FormContextProvider>
           <Route render={() => <h1>Not Found</h1>} />
         </Switch>

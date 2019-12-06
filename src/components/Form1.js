@@ -1,7 +1,5 @@
 import React, { useContext, useEffect } from "react";
-// import { Redirect } from "react-router-dom";
 import styled from "styled-components";
-// import { createUser, getUser, updateUser } from "../services/api";
 import progress1 from "../assets/progress1.png";
 import FormHeader from "./FormHeader";
 import { FormContext } from '../context/FormContext';
@@ -16,7 +14,7 @@ const DriverLicense = (props) => {
 }
 
 const Form1 = () => {
-  const { form, onChange, onSubmit } = useContext(FormContext);
+  const { form, onChange, onChangeNested, onSubmit } = useContext(FormContext);
 
   var driverLicense = () => {
     return form.driverStatus && form.driverStatus !== "lost or stolen" ?
@@ -38,7 +36,8 @@ const Form1 = () => {
           <Applicant>
             <div><span>Applicant</span></div>
             <div>Driver's first and last name:</div>
-            <TextInput type="text" value={form.applicant} required name="applicant" onChange={(e) => onChange(e.target.name, e.target.value)} />
+            <TextInput type="text" value={form.applicant.firstName} required name="firstName" onChange={(e) => onChangeNested(e.target.name, e.target.value, "applicant")} />
+            <TextInput type="text" value={form.applicant.lastName} required name="lastName" onChange={(e) => onChangeNested(e.target.name, e.target.value, "applicant")} />
           </Applicant>
           <Birth>
             <div><span>Date of Birth</span></div>
@@ -46,11 +45,11 @@ const Form1 = () => {
           </Birth>
           <Phone>
             <div><span>Phone Number</span>, if applicable</div>
-            <TextInput type="text" value={form.phone} required name="phone" onChange={(e) => onChange(e.target.name, e.target.value)} />
+            <TextInput type="text" value={form.phone} name="phone" onChange={(e) => onChange(e.target.name, e.target.value)} />
           </Phone>
           <Email>
             <div><span>Email Address</span>, if applicable</div>
-            <TextInput type="text" value={form.email} required name="email" onChange={(e) => onChange(e.target.name, e.target.value)} />
+            <TextInput type="text" value={form.email} name="email" onChange={(e) => onChange(e.target.name, e.target.value)} />
           </Email>
           <Status>
             <div><span>Drivers License Status</span></div>
@@ -342,176 +341,3 @@ const Submit = styled.input`
     font-size: 1.5vmax;
   }
 `;
-
-// class Form1 extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       applicant: "",
-//       birth: "",
-//       phone: "",
-//       email: "",
-//       driverId: "",
-//       driverStatus: "",
-//       drivable: true,
-//       completed: false
-//     };
-//   }
-
-//   // componentDidMount() {
-//   //   var self = this;
-//   //   this.props.location.state.id ? 
-//   //   getUser(this.props.location.state.id).then(item => {
-//   //     console.log('item returned: ', item)
-//   //     self.setState({item})
-//   //   })
-//   //   :
-//   //   console.log('no location.state.id');
-//   //   console.log('this.state.completed on compdidmount', this.state.completed);
-//   //   console.log('this.state.userId on compdidmount', this.state.userId);
-//   // }
-
-//   handleChange = e => {
-//     this.setState({ [e.target.name]: e.target.value });
-//   };
-
-//   handleDriverStatus = e => {
-//     this.setState({ driverStatus: e.target.value });
-//   };
-
-//   handleDrivable = e => {
-//     this.setState({ drivable: this.strToBool(e.target.value) });
-//   };
-
-//   // handleCreateUser(newId) {
-//   //   console.log('handleCreateuser hit');
-//   //   this.setState((state) => ({completed: true, userId: newId}));
-//   //   console.log('this.setState hit');
-//   //   console.log("this.state.userId: ", this.state.userId);
-//   //   console.log("this.state.completed: ", this.state.completed);
-//   // }
-
-//   // handleUpdateUser() {
-//   //   this.setState({completed: true});
-//   //   console.log("this.state.userId in handleUpdateUser : ", this.state.userId);
-//   //   console.log("this.state.completed in handleUpdateUser: ", this.state.completed);
-//   // }
-
-//   strToBool = value => {
-//     if (value && typeof value === "string") {
-//       if (value.toLowerCase() === "true") return true;
-//       if (value.toLowerCase() === "false") return false;
-//     }
-//     return value;
-//   };
-
-//   handleSubmit = e => {
-//     e.preventDefault();
-//     console.log("submit button hit");
-//     createUser(this.state).then(item => {this.setState({userId: item._id, completed: true})});
-//   };
-  
-//   render() {
-//     console.log('render hit');
-//     console.log('current state: ', this.state)
-//     var driverIdInput;
-//     if (this.state.driverStatus && this.state.driverStatus !== "Lost or Stolen") {
-//       driverIdInput = 
-//         <License>
-//           <div><span>Driver's License #</span></div>
-//           <TextInput type="text" required name="driverId" onChange={this.handleChange} />
-//         </License>
-//       ;
-//     }
-
-//     // var completed = this.state.completed;
-//     // console.log('value of completed in render(): ', completed);
-//     // // change from state.id to state.completed
-//     //   console.log('if(completed) passed! value of userId: ', this.state.userId);
-//     //   return(<Redirect to={{ pathname: "/forms/2", state: { id: this.state.userId } }} />)
-//     //   console.log('if(completed) form1 assigment is passed!');
-//     // } else {
-//       //   console.log('else passed, current state: ', this.state);
-//     var form1;
-//     if (this.state.completed) { 
-//       // form1 = <div>COMPLETED REACH</div>
-//       form1 = <Redirect to= {{ pathname: "/forms/2", state: { id: this.state.userId }}} />
-//     }
-//     else {
-//       form1 = 
-//         <div>
-//           <FormHeader />
-//           <Wrapper>
-//             <div><img src={progress1} alt="progress bar"/></div>
-//             <Title>Personal Information</Title>
-//             <Form onSubmit={this.handleSubmit}>
-//               <Applicant>
-//                 <div><span>Applicant</span></div>
-//                 <div>Driver's first and last name:</div>
-//                 <TextInput type="text" required name="applicant" onChange={this.handleChange} />
-//               </Applicant>
-//               <Birth>
-//                 <div><span>Date of Birth</span></div>
-//                 <TextInput type="date" required name="birth" onChange={this.handleChange} />
-//               </Birth>
-//               <Phone>
-//                 <div><span>Phone Number</span>, if applicable</div>
-//                 <TextInput type="text" required name="phone" onChange={this.handleChange} />
-//               </Phone>
-//               <Email>
-//                 <div><span>Email Address</span>, if applicable</div>
-//                 <TextInput type="text" required name="email" onChange={this.handleChange} />
-//               </Email>
-//               <Status>
-//                 <div><span>Drivers License Status</span></div>
-//                 <Choices>
-//                 <Choice>
-//                   <Item>
-//                     <RadioButton type="radio" value="Valid" checked={this.state.driverStatus === "Valid"} onChange={this.handleDriverStatus} />
-//                     <RadioButtonLabel />
-//                     <div>Valid</div>
-//                   </Item>
-//                   <Item>
-//                     <RadioButton type="radio" value="Expired" checked={this.state.driverStatus === "Expired"} onChange={this.handleDriverStatus} />
-//                     <RadioButtonLabel />
-//                     <div>Expired</div>
-//                   </Item>
-//                 </Choice>
-//                 <Choice>
-//                   <Item>
-//                     <RadioButton type="radio" value="Suspended" checked={this.state.driverStatus === "Suspended"} onChange={this.handleDriverStatus} />
-//                     <RadioButtonLabel />
-//                     <div>Suspended</div>
-//                   </Item>
-//                   <Item>
-//                     <RadioButton type="radio" value="Lost or Stolen" checked={this.state.driverStatus === "Lost or Stolen"} onChange={this.handleDriverStatus} />
-//                     <RadioButtonLabel />
-//                     <div>Lost or Stolen</div>
-//                   </Item>
-//                 </Choice>
-//                 </Choices>
-//               </Status>
-//               {driverIdInput}
-//               <Driveable>
-//               <div><span>Is your vehicle driveable ?</span></div>
-//               <Item>
-//                 <RadioButton type="radio" value="true" checked={this.state.drivable === true} onChange={this.handleDrivable} />
-//                 <RadioButtonLabel />
-//                 <div>Yes</div>
-//               </Item>
-//               <Item>
-//                 <RadioButton type="radio" value="false" checked={this.state.drivable === false} onChange={this.handleDrivable} />
-//                 <RadioButtonLabel />
-//                 <div>No</div>
-//               </Item>
-//               </Driveable>
-//               <Button><Submit type="submit" value="NEXT" /></Button>
-//             </Form>
-//           </Wrapper>
-//         </div>
-//     }
-//     return (<div>{form1}</div>)
-//   }
-// }
-
-// export default Form1;

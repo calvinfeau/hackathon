@@ -1,10 +1,9 @@
 import React, {createContext, useState} from 'react';
-import { updateUser, createUser } from '../services/api';
+import { updateUser, createUser, getUser } from '../services/api';
 
 export const FormContext = createContext();
 
 const FormContextProvider = (props) => {
-
     const strToBool = value => {
         if (value && typeof value === "string") {
           if (value.toLowerCase() === "true") return true;
@@ -14,7 +13,10 @@ const FormContextProvider = (props) => {
       };
 
     const [ form, setForm ] = useState({
-        applicant: "",
+        applicant: {
+            firstName: "",
+            lastName: ""
+        },
         birth: "",
         phone: "",
         email: "",
@@ -87,21 +89,20 @@ const FormContextProvider = (props) => {
 
     const [ userId, setUserId ] = useState('');
 
-    const [ formProgress, setFormProgress ] = useState(1);
+    const [ formProgress, setFormProgress ] = useState(0);
+
+    const [ isLoggedIn, setIsLoggedIn ] = useState(null);
     
     const onChange = (currProperty, value) => {
-        console.log('onChange hit');
         setForm({ ...form, [currProperty]: strToBool(value)});
     }
 
     const onChangeNested = (currProperty, value, parrentProperty) => {
-        console.log('onChangeNested hit');
         setForm({ ...form, [parrentProperty]: { ...form[parrentProperty], [currProperty]: strToBool(value) } });     
     }
 
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log('current form on submit', form);
         setFormProgress(formProgress + 1);
 
         return userId ? 
@@ -110,20 +111,49 @@ const FormContextProvider = (props) => {
 
     const onNext = () => {
         setFormProgress(formProgress + 1);
-        console.log('current form on next button', form);
     }
 
     const onPrevious = () => {
         setFormProgress(formProgress - 1);
-        console.log('current form on back button', form);
+    }
+
+    const resetForm = () => {
+        setFormProgress(1);
+    }
+
+    const checkUser = (e) => {
+        e.preventDefault();
+        console.log('check user reached');
+        getUser(form)
+        .then(profile => {
+            let user = profile[0];
+            for (let property in user) {
+                if (property in form) {
+                    setForm(prevState => ({ ...prevState, [property]: strToBool(user[property]) }))
+                }
+            }
+            return user;
+        })
+        .then(user =>  
+            user ? 
+                (
+                    setUserId(user._id), 
+                    console.log('user._id in checkUser context function: ', user._id),
+                    setIsLoggedIn(true)
+                ) : 
+                (
+                    setUserId('No User Found'), 
+                    console.log('user in checkUser context function: ', userId),
+                    setIsLoggedIn(false)
+                )
+        );
     }
 
     return (
-        <FormContext.Provider value={{ form, onChange, onChangeNested, onSubmit, onNext, onPrevious, formProgress }}>
+        <FormContext.Provider value={{ form, onChange, onChangeNested, onSubmit, onNext, onPrevious, formProgress, resetForm, isLoggedIn,  checkUser, userId }}>
             {props.children}
         </FormContext.Provider>
     )
-
 }
 
 export default FormContextProvider;

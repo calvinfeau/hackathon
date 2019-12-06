@@ -1,10 +1,12 @@
-import React, { Component } from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { FormContext } from '../context/FormContext';
 import parkingIcon from "../assets/parkingIcon.png";
 import progress5 from "../assets/progress5.png";
 
-class FormEnd extends Component {
-  render() {
+const FormEnd = () => {
+  const { onPrevious } = useContext(FormContext);
     return (
       <div>
         <Wrapper>
@@ -25,10 +27,11 @@ class FormEnd extends Component {
           </p>
           <Button href="https://www.safeparkingla.org/green-streets" target="_blank" rel="noopener noreferrer">LA GREEN STREETS </Button>
           <Button href="https://www.safeparkingla.org/" target="_blank" rel="noopener noreferrer">RESOURCES</Button>
+          <Back onClick={onPrevious}>BACK</Back>
+          <Link to="/">MAIN PAGE</Link> 
         </Wrapper>
       </div>
     );
-  }
 }
 
 export default FormEnd;
@@ -135,4 +138,31 @@ letter-spacing: 1.5px;
   width: 50%;
   font-size: 1.5vmax;
 }
+`;
+
+const Back = styled.div`
+  width: 30%;
+  font-size: 1.2vmax;
+  padding: 0.6vmax;
+  color: #12679b;
+  background-color: transparent;
+  text-align: center;
+  font-weight: 700;
+  border-radius: 30px;
+  border: 1px #12679b solid;
+  letter-spacing: 1.5px;
+
+  :hover{
+    color: white; 
+    background-color: #12679b; 
+    text-decoration: none;
+  }
+
+  @media screen and (max-width: 1100px) and (orientation: portrait) {
+    width: 30%;
+  }
+  @media screen and (max-width: 500px) and (orientation: portrait) {
+    width: 50%;
+    font-size: 1.5vmax;
+  }
 `;
