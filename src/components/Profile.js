@@ -4,83 +4,118 @@ import styled from "styled-components";
 import { FormContext } from '../context/FormContext';
 import uuidv1 from "uuid/v1";
 
-const Item = props => {
-  let currProperty, currGrid;
-  const currItem = () => 
-    props.property === 'firstName' ? (currProperty = 'First name: ', currGrid = 'part1')
-    : props.property === 'lastName' ? (currProperty = 'Last name: ', currGrid = 'part1')
-    : props.property === 'birth' ? (currProperty = 'Birth date: ', currGrid = 'part1')
-    : props.property === 'phone' ? (currProperty = 'Phone numer: ', currGrid = 'part1')
-    : props.property === 'email' ? (currProperty = 'Email: ', currGrid = 'part1')
-    : props.property === 'driverStatus' ? (currProperty = 'Driver status: ', currGrid = 'part1')
-    : props.property === 'driverId' ? (currProperty = 'Driver license number: ', currGrid = 'part1')
-    : props.property === 'drivable' ? (currProperty = 'Is your vehicle drivable ? ', currGrid = 'part1')
-    : props.property === 'gender' ? (currProperty = 'Gender: ', currGrid = 'part1')
-    : props.property === 'race' ? (currProperty = 'Ethnicity: ', currGrid = 'part1')
-    : props.property === 'language' ? (currProperty = 'Language: ', currGrid = 'part1')
-    : props.property === 'veteran' ? (currProperty = 'Are you a veteran ? ', currGrid = 'part1')
-
-    : props.property === 'vehicleType' ? (currProperty = 'Vehicle type: ', currGrid = 'part2')
-    : props.property === 'people' ? (currProperty = 'People in the vehicle (including you): ', currGrid = 'part2')
-    : '';
-
-    useEffect(currItem(), [])
-  
-  return (
-      <div>
-        <StyledTitle>{currProperty}</StyledTitle> {props.value === null || props.value === '' ? 'N/A' : `${props.value}`}
-      </div>
-    )
-  }
-
-// const Title = props => {
-//     return (
-//         <StyledTitle>
-//             {
-//             props.title === 'currParking' ? 'Current parking situation'
-//             : props.title === 'neighborhood' ? 'Desired neighborhood'
-//             : props.title === 'govIncome' ? 'Current government assistance'
-//             : props.title === 'situation' ? 'Reasons for current situation'
-//             : props.title === 'homelessness' ? 'Time of homelessness'
-//             : props.title === 'healthConcern' ? 'Immediate health concern'
-//             : props.title === 'emergencyContact' ? 'Emergency contact'
-//             : ''
-//             }
-//         </StyledTitle>
-//     )
-// }
-
-
 const Profile = () => {
-    const { form, isLoggedIn, resetForm } = useContext(FormContext);
+  const { form, isLoggedIn, resetForm, grid1, grid2, grid3, grid4, grid5 } = useContext(FormContext);
 
-    const currApplication = (object) => {
-      return Object.keys(object)
-        .map(key => 
-          object[key] ?
-          typeof object[key] == 'object' ?
-          <div key={uuidv1()}>
-              {/* <Title key={uuidv1()} title={key} /> */}
-              {currApplication(object[key])}
-          </div>
-          : <Item key={uuidv1()} property={key} value={object[key]} />
-          : <Item key={uuidv1()} property={key} value={object[key]} />
-        )
-    }
+  // OVER LOOPING - NOT EFFICIENT 
 
-    return (
+    // const count = ['1', '2', '3', '4', '5'];
+
+    // const currApplication = (object) => 
+    //  typeof object === 'object' && object !== null ? 
+    //     Object.keys(object).map(key => {
+    //       console.log('current value of key in the loop ', key)
+
+    //       return typeof object[key] == 'object' ?
+    //         currApplication(object[key])
+    //         : 
+    //         currItem.map(item => {
+    //           console.log('current item.data in the loop ', item.data)
+    //           console.log('current value of key in the loop ', item.data)
+
+    //           return item.data === key ?
+    //           <div key={uuidv1()}>
+    //             <Title2>{item.display}</Title2> {object[key]=== null || object[key] === '' ? 'N/A' : `${object[key]}`}
+    //           </div>
+    //           : ''
+    //         })
+    //         })
+    //     : ''
+
+    // return (
+    //     <Wrapper>
+    //         {
+    //         isLoggedIn ? 
+    //         <StyledItems>
+    //           {count.map(num => <GridItems key={uuidv1()} grid={num}>{currApplication(form, num)}</GridItems>)}
+    //           <GridItems key={uuidv1()} grid={'6'}><Link onClick={resetForm} to='/form'>Edit Application</Link></GridItems>
+    //         </StyledItems>
+    //         :
+    //         isLoggedIn === false ? <h1>user doesn't exist</h1> : ''
+    //         }
+    //     </Wrapper>
+    // )
+
+      const displayData = (application, currGrid) => {
+        var appProperties = Object.keys(application);
+        var appDeepProperties;
+        var appSubObject;
+        var property;
+        console.log('value of appProperties: ', appProperties);
+        console.log('value of currGrid: ', currGrid);
+
+
+        return typeof application === 'object' && application !== null ? 
+          currGrid.map(item => {
+            console.log('current item in map: ', item)
+            return item.parentObject ? 
+              (
+                // current sub object from application
+                appSubObject = appProperties.find(appProperty => appProperty === item.parentObject),
+                appDeepProperties = Object.keys(application[appSubObject]),
+                property = appDeepProperties.find(appProperty => appProperty === item.data),
+                console.log('appSubObject value: ', appSubObject),
+                console.log('appDeepProperties value: ', appDeepProperties),
+                console.log('property value: ', property),
+                console.log('application[appSubObject[property]]: ', application[appSubObject][property]),
+                <div key={uuidv1()}>
+                  <Title2>{item.display}</Title2>&nbsp;{application[appSubObject][property] === null || application[appSubObject][property] === '' ? 'N/A' : application[appSubObject][property] === 0 ? '0' : `${application[appSubObject][property]}`}
+                </div>
+              )
+              : 
+              (
+                property = appProperties.find(appProperty => appProperty === item.data), 
+                <div key={uuidv1()}>
+                  <Title2>{item.display}</Title2>&nbsp;{application[property] === null || application[property] === '' ? 'N/A' : application[property] === 0 ? '0' : `${application[property]}`}
+                </div>
+              )
+          })
+        : '';
+      }
+
+        return (
         <Wrapper>
             {
             isLoggedIn ? 
-                <Items>
-                    {currApplication(form)}
-                    <Link onClick={resetForm} to='/form'>Edit Application</Link>
-                </Items>
-                :
-                isLoggedIn === false ?
-                    <h1>user doesn't exist</h1>
-                    : 
-                    <></>
+            <StyledItems>
+              <Grid1>
+                <Title>Your personal information</Title>
+                {displayData(form, grid1)}
+              </Grid1>
+              <Grid2>
+                <Title>Parking situation</Title>
+                {displayData(form, grid2)}
+              </Grid2>
+              <Grid3>
+                <Title>Income information</Title>
+                {displayData(form, grid3)}
+              </Grid3>
+              <Grid4>
+                <Title>Situation details</Title>
+                {displayData(form, grid4)}
+              </Grid4>
+              <Grid5>
+                <Title>Emergency contact</Title>
+                {displayData(form, grid5)}
+              </Grid5>
+              <Grid6>
+                <Button>
+                  <Link onClick={resetForm} to='/form'><Edit>EDIT APPLICATION</Edit></Link>
+                </Button>
+              </Grid6>
+            </StyledItems>
+            :
+            isLoggedIn === false ? <h1>user doesn't exist</h1> : ''
             }
         </Wrapper>
     )
@@ -88,20 +123,49 @@ const Profile = () => {
 
 export default Profile;
 
-const StyledTitle = styled.div`
+const Title = styled.div`
+font-size: 1.5vmax;
 font-weight: 700;
 `;
 
-const Items = styled.div`
+const Title2 = styled.span`
+font-weight: 700;
+`;
+
+const Grid1 = styled.div`
+grid-area: grid1;
+`;
+const Grid2 = styled.div`
+grid-area: grid2;
+`;
+const Grid3 = styled.div`
+grid-area: grid3;
+`;
+const Grid4 = styled.div`
+grid-area: grid4;
+`;
+const Grid5 = styled.div`
+grid-area: grid5;
+`;
+const Grid6 = styled.div`
+grid-area: grid6;
+align-self: center;
+width: 80%;
+
+`;
+
+const StyledItems = styled.div`
 display: grid;
-grid-template-columns: 20vw 20vw;
+grid-template-columns: 30vw 30vw;
 grid-template-rows: auto;
-grid-template-areas:
-"part1 part2"
-"part3 part4"
-"part5 part6"
-;
+grid-template-areas: 
+"grid1 grid2"
+"grid4 grid3"
+"grid6 grid5";
 justify-content: space-between;
+grid-row-gap: 10px;
+justify-items: start;
+align-items: start;
 `;
 
 const Wrapper = styled.div`
@@ -109,12 +173,7 @@ const Wrapper = styled.div`
   padding: 0 25vw;
   font-size: 1.2vmax;
   >div {
-    text-align: center;
-    padding: 3vh 0 0;
-    >img {
-      width: auto;
-      height: 50px;
-    }
+    padding: 3vh 0;
   }
 
   @media screen and (max-width: 1100px) and (orientation: portrait) {
@@ -128,5 +187,61 @@ const Wrapper = styled.div`
         height: 25px;
       }
     }
+  }
+`;
+
+const Radio = styled.div`
+  width: 100%;
+  padding: 1vh 0;
+  >div {
+    padding-bottom: 0.5vh;
+    >span {
+    font-weight: 700;
+    }
+  }
+  @media screen and (max-width: 1100px) and (orientation: portrait) {
+    width: 50%;
+    >div {
+      padding-bottom: 1vh;
+    }  
+  }
+  @media screen and (max-width: 500px) and (orientation: portrait) {
+    width: 100%;
+  }
+`;
+
+const Button = styled(Radio)`
+>a {
+  :hover{
+    text-decoration: none;
+  }
+}
+  @media screen and (max-width: 1100px) and (orientation: portrait) {
+    width: 100%;
+    text-align: center;
+  }
+`;
+
+const Edit = styled.div`
+  font-size: 1.2vmax;
+  padding: 0.6vmax ;
+  color: white;
+  background-color: #12679b;
+  text-align: center;
+  font-weight: 700;
+  border-radius: 30px;
+  border: 1px #12679b solid;
+  letter-spacing: 1.5px;
+
+  :hover{
+    color: #12679b; 
+    background-color: transparent; 
+  }
+  @media screen and (max-width: 1100px) and (orientation: portrait) {
+    width: 30%;
+  }
+  @media screen and (max-width: 500px) and (orientation: portrait) {
+    width: 50%;
+    font-size: 1.5vmax;
   }
 `;
