@@ -1,11 +1,11 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import styled, {css} from "styled-components"
-import image1 from "./image1.png";
-import image2 from "./image2.png";
-import image3 from "./image3.png";
-import image4 from "./image4.png";
-import mobile1 from "./mobile-image1.png";
+import image1 from "../assets/image1.png";
+import image2 from "../assets/image2.png";
+import image3 from "../assets/image3.png";
+import image4 from "../assets/image4.png";
+import mobile1 from "../assets/mobile-image1.png";
 
 const Wrapper1 = styled.div`
 height: 90vh;
@@ -115,7 +115,8 @@ class Section1 extends Component {
           <Title1>Nobody Plans To&nbsp;Be&nbsp;Homeless</Title1>
           <ImgMobile />
           <Text1>Safe Parking programs are a safe and legal homelessness intervention to stabilize and connect to resources for people who are living in&nbsp;their&nbsp;vehicles.<br />All program locations include access to  a restroom facility and the security of&nbsp;a&nbsp;guard.</Text1>
-          <Button1 to="/forms/intro">FIND YOUR SPOT</Button1>
+          <Button1 to="/form">FIND YOUR SPOT</Button1>
+          <Button1 to="/profile">RETRIEVE YOUR APPLICATION</Button1>
         </Div1>
       </Wrapper1>
     )
@@ -315,7 +316,7 @@ class Section3 extends Component {
     return (
       <Wrapper3>
           <Card card={1}>
-            <img src={image2}/>
+            <img src={image2} alt="couple checking hanfd with someone"/>
             <CardText>
               <span>WHO WE SERVE</span>
               In Los Angeles County, there are over 15,700 people living in their vehicles each night. These vehicle dwellers represent over 25% of the population of people experiencing homelessness&nbsp;in&nbsp;LA&nbsp;County.
@@ -324,7 +325,7 @@ class Section3 extends Component {
           </Card>
 
           <Card card={2}>
-            <img src={image3}/>
+            <img src={image3} alt="man holding a dog"/>
             <CardText>
             <span>CAR BUT NO HOME?</span>
             Safe Parking LA is an example of a relatively new effort on the West Coast to assist a specific group of individuals before they fall further to life on the street. Many of them may be working or have some source of income and are homeless for the&nbsp;first&nbsp;time. 
@@ -333,7 +334,7 @@ class Section3 extends Component {
           </Card>
 
           <Card card={3}>
-            <img src={image4}/>
+            <img src={image4} alt="veterans"/>
             <CardText>
             <span>FOR VETERANS</span>
             SafeParkingLA provides a safe and legal overnight parking place for veterans and their families who are currently living in their vehicles. We are in a secure lot with a portable bathroom&nbsp;and&nbsp;wash&nbsp;station.
@@ -393,12 +394,6 @@ padding: 0;
 }
 `;
 
-
-const Wrapper = styled.div`
-display: flex;
-flex-direction: column;
-`;
-
 class Section4 extends Component {
   constructor(props) {
     super(props);
@@ -425,6 +420,19 @@ class Section4 extends Component {
   }
 }
 
+const Title5 = styled(Title4)`
+padding: 3vh 0;
+>a {
+  text-decoration: none;
+  color: black;
+}
+`;
+
+const Wrapper = styled.div`
+display: flex;
+flex-direction: column;
+`;
+
 class HomePage extends Component {
     render() {
         return (
@@ -433,6 +441,7 @@ class HomePage extends Component {
             <Section2 />
             <Section3 />
             <Section4 />
+            <Title5><a href="https://www.safeparkingla.org" target="_blank" rel="noopener noreferrer">VISIT SAFEPARKINGLA.COM</a></Title5>
             </Wrapper>
         )
     }

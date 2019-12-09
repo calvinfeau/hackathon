@@ -1,7 +1,25 @@
-import React, {Component} from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import formIcon from "./formIcon.png"
+import formIcon from "../assets/formIcon.png"
+import { FormContext } from "../context/FormContext";
+
+const FormIntro = () => {
+  const { onNext } = useContext(FormContext);
+
+  return ( 
+    <Wrapper>
+      <div id="title" style={{fontWeight: "700"}}>Brief Intro</div>
+      <Text>
+        <div id="text">This is the beginning of the process to be part of a Safe Parking LA program. It should take about 10 minutes maximum in order to finish this initial form. Upon submission, we will look into your general situation to figure out how we can best serve your needs.</div>
+        <div id="last" style={{fontWeight: "700"}}>We will need more technical information if and when accepted- but let’s not worry about that right now. :)</div>
+        <div id="icon"><img src={formIcon} alt="form icon" /></div>
+      </Text>
+      <Button onClick={onNext}>PROCEED</Button>
+    </Wrapper>
+   );
+}
+
+export default FormIntro;
 
 const Wrapper = styled.div`
 height: calc(100vh - 10vh - 20vh - 8vh);
@@ -69,7 +87,7 @@ width: 50%;
 }
 `;
 
-const Button = styled(Link)`
+const Button = styled.div`
 width: 25%;
 font-size: 1.2vmax;
 padding: 0.6vmax;
@@ -95,21 +113,3 @@ letter-spacing: 1.5px;
   font-size: 1.5vmax;
 }
 `;
-
-class FormIntro extends Component {
-  render() {
-    return (
-      <Wrapper>
-        <div id="title" style={{fontWeight: "700"}}>Brief Intro</div>
-        <Text>
-          <div id="text">This is the beginning of the process to be part of a Safe Parking LA program. It should take about 10 minutes maximum in order to finish this initial form. Upon submission, we will look into your general situation to figure out how we can best serve your needs.</div>
-          <div id="last" style={{fontWeight: "700"}}>We will need more technical information if and when accepted- but let’s not worry about that right now. :)</div>
-          <div id="icon"><img src={formIcon} alt="form icon" /></div>
-        </Text>
-        <Button to="/forms/1">PROCEED</Button>
-    </Wrapper>
-  );
-  }
-};
-
-export default FormIntro;
