@@ -1,0 +1,40 @@
+@mixin responsive-font($size, $color, $weight) {
+    color: $color;
+    font-size: $size;
+    font-weight: $weight;
+
+    @include laptop {
+        font-size: ($size - 2px);
+    }
+    @include tablet {
+        font-size: ($size - 4px);
+    }
+    @include phone-landscape {
+        font-size: ($size - 6px);
+    }
+    @include phone-portrait {
+        font-size: ($size - 8px);
+    }
+}
+
+@mixin button-template($color, $template) {
+    border-radius: 30px;
+    border: 1px $color solid;
+
+    @if $template == 1 {
+        color: transparent;
+        background-color: $color;
+        &:hover {
+            color: $color;
+            background-color: transparent;
+        };
+    }
+    @else {
+        color: $color;
+        background-color: transparent;
+        &:hover {
+            color: transparent;
+            background-color: $color;
+        };
+    };
+}

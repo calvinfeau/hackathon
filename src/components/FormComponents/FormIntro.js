@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import formIcon from "../assets/formIcon.png"
-import { FormContext } from "../context/FormContext";
+import formIcon from "../../assets/formIcon.png"
+import { FormContext } from "../../context/FormContext";
 
 const FormIntro = () => {
   const { onNext } = useContext(FormContext);

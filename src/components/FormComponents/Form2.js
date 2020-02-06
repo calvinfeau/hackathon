@@ -3,8 +3,8 @@ import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 // import {updateUser} from "../services/api";
 import FormHeader from "./FormHeader";
-import progress2 from "../assets/progress2.png";
-import { FormContext } from '../context/FormContext';
+import progress2 from "../../assets/progress2.png";
+import { FormContext } from '../../context/FormContext';
 
 const LanguageInput = (props) => {
   return (

@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
-import progress1 from "../assets/progress1.png";
+import progress1 from "../../assets/progress1.png";
 import FormHeader from "./FormHeader";
-import { FormContext } from '../context/FormContext';
+import { FormContext } from '../../context/FormContext';
 
 const DriverLicense = (props) => {
   return (

@@ -1,0 +1,13 @@
+@import './variables.scss';
+@import './media-queries.scss';
+@import './layout-templates.scss';
+@import './typo-templates.scss';
+
+// HomePage
+#visit-sfpkla-link {
+    @include flex-template(row, center, flex-end);
+    @include responsive-font($mediumText, black, bold);
+    padding: 3vh 0;
+};
+
+// Section1

@@ -1,0 +1,31 @@
+@mixin phone-portrait {
+    @media only screen 
+    and (max-width: 415px)
+    and (orientation: portrait) {
+        @content;
+    }
+}
+
+@mixin phone-landscape {
+    @media only screen 
+    and (max-height: 415px)
+    and (orientation: landscape) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media only screen 
+    and (min-width: 416px)
+    and (max-width: 1025px) {
+        @content;
+    }
+}
+
+@mixin laptop {
+    @media only screen 
+    and (min-width: 1026px)
+    and (max-width: 1824px) {
+        @content;
+    }
+}
