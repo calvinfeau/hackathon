@@ -11,3 +11,40 @@
 };
 
 // Section1
+#section1 {
+    @include size(90vh, 100%);
+    max-width: 1200px;
+    background-image: url('../assets/mobile-image1.png');
+    background-size: cover;
+    
+    div {
+        @include flex-template(column, center, center);
+        @include size(100%, 50%);
+        background-color: transparentize($color: white, $amount: 0.2);
+
+        div {
+            @include flex-template(column, center, center);
+            @include size(100%, 75%);
+            background-color: initial;
+
+            span:first-child, a:first-child {
+                margin-bottom: 20px;
+            };
+        };
+
+        #title {
+            @include responsive-font($largeText, $darkBlue, bold);
+            letter-spacing: 1.5px;
+        };
+        #intro {
+            @include responsive-font($mediumText, black, normal);
+            line-height: 1.7;
+        };
+        #buttons a {
+            @include size(none, 75%);
+            @include button-template($darkBlue, $smallText, 1);
+            letter-spacing: 1.5px;
+        }
+    };
+    
+};

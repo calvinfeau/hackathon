@@ -4,25 +4,29 @@
     font-weight: $weight;
 
     @include laptop {
-        font-size: ($size - 2px);
-    }
+        // font-size: ($size - 2px);
+    };
     @include tablet {
-        font-size: ($size - 4px);
-    }
+        // font-size: ($size - 4px);
+    };
     @include phone-landscape {
-        font-size: ($size - 6px);
-    }
+        // font-size: ($size - 6px);
+    };
     @include phone-portrait {
-        font-size: ($size - 8px);
-    }
-}
+        // font-size: ($size - 8px);
+    };
+};
 
-@mixin button-template($color, $template) {
+@mixin button-template($color, $size, $template) {
     border-radius: 30px;
     border: 1px $color solid;
+    font-size: $size;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
 
     @if $template == 1 {
-        color: transparent;
+        color: white;
         background-color: $color;
         &:hover {
             color: $color;
@@ -37,4 +41,4 @@
             background-color: $color;
         };
     };
-}
+};

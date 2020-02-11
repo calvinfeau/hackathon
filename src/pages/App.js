@@ -8,7 +8,6 @@ import ProfilePage from "./ProfilePage";
 import FormContextProvider from '../context/FormContext';
 import Disclaimer from "../components/Disclaimer";
 
-
 class App extends Component {
   render() {
     return (

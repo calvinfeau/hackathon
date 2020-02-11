@@ -5,8 +5,10 @@
     align-items: $align;
 };
 
-
-
+@mixin size($height, $width) {
+    height: $height;
+    width: $width;
+};
 
 
 
