@@ -4,7 +4,7 @@
     and (orientation: portrait) {
         @content;
     }
-}
+};
 
 @mixin phone-landscape {
     @media only screen 
@@ -12,7 +12,7 @@
     and (orientation: landscape) {
         @content;
     }
-}
+};
 
 @mixin tablet {
     @media only screen 
@@ -20,12 +20,19 @@
     and (max-width: 1025px) {
         @content;
     }
-}
+};
 
 @mixin laptop {
     @media only screen 
     and (min-width: 1026px)
     and (max-width: 1824px) {
+        @content;
+    }
+};
+
+@mixin desktop {
+    @media only screen
+    and (min-width: 1825px) {
         @content;
     }
 }

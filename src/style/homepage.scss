@@ -3,28 +3,26 @@
 @import './layout-templates.scss';
 @import './typo-templates.scss';
 
-// HomePage
 #visit-sfpkla-link {
     @include flex-template(row, center, flex-end);
     @include responsive-font($mediumText, black, bold);
     padding: 3vh 0;
 };
 
-// Section1
 #section1 {
-    @include size(90vh, 100%);
+    @include element-size(90vh, 100%);
     max-width: 1200px;
     background-image: url('../assets/mobile-image1.png');
     background-size: cover;
     
     div {
         @include flex-template(column, center, center);
-        @include size(100%, 50%);
+        @include element-size(100%, 50%);
         background-color: transparentize($color: white, $amount: 0.2);
 
         div {
             @include flex-template(column, center, center);
-            @include size(100%, 75%);
+            @include element-size(100%, 75%);
             background-color: initial;
 
             span:first-child, a:first-child {
@@ -35,16 +33,30 @@
         #title {
             @include responsive-font($largeText, $darkBlue, bold);
             letter-spacing: 1.5px;
+
+            @include desktop {
+                font-size: 28px;
+            };
         };
         #intro {
             @include responsive-font($mediumText, black, normal);
             line-height: 1.7;
+
+            @include desktop {
+                font-size: 16px;
+            };
         };
         #buttons a {
-            @include size(none, 75%);
-            @include button-template($darkBlue, $smallText, 1);
+            @include element-size(none, 75%);
+            @include button-template($smallText, $darkBlue, 1);
             letter-spacing: 1.5px;
-        }
+
+            @include desktop {
+                font-size: 14px;
+            }
+        };
     };
-    
 };
+
+
+// CHECK THAT MONITOR IS NOT ZOOMED 

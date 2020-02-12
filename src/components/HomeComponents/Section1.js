@@ -71,7 +71,7 @@ letter-spacing: 1.5px;
 const Button1 = styled(Link)`
 // font-size: 1.2vmax;
 // width: 65%;
-padding: 0.75vmax;
+// padding: 0.75vmax;
 // color: white;
 // background-color: #12679b;
 // text-align: center;

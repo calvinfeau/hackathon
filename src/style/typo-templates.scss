@@ -1,29 +1,17 @@
+@import './media-queries.scss';
+
 @mixin responsive-font($size, $color, $weight) {
     color: $color;
-    font-size: $size;
     font-weight: $weight;
-
-    @include laptop {
-        // font-size: ($size - 2px);
-    };
-    @include tablet {
-        // font-size: ($size - 4px);
-    };
-    @include phone-landscape {
-        // font-size: ($size - 6px);
-    };
-    @include phone-portrait {
-        // font-size: ($size - 8px);
-    };
+    font-size: $size;
 };
 
-@mixin button-template($color, $size, $template) {
+@mixin button-template($size, $color, $template) {
     border-radius: 30px;
     border: 1px $color solid;
-    font-size: $size;
-    font-weight: bold;
     text-align: center;
     padding: 10px;
+    @include responsive-font($size, $color, bold);
 
     @if $template == 1 {
         color: white;
@@ -34,7 +22,6 @@
         };
     }
     @else {
-        color: $color;
         background-color: transparent;
         &:hover {
             color: transparent;
