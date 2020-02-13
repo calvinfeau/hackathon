@@ -7,11 +7,14 @@
 };
 
 @mixin button-template($size, $color, $template) {
+    @include responsive-font($size, $color, bold);
     border-radius: 30px;
     border: 1px $color solid;
     text-align: center;
-    padding: 10px;
-    @include responsive-font($size, $color, bold);
+    padding: 15px;
+    @include desktop {
+        padding: 20px;
+    }
 
     @if $template == 1 {
         color: white;

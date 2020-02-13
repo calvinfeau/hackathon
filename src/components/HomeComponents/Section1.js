@@ -3,13 +3,6 @@ import {Link} from "react-router-dom";
 import styled, {css} from "styled-components";
 import mobile1 from "../../assets/mobile-image1.png";
 
-const Wrapper1 = styled.div`
-
-@media screen and (max-width: 1100px) {
-  background-image: none;
-}
-`;
-
 const Div1 = styled.div`
 // width: 60%;
 // height: 100%;
@@ -20,11 +13,11 @@ const Div1 = styled.div`
 }
 
 @media screen and (max-width: 1100px) {
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  justify-content: space-around;
-  align-items: center;
+  // width: 100%;
+  // height: 100%;
+  // padding: 0;
+  // justify-content: space-around;
+  // align-items: center;
 }
 `;
 
@@ -37,34 +30,34 @@ const Title1 = styled.div`
 // letter-spacing: 1.5px;
 
 @media screen and (max-width: 1100px) {
-  text-align: center;
-  line-height: 1.2;
+  // text-align: center;
+  // line-height: 1.2;
 }
 
 `;
 
 const ImgMobile = styled.div`
 @media screen and (max-width: 1100px) {
-  width: 100vw;
-  height: 30vh;
-  background-image: url(${mobile1});
-  background-size: cover;
+  // width: 100vw;
+  // height: 30vh;
+  // background-image: url(${mobile1});
+  // background-size: cover;
 }
 `;
 
 const Text1 = styled.div`
-letter-spacing: 1.5px;
+// letter-spacing: 1.5px;
 // font-size: 1.3vmax;
 // line-height: 1.7;
 
 @media screen and (max-width: 1100px) {
-  padding: 0 10%;
-  text-align: center;
-  font-size: 1.8vmax;
-  line-height: 1.7;
+  // padding: 0 10%;
+  // text-align: center;
+  // font-size: 1.8vmax;
+  // line-height: 1.7;
 }
 @media screen and (max-width: 500px) {
-  font-size: 1.5vmax;
+  // font-size: 1.5vmax;
 }
 `;
 
@@ -86,30 +79,30 @@ const Button1 = styled(Link)`
 }
 
 @media screen and (max-width: 1100px) {
-  width: 60%;
-  padding: 2%;
-  font-size: 1.8vmax;
+  // width: 60%;
+  // padding: 2%;
+  // font-size: 1.8vmax;
 }
 @media screen and (max-width: 500px) {
-  width: 85%;
-  padding: 5%;
-  font-size: 1.5vmax;
+  // width: 85%;
+  // padding: 5%;
+  // font-size: 1.5vmax;
 }
 `;
 
 const Section1 = () => {
     return ( 
-      <Wrapper1 id="section1">
+      <div id="section1">
         <Div1>
           <Title1 id="title">
             <span>
-              Nobody Plans
+              Nobody Plans&nbsp;
             </span>
             <span>
               To Be Homeless
             </span>
           </Title1>
-          {/* <ImgMobile /> */}
+          <img />
           <Text1 id="intro">
             <span>
               Safe Parking programs are a safe and legal homelessness intervention to stabilize and connect to resources for people who are living in&nbsp;their&nbsp;vehicles.
@@ -123,7 +116,7 @@ const Section1 = () => {
               <Button1 to="/profile">RETRIEVE YOUR APPLICATION</Button1>
           </div>
         </Div1>
-      </Wrapper1>
+      </div>
      );
 }
  

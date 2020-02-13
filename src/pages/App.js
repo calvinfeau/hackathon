@@ -11,7 +11,7 @@ import Disclaimer from "../components/Disclaimer";
 class App extends Component {
   render() {
     return (
-      <div>
+      <div id="app">
         <NavBar />
         <Disclaimer />
         <Switch>

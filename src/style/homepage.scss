@@ -11,7 +11,7 @@
 
 #section1 {
     @include element-size(90vh, 100%);
-    max-width: 1200px;
+    letter-spacing: 1.5px;
     background-image: url('../assets/mobile-image1.png');
     background-size: cover;
     
@@ -32,31 +32,83 @@
 
         #title {
             @include responsive-font($largeText, $darkBlue, bold);
-            letter-spacing: 1.5px;
-
-            @include desktop {
-                font-size: 28px;
-            };
         };
+
         #intro {
             @include responsive-font($mediumText, black, normal);
             line-height: 1.7;
-
-            @include desktop {
-                font-size: 16px;
-            };
         };
+
         #buttons a {
             @include element-size(none, 75%);
             @include button-template($smallText, $darkBlue, 1);
-            letter-spacing: 1.5px;
+        };
+    };
 
-            @include desktop {
-                font-size: 14px;
+    @include desktop {
+        div {
+            #title {
+                font-size: 32px;
+            };
+
+            #intro {
+                font-size: 20px;
+            };
+
+            #buttons a {
+                @include element-size(none, 60%);
+                font-size: 16px;
             }
+        }
+    }
+
+    @include tablet {
+        background-image: none;
+        img {
+            @include element-size(40%, 100%);
+            background-image: url('../assets/mobile-image1.png');
+        };
+
+        div {
+            @include element-size(100%, 100%);
+
+            #title {
+                @include flex-template(row, center, center);
+                @include element-size(10%, 100%);
+                span:first-child {
+                    margin-bottom: 0;
+                };
+            };
+
+            #intro {
+                @include element-size(30%, 75%)
+            };
+
+            #buttons {
+                @include element-size(20%, 75%)
+            };
+        };
+    };
+
+    @include phone-portrait {
+        div {
+            @include element-size(100%, 100%);
+
+            div {
+                @include element-size(20%, 100%);
+            };
+
+            #title {
+                @include flex-template(row, center, center);
+                span:first-child {
+                    margin-bottom: 0;
+                    margin-right: 10px;
+                };
+            };
         };
     };
 };
 
-
+// add height of each element for normal view + phone
+// see how unzoomed img
 // CHECK THAT MONITOR IS NOT ZOOMED 
