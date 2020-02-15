@@ -4,6 +4,28 @@
     color: $color;
     font-weight: $weight;
     font-size: $size;
+
+    @if $size == 2.75vmax {
+        @include desktop {
+            font-size: 32px;
+        };
+
+        @include phone-landscape {
+            font-size: 18px;
+        };
+    };
+
+    @if $size == 1.5vmax {
+        @include desktop {
+            font-size: 20px;
+        };
+    };
+
+    @if $size == 1.2vmax {
+        @include desktop {
+            font-size: 16px;
+        };
+    };
 };
 
 @mixin button-template($size, $color, $template) {
@@ -12,9 +34,6 @@
     border: 1px $color solid;
     text-align: center;
     padding: 15px;
-    @include desktop {
-        padding: 20px;
-    }
 
     @if $template == 1 {
         color: white;
@@ -30,5 +49,17 @@
             color: transparent;
             background-color: $color;
         };
+    };
+
+    @include desktop {
+        padding: 20px;
+    };
+
+    @include phone-portrait {
+        padding: 10px;
+    };
+
+    @include phone-landscape {
+        padding: 5px;
     };
 };

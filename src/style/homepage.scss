@@ -12,8 +12,9 @@
 #section1 {
     @include element-size(90vh, 100%);
     letter-spacing: 1.5px;
+    line-height: 1.7;
     background-image: url('../assets/mobile-image1.png');
-    background-size: cover;
+    background-size: 100% 100%;
     
     div {
         @include flex-template(column, center, center);
@@ -24,49 +25,42 @@
             @include flex-template(column, center, center);
             @include element-size(100%, 75%);
             background-color: initial;
-
-            span:first-child, a:first-child {
-                margin-bottom: 20px;
-            };
         };
 
         #title {
             @include responsive-font($largeText, $darkBlue, bold);
+            text-align: center;
         };
 
         #intro {
             @include responsive-font($mediumText, black, normal);
-            line-height: 1.7;
         };
 
         #buttons a {
-            @include element-size(none, 75%);
+            @include element-size('', 75%);
             @include button-template($smallText, $darkBlue, 1);
+
+            &:first-child {
+                margin-bottom: 20px;
+            };
         };
     };
 
     @include desktop {
         div {
-            #title {
-                font-size: 32px;
-            };
-
-            #intro {
-                font-size: 20px;
-            };
-
             #buttons a {
                 @include element-size(none, 60%);
-                font-size: 16px;
-            }
-        }
-    }
+            };
+        };
+    };
 
     @include tablet {
         background-image: none;
+
         img {
             @include element-size(40%, 100%);
             background-image: url('../assets/mobile-image1.png');
+            background-size: 100% 100%;
         };
 
         div {
@@ -90,19 +84,11 @@
         };
     };
 
-    @include phone-portrait {
+    @include phone-landscape {
         div {
-            @include element-size(100%, 100%);
-
-            div {
-                @include element-size(20%, 100%);
-            };
-
-            #title {
-                @include flex-template(row, center, center);
-                span:first-child {
-                    margin-bottom: 0;
-                    margin-right: 10px;
+            #buttons a {
+                &:first-child {
+                    margin-bottom: 10px;
                 };
             };
         };
