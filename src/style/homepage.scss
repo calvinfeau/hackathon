@@ -11,6 +11,7 @@
 
 #section1 {
     @include element-size(90vh, 100%);
+    // max-height: 1367px;
     letter-spacing: 1.5px;
     line-height: 1.7;
     background-image: url('../assets/mobile-image1.png');
@@ -52,6 +53,23 @@
                 @include element-size(none, 60%);
             };
         };
+    };
+
+    @include desktop-portrait {
+        background-image: none;
+
+        div {
+            @include element-size(100%, 100%);
+
+            img {
+                @include element-size(100%, 75%);
+                background-image: url('../assets/mobile-image1.png');
+                background-size: 100% 100%;
+            };
+        };
+
+
+
     };
 
     @include tablet {

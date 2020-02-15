@@ -36,3 +36,10 @@
         @content;
     };
 };
+
+@mixin desktop-portrait {
+    @media only screen 
+    and (min-height: 1367px) {
+        @content;
+    };
+};
