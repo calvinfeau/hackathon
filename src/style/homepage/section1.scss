@@ -1,20 +1,13 @@
-@import './variables.scss';
-@import './media-queries.scss';
-@import './layout-templates.scss';
-@import './typo-templates.scss';
-
-#visit-sfpkla-link {
-    @include flex-template(row, center, flex-end);
-    @include responsive-font($mediumText, black, bold);
-    padding: 3vh 0;
-};
+@import '../variables.scss';
+@import '../media-queries.scss';
+@import '../layout-templates.scss';
+@import '../typo-templates.scss';
 
 #section1 {
     @include element-size(90vh, 100%);
-    // max-height: 1367px;
     letter-spacing: 1.5px;
     line-height: 1.7;
-    background-image: url('../assets/mobile-image1.png');
+    background-image: url('../../assets/mobile-image1.png');
     background-size: 100% 100%;
     
     div {
@@ -63,13 +56,10 @@
 
             img {
                 @include element-size(100%, 75%);
-                background-image: url('../assets/mobile-image1.png');
+                background-image: url('../../assets/mobile-image1.png');
                 background-size: 100% 100%;
             };
         };
-
-
-
     };
 
     @include tablet {
@@ -77,7 +67,7 @@
 
         img {
             @include element-size(40%, 100%);
-            background-image: url('../assets/mobile-image1.png');
+            background-image: url('../../assets/mobile-image1.png');
             background-size: 100% 100%;
         };
 
@@ -112,7 +102,3 @@
         };
     };
 };
-
-// add height of each element for normal view + phone
-// see how unzoomed img
-// CHECK THAT MONITOR IS NOT ZOOMED 

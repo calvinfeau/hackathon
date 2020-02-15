@@ -54,6 +54,6 @@ const Section2 = () => {
         </Items>
         </Wrapper2>
      );
-}
+};
  
 export default Section2;
