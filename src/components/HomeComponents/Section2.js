@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 
 
 const Wrapper2 = styled.div`
@@ -45,14 +45,14 @@ justify-content: space-between;
 
 const Section2 = () => {
     return ( 
-        <Wrapper2>
-        <Title2>The Process</Title2>
-        <Items>
-            <Item>STEP 1 <i className="material-icons" style={{fontSize: "3vmax"}}>assignment</i> Fill out safe parking&nbsp;form</Item>
-            <Item>STEP 2 <i className="material-icons" style={{fontSize: "3vmax"}}>headset_mic</i> We will contact you&nbsp;in&nbsp;24 hrs</Item>
-            <Item>STEP 3 <i className="material-icons" style={{fontSize: "3vmax"}}>local_parking</i> Receive a parking&nbsp;permit</Item>
-        </Items>
-        </Wrapper2>
+      <div id="section2">
+        <div>The Process</div>
+        <div id="steps">
+          <div>STEP 1 <i className="material-icons">assignment</i> Fill out safe parking&nbsp;form</div>
+          <div>STEP 2 <i className="material-icons">headset_mic</i> We will contact you&nbsp;in&nbsp;24&nbsp;hrs</div>
+          <div>STEP 3 <i className="material-icons">local_parking</i> Receive a parking&nbsp;permit</div>
+        </div>
+      </div>
      );
 };
  
