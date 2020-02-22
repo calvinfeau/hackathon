@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import styled, {css} from "styled-components";
 
-
 const Wrapper4 = styled.div`
 height: 25vh;
 width: 100vw;

@@ -1,0 +1,47 @@
+@import '../variables.scss';
+@import '../media-queries.scss';
+@import '../layout-templates.scss';
+@import '../typo-templates.scss';
+
+#section3 {
+    width: 100%;
+    padding: 0 5%;
+    @include flex-template(row, space-between, flex-start);
+
+    // Each cards
+    & > div {
+        width: (100% / 3);
+        @include flex-template(column, space-between, center);
+
+        & > img {
+            @include element-size(auto, 100%);
+        };
+
+        // Each cards text
+        & > div:nth-child(1) {
+            @include flex-template(column, flex-start, center);
+
+            // Cards title
+            & > span {
+
+            }
+
+        };
+
+        // Each cards button
+        & > div:nth-child(2) {
+
+        };
+    };
+
+    // Individual cards
+    & > div:nth-child(1) {
+        background-color: $lightOrange;
+    };
+    & > div:nth-child(2) {
+        background-color: $lightGreen;
+    };
+    & > div:nth-child(3) {
+        background-color: $lightYellow;
+    };
+};

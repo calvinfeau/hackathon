@@ -10,12 +10,12 @@
     background-image: url('../../assets/mobile-image1.png');
     background-size: 100% 100%;
     
-    div {
+    & > div {
         @include flex-template(column, center, center);
         @include element-size(100%, 50%);
         background-color: transparentize($color: white, $amount: 0.2);
 
-        div {
+        & > div {
             @include flex-template(column, center, center);
             @include element-size(100%, 75%);
             background-color: initial;
@@ -28,6 +28,9 @@
 
         #intro {
             @include responsive-font($mediumText, black, normal);
+            & > div:first-child {
+                margin-bottom: 15px;
+            };
         };
 
         #buttons a {
@@ -41,7 +44,13 @@
     };
 
     @include desktop {
-        div {
+        & > div {
+            #intro {
+                & > div {
+                    @include element-size('', 100%);
+                };
+            };
+
             #buttons a {
                 @include element-size(none, 60%);
             };
@@ -51,7 +60,7 @@
     @include desktop-portrait {
         background-image: none;
 
-        div {
+        & > div {
             @include element-size(100%, 100%);
 
             img {
@@ -71,29 +80,29 @@
             background-size: 100% 100%;
         };
 
-        div {
+        & > div {
             @include element-size(100%, 100%);
 
             #title {
                 @include flex-template(row, center, center);
                 @include element-size(10%, 100%);
-                span:first-child {
-                    margin-bottom: 0;
-                };
             };
 
             #intro {
-                @include element-size(30%, 75%)
+                @include element-size(30%, 75%);
+                & > div {
+                    @include flex-template(row, center, center);
+                };
             };
 
             #buttons {
-                @include element-size(20%, 75%)
+                @include element-size(20%, 75%);
             };
         };
     };
 
     @include phone-landscape {
-        div {
+        & > div {
             #buttons a {
                 &:first-child {
                     margin-bottom: 10px;

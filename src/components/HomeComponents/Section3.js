@@ -139,7 +139,7 @@ border-radius: 30px;
 
 const Section3 = () => {
     return ( 
-        <Wrapper3>
+      <Wrapper3>
         <Card card={1}>
           <img src={image2} alt="couple checking hanfd with someone"/>
           <CardText>
@@ -166,7 +166,7 @@ const Section3 = () => {
           <CardButton card={3} href="https:www.safeparkingla.org/resources-for-veterans" target="_blank" rel="noopener noreferrer">MORE INFO</CardButton>
           </CardText>
         </Card>
-        </Wrapper3>
+      </Wrapper3>
      );
 }
  

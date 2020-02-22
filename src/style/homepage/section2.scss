@@ -4,11 +4,13 @@
 @import '../typo-templates.scss';
 
 #section2 {
+    margin: (40vh / 4) 0;
     background-color: $lightBlue;
+    max-height: (1000px * 0.4);
     @include element-size(40vh, 100%);
     @include flex-template(column, '', '');
 
-    div:first-of-type {
+    & > div:first-of-type {
         @include element-size(30%, 100%);
         @include flex-template(row, center, center);
         @include responsive-font($mediumText, black, bold);
@@ -23,6 +25,15 @@
             @include element-size(100%, (100%/3));
             @include flex-template(column, space-around, center);
             @include responsive-font($smallText, black, normal);
+        };
+    };
+
+    @include phone-portrait {
+        padding: 0 10px;
+
+        #steps {
+            text-align: center;
+            line-height: 1.5;
         };
     };
 };
