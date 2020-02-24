@@ -1,7 +1,7 @@
 @import './section1.scss';
 @import './section2.scss';
+@import './section3.scss';
 
-// no need to import scss templates since they are imported via the sections import
 #visit-sfpkla-link {
     @include flex-template(row, center, flex-end);
     @include responsive-font($mediumText, black, bold);

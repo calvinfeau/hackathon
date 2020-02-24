@@ -4,7 +4,7 @@
 @import '../typo-templates.scss';
 
 #section2 {
-    margin: (40vh / 4) 0;
+    margin-bottom: (40vh / 4);
     background-color: $lightBlue;
     max-height: (1000px * 0.4);
     @include element-size(40vh, 100%);

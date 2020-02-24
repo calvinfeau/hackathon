@@ -5,6 +5,7 @@
 
 #section1 {
     @include element-size(90vh, 100%);
+    margin-bottom: (40vh / 4);
     letter-spacing: 1.5px;
     line-height: 1.7;
     background-image: url('../../assets/mobile-image1.png');
@@ -28,6 +29,7 @@
 
         #intro {
             @include responsive-font($mediumText, black, normal);
+            
             & > div:first-child {
                 margin-bottom: 15px;
             };

@@ -4,33 +4,38 @@
 @import '../typo-templates.scss';
 
 #section3 {
-    width: 100%;
-    padding: 0 5%;
     @include flex-template(row, space-between, flex-start);
+    @include element-size(80vh, 100%);
+    margin-bottom: (40vh / 4);
+    padding: 0 (40vh / 4);
 
     // Each cards
     & > div {
-        width: (100% / 3);
         @include flex-template(column, space-between, center);
+        @include element-size(100%, 90% / 3);
 
         & > img {
             @include element-size(auto, 100%);
         };
 
         // Each cards text
-        & > div:nth-child(1) {
-            @include flex-template(column, flex-start, center);
+        & > div {
+            @include flex-template(column, space-between, center);
+            @include element-size(100%, 80%);
+            padding: 5% 0;
+            line-height: 1.5;
 
             // Cards title
             & > span {
+                @include responsive-font($mediumText, black, bold);
+                letter-spacing: 1.5px;
+            };
 
-            }
-
-        };
-
-        // Each cards button
-        & > div:nth-child(2) {
-
+            // Each buttons
+            & > a {
+                @include element-size('', 100%);
+                @include button-template($smallText, $darkBlue, 2);
+            };
         };
     };
 
