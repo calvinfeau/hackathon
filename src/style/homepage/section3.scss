@@ -4,10 +4,9 @@
 @import '../typo-templates.scss';
 
 #section3 {
-    @include flex-template(row, space-between, flex-start);
+    @include flex-template(row, space-evenly, flex-start);
     @include element-size(80vh, 100%);
     margin-bottom: (40vh / 4);
-    padding: 0 (40vh / 4);
 
     // Each cards
     & > div {
@@ -26,9 +25,14 @@
             line-height: 1.5;
 
             // Cards title
-            & > span {
+            & > span:nth-child(1) {
                 @include responsive-font($mediumText, black, bold);
                 letter-spacing: 1.5px;
+            };
+
+            & > span:nth-child(2) {
+                @include responsive-font($smallText, black, normal);
+                letter-spacing: 1px;
             };
 
             // Each buttons
@@ -49,4 +53,49 @@
     & > div:nth-child(3) {
         background-color: $lightYellow;
     };
+
+    @include desktop {
+        @include flex-template(row, space-between, flex-start);
+    };
+
+    @mixin narrow-layout {
+        @include element-size(100%, 100%);
+        @include flex-template(column, space-between, flex-start);
+        padding: 0 (40vh / 4);
+
+        & > div {
+            @include element-size(100%, 100%);
+
+            & > div > span {
+                padding-bottom: 5%;
+            };
+        };
+
+        & > div:nth-child(-n+2) {
+            margin-bottom: (40vh / 4);
+        };
+
+        & > div:nth-child(-n+3) {
+            background-color: white;
+        };
+    };
+    
+    @include desktop-portrait {
+        @include narrow-layout;
+    };
+
+    @include tablet {
+        @include narrow-layout;
+    };
+
+    @include phone-portrait {
+        padding: 0 (40vh / 8);
+    };
+
+    @include phone-landscape {
+        @include element-size(100%, 100%);
+        @include flex-template(row, space-between, flex-start);
+        padding: 0 (40vh / 4);
+    }
+
 };

@@ -3,6 +3,10 @@
 @import '../layout-templates.scss';
 @import '../typo-templates.scss';
 
+
+// CHANGE THE IMAGE SITUATION
+
+
 #section1 {
     @include element-size(90vh, 100%);
     margin-bottom: (40vh / 4);

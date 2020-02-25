@@ -6,24 +6,24 @@
 #section2 {
     margin-bottom: (40vh / 4);
     background-color: $lightBlue;
-    max-height: (1000px * 0.4);
+    max-height: 400px;
     @include element-size(40vh, 100%);
-    @include flex-template(column, '', '');
+    @include flex-template(column, space-around, '');
 
     & > div:first-of-type {
-        @include element-size(30%, 100%);
+        @include element-size('', 100%);
         @include flex-template(row, center, center);
         @include responsive-font($mediumText, black, bold);
         letter-spacing: 1.5px;
     };
 
     #steps {
-    @include element-size(70%, 100%);
-    @include flex-template(row, space-around, center);
+    @include element-size(50%, 100%);
+    @include flex-template(row, '', center);
 
         div {
             @include element-size(100%, (100%/3));
-            @include flex-template(column, space-around, center);
+            @include flex-template(column, space-between, center);
             @include responsive-font($smallText, black, normal);
         };
     };
