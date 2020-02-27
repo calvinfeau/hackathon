@@ -8,7 +8,6 @@
     @include element-size(80vh, 100%);
     margin-bottom: (40vh / 4);
 
-    // Each cards
     & > div {
         @include flex-template(column, space-between, center);
         @include element-size(100%, 90% / 3);
@@ -17,14 +16,12 @@
             @include element-size(auto, 100%);
         };
 
-        // Each cards text
         & > div {
             @include flex-template(column, space-between, center);
             @include element-size(100%, 80%);
             padding: 5% 0;
             line-height: 1.5;
 
-            // Cards title
             & > span:nth-child(1) {
                 @include responsive-font($mediumText, black, bold);
                 letter-spacing: 1.5px;
@@ -35,7 +32,6 @@
                 letter-spacing: 1px;
             };
 
-            // Each buttons
             & > a {
                 @include element-size('', 100%);
                 @include button-template($smallText, $darkBlue, 2);
@@ -43,7 +39,6 @@
         };
     };
 
-    // Individual cards
     & > div:nth-child(1) {
         background-color: $lightOrange;
     };
@@ -96,6 +91,9 @@
         @include element-size(100%, 100%);
         @include flex-template(row, space-between, flex-start);
         padding: 0 (40vh / 4);
-    }
 
+        & > div > div {
+            @include element-size(60vh, 80%);
+        };
+    };
 };
