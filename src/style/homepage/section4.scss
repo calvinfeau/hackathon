@@ -1,0 +1,62 @@
+@import '../variables.scss';
+@import '../media-queries.scss';
+@import '../layout-templates.scss';
+@import '../typo-templates.scss';
+
+#section4 {
+    @include element-size('', 100%);
+    @include flex-template(column, flex-start, center);
+    margin-bottom: (40vh / 4);
+    
+    & > div {
+        @include responsive-font($mediumText, black, bold);
+        margin-bottom: 20px;
+        line-height: 1.7;
+        letter-spacing: 1.5px;
+    };
+
+    & > div:nth-child(2) {
+        @include responsive-font($smallText, black, normal);
+        text-align: center;
+    };
+
+    & > div:nth-child(3) {
+        @include flex-template(row, space-around, flex-start);
+        @include element-size(10vh, 80%);
+
+        & > div {
+            @include element-size('', (100% / 3));
+            @include flex-template(column, space-between, center);
+
+            & > a {
+                @include element-size('', 100%);
+                @include button-template($smallText, $darkBlue, 1);
+            };
+        };
+    };
+
+    @mixin narrow-layout {
+        padding: 0 (40vh / 4);
+
+        & > div:nth-child(3) {
+            @include flex-template(column, flex-start, flex-start);
+            @include element-size(20vh, 80%);
+            
+            & > div {
+                @include element-size('', 100%);
+
+                & > a {
+                    margin-bottom: 20px;
+                };
+            };
+        };
+    };
+
+    @include desktop-portrait {
+        @include narrow-layout;
+    };
+
+    @include tablet {
+        @include narrow-layout;
+    };
+};

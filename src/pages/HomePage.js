@@ -11,7 +11,6 @@ const HomePage = () => (
     <Section2 />
     <Section3 />
     <Section4 />
-    <div id="visit-sfpkla-link"><a href="https://www.safeparkingla.org" target="_blank" rel="noopener noreferrer">VISIT SAFEPARKINGLA.COM</a></div>
   </div>
 );
 
