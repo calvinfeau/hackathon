@@ -31,7 +31,7 @@ class Section4 extends Component {
             <a href="#" onClick={this.handleClick} clicked={`${this.state.clicked}`}>
               FIND OUT DETAILS
             </a>
-            {this.state.clicked ? <span clicked={`${this.state.clicked}`}>Coming soon!</span> : <span></span> }
+            {this.state.clicked ? <span clicked={`${this.state.clicked}`}>Coming soon!</span> : <span></span>}
           </div>
         </div>
       </div>

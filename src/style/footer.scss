@@ -1,0 +1,56 @@
+@import './variables.scss';
+@import './media-queries.scss';
+@import './layout-templates.scss';
+@import './typo-templates.scss';
+
+#footer {
+    @include element-size(20vh, 100%);
+    @include flex-template(column, center, center);
+    background-color: black;
+
+    & > div:nth-child(1) {
+        @include element-size((100% / 2), 50%);
+        @include flex-template(row, center, center);
+
+        & > a {
+            @include element-size($largeText, $largeText);
+            @include flex-template(row, center, center);
+            background-color: white;
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+        };
+
+        & > a:nth-child(2) {
+            margin: 0 5%;
+        };
+    };
+
+    & > div:nth-child(2) {
+        @include element-size((100% / 2), 50%);
+        @include flex-template(row, '', '');
+
+        & > a {
+            @include element-size(100%, (100% / 5));
+        };
+        
+        & > a:last-child {
+            @include flex-template(column, flex-start, flex-start);
+
+            & > span {
+                padding-top: 10px;
+            };
+        };
+    };
+
+    i {
+        @include responsive-font($mediumText, black, normal);
+    };
+
+    a {
+        @include responsive-font($smallText, white, normal);
+    };
+};
+
