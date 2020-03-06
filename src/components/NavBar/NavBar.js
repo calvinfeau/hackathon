@@ -1,8 +1,9 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, {Component} from "react";
+import BasicMenu from "./BasicMenu";
+import NarrowMenu from "./NarrowMenu";
+import {Link} from "react-router-dom";
 import styled from "styled-components";
-import heart from "../assets/heart.png";
-import logo from "../assets/logo.png";
+import '../../style/navbar.scss';
 
 class Nav extends Component {
   constructor(props) {
@@ -15,14 +16,31 @@ class Nav extends Component {
   }
   render() {
     return (
-      <Wrapper>
-        <Div1><a href="https://safeparkingla.networkforgood.com/projects/68953-safe-parking-la" target="_blank" rel="noopener noreferrer"><Img src={heart} alt="heart image" /></a></Div1>
-        <Link to="/"><Img src={logo} alt="safeparking logo" /></Link>
+      // <div id="nav-wrapper">
+      <Wrapper id="navbar">
+        <BasicMenu />
+        <NarrowMenu />
+        {/* <Div1>
+          <a href="https://safeparkingla.networkforgood.com/projects/68953-safe-parking-la" target="_blank" rel="noopener noreferrer">
+            <Img src={heart} alt="heart image" />
+          </a>
+        </Div1>
+        <Link to="/">
+          <Img src={logo} alt="safeparking logo" />
+        </Link>
         <Div2>
-          <a href="https://www.safeparkingla.org/green-streets" target="_blank" rel="noopener noreferrer">FIND&nbsp;SPOT</a>
-          <a href="https://www.safeparkingla.org/who-we-serve" target="_blank" rel="noopener noreferrer">STORIES</a>
-          <a href="https://www.safeparkingla.org/about" target="_blank" rel="noopener noreferrer">ABOUT</a>
-          <a href="https://safeparkingla.networkforgood.com/projects/68953-safe-parking-la" target="_blank" rel="noopener noreferrer"><Img src={heart} alt="heart image" /></a>
+          <a href="https://www.safeparkingla.org/green-streets" target="_blank" rel="noopener noreferrer">
+            FIND&nbsp;SPOT
+          </a>
+          <a href="https://www.safeparkingla.org/who-we-serve" target="_blank" rel="noopener noreferrer">
+            STORIES
+          </a>
+          <a href="https://www.safeparkingla.org/about" target="_blank" rel="noopener noreferrer">
+            ABOUT
+          </a>
+          <a href="https://safeparkingla.networkforgood.com/projects/68953-safe-parking-la" target="_blank" rel="noopener noreferrer">
+            <Img src={heart} alt="heart image" />
+          </a>
         </Div2>
         <span>
           <i onClick={() => {this.toggleMenu()}} clicked={`${this.state.clicked}`} className="material-icons">dehaze</i>
@@ -34,8 +52,9 @@ class Nav extends Component {
             <span onClick={() => {this.toggleMenu()}}>X</span>
           </Div3>
           }
-        </span>
+        </span> */}
       </Wrapper>
+      // </div>
     )
   }
 }
@@ -43,32 +62,32 @@ class Nav extends Component {
 export default Nav;
 
 const Wrapper = styled.div`
-top: 0;
-position: sticky;
-width: 100%;
-padding: 0 30px;
-height: 10vh;
-display: flex;
-justify-content: space-between;
-align-items: center;
-background-color: white;
-z-index: 10;
-letter-spacing: 1.5px;
->span {
-  .material-icons {font-size: 36px;}
-}
-@media screen and (min-width: 1101px) {
-  padding: 0 40px;
-  >span {
-    display: none;
-  }
-}
-  @media screen and (max-width: 500px) {
-    padding: 20px;
-    >span {
-      .material-icons {font-size: 25px;}
-    }
-}
+// top: 0;
+// position: sticky;
+// width: 100%;
+// padding: 0 30px;
+// height: 10vh;
+// display: flex;
+// justify-content: space-between;
+// align-items: center;
+// background-color: white;
+// // z-index: 10;
+// letter-spacing: 1.5px;
+// >span {
+//   .material-icons {font-size: 36px;}
+// }
+// @media screen and (min-width: 1101px) {
+//   padding: 0 40px;
+//   >span {
+//     display: none;
+//   }
+// }
+//   @media screen and (max-width: 500px) {
+//     padding: 20px;
+//     >span {
+//       .material-icons {font-size: 25px;}
+//     }
+// }
 `;
 
 const Img = styled.img`
@@ -115,7 +134,7 @@ const Div3 = styled(Div2)`
   justify-content: space-around;
   z-index: 20;
   position: absolute;
-  background: black;
+  background: #D9E3EB;
   color: white;
   height: 10vh;
   width: 100vw;
@@ -130,25 +149,4 @@ const Div3 = styled(Div2)`
     font-size: 1.5vmax;
   }
 }
-  // animation: 10s menuOpen;
-  // Automatic closing - not working great
-
-  // @keyframes menuOpen {
-  //   0%, 1% {
-  //     visibility: visible;
-  //     width: 0vw;
-  //     left: 100vw;
-  //   }
-  //   10%, 90% {
-  //     width: 100vw;
-  //     left: 0;
-  //   }
-  //   99% {
-  //     width: 0vw;
-  //     left: 100vw;
-  //   }
-  //   100% {
-  //     visibility: hidden;
-  //   }
-  // }
 `;

@@ -6,7 +6,7 @@
 #footer {
     @include element-size(20vh, 100%);
     @include flex-template(column, center, center);
-    background-color: black;
+    background-color: $lightBlue;
 
     & > div:nth-child(1) {
         @include element-size((100% / 2), 50%);
@@ -30,11 +30,7 @@
 
     & > div:nth-child(2) {
         @include element-size((100% / 2), 50%);
-        @include flex-template(row, '', '');
-
-        & > a {
-            @include element-size(100%, (100% / 5));
-        };
+        @include flex-template(row, space-between, '');
         
         & > a:last-child {
             @include flex-template(column, flex-start, flex-start);
@@ -50,7 +46,12 @@
     };
 
     a {
-        @include responsive-font($smallText, white, normal);
+        @include responsive-font($smallText, black, bold);
+    };
+
+    @include phone-portrait {
+        & > div:nth-child(2) {
+            @include element-size((100% / 2), 75%);
+        };
     };
 };
-

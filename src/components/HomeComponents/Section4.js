@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import '../../style/homepage/section4.scss';
 
 class Section4 extends Component {
   constructor(props) {
