@@ -3,25 +3,28 @@
 @import '../layout-templates.scss';
 @import '../typo-templates.scss';
 
-// CHANGE THE IMAGE SITUATION
 
 #section1 {
     @include element-size(90vh, 100%);
-    margin-bottom: (40vh / 4);
+    margin-bottom: 10vh;
     letter-spacing: 1.5px;
     line-height: 1.7;
     background-image: url('../../assets/mobile-image1.png');
     background-size: 100% 100%;
     
     & > div {
-        @include flex-template(column, center, center);
+        @include flex-template(column, space-evenly, center);
         @include element-size(100%, 50%);
         background-color: transparentize($color: white, $amount: 0.2);
 
         & > div {
             @include flex-template(column, center, center);
-            @include element-size(100%, 75%);
+            @include element-size('', 75%);
             background-color: initial;
+        };
+
+        & > img {
+            display: none;
         };
 
         #title {
@@ -38,7 +41,7 @@
         };
 
         #buttons a {
-            @include element-size('', 75%);
+            @include element-size('', 100%);
             @include button-template($smallText, $darkBlue, 1);
 
             &:first-child {
@@ -56,51 +59,57 @@
             };
 
             #buttons a {
-                @include element-size(none, 60%);
+                @include element-size('', 60%);
             };
         };
     };
 
-    @include desktop-portrait {
+    @mixin narrow-layout {
         background-image: none;
+        margin-bottom: initial;
+        padding: 5vh;
 
         & > div {
             @include element-size(100%, 100%);
+            @include flex-template(column, space-between, center);
 
-            img {
-                @include element-size(100%, 75%);
+            & > div {
+                @include element-size('', 100%);
+            };
+            
+            & > img {
+                @include element-size('', 100%);
+                padding-top: 56.25%;
+                display: block;
                 background-image: url('../../assets/mobile-image1.png');
                 background-size: 100% 100%;
             };
-        };
+
+            #buttons a {
+                @include element-size('', 75%);
+                text-align: center;
+            };
+        };        
+    };
+
+    @include desktop-portrait {
+        @include narrow-layout;
     };
 
     @include tablet {
-        background-image: none;
+        @include narrow-layout;
+    };
 
-        img {
-            @include element-size(40%, 100%);
-            background-image: url('../../assets/mobile-image1.png');
-            background-size: 100% 100%;
-        };
+    @include phone-portrait {
+        @include narrow-layout;
 
         & > div {
-            @include element-size(100%, 100%);
+            #buttons a {
+                @include element-size('', 100%);
 
-            #title {
-                @include flex-template(row, center, center);
-                @include element-size(10%, 100%);
-            };
-
-            #intro {
-                @include element-size(30%, 75%);
-                & > div {
-                    @include flex-template(row, center, center);
+                &:first-child {
+                    margin-bottom: 10px;
                 };
-            };
-
-            #buttons {
-                @include element-size(20%, 75%);
             };
         };
     };

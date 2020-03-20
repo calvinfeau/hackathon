@@ -4,9 +4,9 @@
 @import '../typo-templates.scss';
 
 #section3 {
-    @include flex-template(row, space-evenly, flex-start);
-    @include element-size(80vh, 100%);
-    margin-bottom: (40vh / 4);
+    @include flex-template(row, space-evenly, stretch);
+    @include element-size(100%, 100%);
+    margin-bottom: 5vh;
 
     & > div {
         @include flex-template(column, space-between, center);
@@ -17,24 +17,30 @@
         };
 
         & > div {
-            @include flex-template(column, space-between, center);
-            @include element-size(100%, 80%);
-            padding: 5% 0;
+            @include flex-template(column, space-between, stretch);
+            @include element-size(50vh, 100%);
+            padding: 25px;
             line-height: 1.5;
 
-            & > span:nth-child(1) {
+            & > div:nth-child(1) {
                 @include responsive-font($mediumText, black, bold);
+                text-align: center;
                 letter-spacing: 1.5px;
             };
 
-            & > span:nth-child(2) {
+            & > div:nth-child(2) {
                 @include responsive-font($smallText, black, normal);
                 letter-spacing: 1px;
             };
 
-            & > a {
+            & > div:nth-child(3) {
                 @include element-size('', 100%);
-                @include button-template($smallText, $darkBlue, 2);
+                @include flex-template(row, center, center);
+
+                & > a{
+                    @include element-size('', 100%);
+                    @include button-template($smallText, $darkBlue, 2);
+                };
             };
         };
     };
@@ -56,18 +62,27 @@
     @mixin narrow-layout {
         @include element-size(100%, 100%);
         @include flex-template(column, space-between, flex-start);
-        padding: 0 (40vh / 4);
+        padding: 0 5vh;
 
         & > div {
             @include element-size(100%, 100%);
 
-            & > div > span {
-                padding-bottom: 5%;
+            & > div {
+                @include element-size(100%, 100%);
+                padding: 5vh 0 0;
+
+                & > div {
+                    padding-bottom: 5%;
+                };
+
+                & > div:nth-child(3) > a {
+                    @include element-size('', 75%);
+                };
             };
         };
 
         & > div:nth-child(-n+2) {
-            margin-bottom: (40vh / 4);
+            margin-bottom: 5vh;
         };
 
         & > div:nth-child(-n+3) {
@@ -84,16 +99,19 @@
     };
 
     @include phone-portrait {
-        padding: 0 (40vh / 8);
+        & > div > div > div:nth-child(3) > a {
+            @include element-size('', 100%);
+        };
     };
 
     @include phone-landscape {
         @include element-size(100%, 100%);
         @include flex-template(row, space-between, flex-start);
-        padding: 0 (40vh / 4);
+        padding: 0 10vh;
 
         & > div > div {
-            @include element-size(60vh, 80%);
+            @include element-size(65vh, 100%);
+            padding: 15px;
         };
     };
 };

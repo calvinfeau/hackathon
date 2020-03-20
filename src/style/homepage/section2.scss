@@ -4,36 +4,61 @@
 @import '../typo-templates.scss';
 
 #section2 {
-    margin-bottom: (40vh / 4);
+    @include element-size(40vh, 100%);
+    @include flex-template(column, space-evenly, '');
+    margin-bottom: 10vh;
     background-color: $lightBlue;
     max-height: 400px;
-    @include element-size(40vh, 100%);
-    @include flex-template(column, space-around, '');
 
-    & > div:first-of-type {
-        @include element-size('', 100%);
-        @include flex-template(row, center, center);
+    & > div:first-child {
+        text-align: center;
         @include responsive-font($mediumText, black, bold);
         letter-spacing: 1.5px;
     };
 
-    #steps {
+    & > div:last-child {
     @include element-size(50%, 100%);
-    @include flex-template(row, '', center);
+    @include flex-template(row, space-evenly, center);
 
-        div {
-            @include element-size(100%, (100%/3));
+        & > div {
+            @include element-size(100%, 30%);
             @include flex-template(column, space-between, center);
             @include responsive-font($smallText, black, normal);
+            text-align: center;
+            max-width: 1500px;
+            max-height: 500px;
+
+            & > div {
+                @include element-size(30%, 100%);
+                @include flex-template(row, center, flex-start);
+
+            };
+            & > div:last-child {
+                line-height: 1.5;
+            };
         };
     };
 
-    @include phone-portrait {
-        padding: 0 10px;
+    @mixin narrow-layout {
+        margin-bottom: 5vh;
+    };
 
-        #steps {
-            text-align: center;
-            line-height: 1.5;
+    @include desktop-portrait {
+        @include narrow-layout;
+    };
+
+    @include tablet {
+        @include narrow-layout;
+        @include element-size(30vh, 100%);
+    };
+
+    @include phone-portrait {
+        @include narrow-layout;
+    };
+
+    @include phone-landscape {
+        & > div:last-child > div > div {
+            @include flex-template(row, center, center);
         };
     };
 };

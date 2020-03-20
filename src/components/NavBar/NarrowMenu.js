@@ -3,7 +3,6 @@ import {Link} from "react-router-dom";
 import logo from "../../assets/logo.png";
 import heart from "../../assets/heart.png";
 
-
 const NarrowMenu = () => {
 
     const [menu, setMenu] = useState(false);

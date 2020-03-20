@@ -85,5 +85,6 @@
     };
     @include phone-portrait {
         @include menu-narrow;
+        padding: 1.5vh 5% 1.5vh;
     };
 };
