@@ -1,0 +1,195 @@
+@import '../utilities/variables.scss';
+@import '../utilities/media-queries.scss';
+@import '../utilities/layout-templates.scss';
+@import '../utilities/text-templates.scss';
+
+#disclaimer {
+    @include element-size(8vh, 8vh);
+    @include flex-template(row, center, center);
+    position: fixed;
+    z-index: 2;
+    right: 25px;
+    bottom: 25px;
+    background-color: $lightBlue;
+    box-shadow: 0px 0px 5px 1px #f5f5f5;
+    transition: width 0.3s, height 0.3s;
+    -webkit-transition: width 0.3s, height 0.3s;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+
+    & > img {
+        @include responsive-font($smallText, black, bold);
+    };
+    
+    & > div {
+        opacity: 0;
+        display: none;
+        animation: disclaimer 0.2s linear 0.3s both;
+        animation-play-state: paused;   
+    };
+
+    &:hover {
+        @include element-size(25vh, 25vw);
+        justify-content: space-between;
+        user-select: none;
+        
+        & > img {
+            display: none;
+        };
+
+        & > div {
+            @include flex-template(column, space-evenly, center);
+            animation-play-state: running;
+        };
+    };
+
+    .slide-content {
+        @include responsive-font($smallText, black, normal);
+        margin: 0 10%;
+        border: 5px $lightBlue solid;
+        line-height: 1.2;
+
+        & > span {
+            font-weight: bold;
+        };
+    };
+
+    @keyframes disclaimer {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    };
+    
+    @include desktop-portrait {
+        @include element-size(5vh, 5vh);
+
+        &:hover {
+            @include element-size(15vh, 50vw);
+        };
+    };
+    
+    @include tablet {
+        @include element-size(5vh, 5vh);
+        border-radius:15px;
+        -webkit-border-radius:15px;
+        -moz-border-radius:15px;
+        -ms-border-radius:15px;
+        -o-border-radius:15px;
+
+        &:hover {
+            @include element-size(15vh, 50vw);
+        };
+
+        .slide-content {
+            margin: 0 20%;
+        };
+    };
+    
+    @include phone-portrait {
+        @include element-size(10vh, 10vh);
+
+        &:hover {
+            @include element-size(18vh, 50vw);
+        };
+    };
+
+    @include phone-landscape {
+        @include element-size(15vh, 15vh);
+        border-radius:15px;
+        -webkit-border-radius:15px;
+        -moz-border-radius:15px;
+        -ms-border-radius:15px;
+        -o-border-radius:15px;
+
+        &:hover {
+            @include element-size(30vh, 40vw);
+        };
+    };
+};
+
+// CAROUSEL UI COMPONENT
+// CREDITS TO: https://www.react-reveal.com/tutorials/carousel/
+
+#carouselUI-container {
+    @include element-size(100%, 100%);
+    position: relative;
+    overflow: hidden;
+    display: block;
+
+    & > #top-container {
+        @include element-size(100%, 100%);
+        @include flex-template(row, space-between, center);
+        position: relative;
+        margin-top: 25px;
+
+        & > .slide-container {
+            @include responsive-font($smallText, black, normal);
+            @include element-size(100%, 80%);
+        };
+
+        & > .arrows {
+            @include element-size(100%, 10%);
+            @include responsive-font($smallText, black, normal);
+            @include flex-template(row, center, center);
+            z-index: 100;
+            cursor: pointer;
+            user-select: none;
+            background-color: $lightBlue;
+        };
+    };
+
+    & > #bottom-container {
+        @include element-size('', 100%);
+        @include flex-template(row, space-evenly, center);
+        margin-bottom: 25px;
+
+        & > #dots {
+            @include element-size('', 25%);
+            @include flex-template(row, space-evenly, center);
+            z-index: 100;
+    
+            & > .dot {
+            @include responsive-font($mediumText, black, normal);
+            cursor: pointer;
+            text-shadow: 1px 1px 1px #fff;
+            user-select: none;
+            };
+        };
+
+        & > #close-button {
+            @include responsive-font($smallText, black, bold);
+            cursor: pointer;
+        };
+    };
+    
+
+    @include tablet {
+        & > #top-container {
+            margin-top: 15px;
+
+            & > .arrows {
+                @include element-size(100%, 20%); 
+            };
+        };
+
+        & > #bottom-container {
+                @include element-size('', 100%);
+                @include flex-template(row, space-evenly, center);
+                margin-bottom: 15px;
+        };
+    };
+
+    @include phone-landscape {
+        & > #top-container {
+            @include element-size(50%, 100%);
+
+            margin-top: 10px;
+        };
+
+        & > #bottom-container {
+            margin-bottom: 10px;
+        };
+    };
+};

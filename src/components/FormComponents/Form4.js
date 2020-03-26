@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import progress4 from "../assets/progress4.png";
+import progress4 from "../../assets/progress4.png";
 import FormHeader from "./FormHeader";
-import { FormContext } from '../context/FormContext';
+import { FormContext } from '../../context/FormContext';
 
 const Form4 = () => {
   const { form, onChange, onChangeNested, onSubmit, onPrevious } = useContext(FormContext);

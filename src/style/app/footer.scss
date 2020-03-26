@@ -1,0 +1,91 @@
+@import '../utilities/variables.scss';
+@import '../utilities/media-queries.scss';
+@import '../utilities/layout-templates.scss';
+@import '../utilities/text-templates.scss';
+
+#footer {
+    @include element-size(20vh, 100%);
+    @include flex-template(column, space-evenly, center);
+    background-color: $lightBlue;
+
+    & > div:first-child {
+        @include element-size(40%, 50%);
+        @include flex-template(row, center, center);
+
+        & > div {
+            @include element-size('', 10%);
+            @include flex-template(row, center, center);
+
+            & > a {
+                @include element-size($largeText, $largeText);      // Even and responsive circle for icons
+                @include flex-template(row, center, center);
+                background-color: white;
+                border-radius: 50%;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                -ms-border-radius: 50%;
+                -o-border-radius: 50%;
+
+                &:hover {
+                    @include element-size(($largeText * 1.5), ($largeText * 1.5));
+
+                    & > i {
+                        @include responsive-font(($mediumText * 1.5), black, normal)
+                    };
+                };
+            };
+
+            & > a:nth-child(2) {
+                margin: 0 5%;
+            };
+        };
+    };
+
+    & > div:last-child {
+        @include element-size(40%, 50%);    // Disable jumpy line when "contribute" is clicked
+        @include flex-template(row, space-between, '');
+        
+        & > div {
+            @include flex-template(column, flex-start, flex-start);
+            @include element-size('', 20%);     // Disable jumpy line when "contribute" is clicked
+            
+            & > span:first-child:hover {
+                cursor: pointer;
+            };
+
+            & > span:last-child {
+                padding-top: 10px;
+                user-select: none;
+            };
+        };
+    };
+
+    i {
+        @include responsive-font($mediumText, black, normal);
+    };
+
+    a, span {
+        @include responsive-font($smallText, black, bold);
+    };
+
+    @mixin narrow-layout {
+        & > div:first-child > div {
+            @include element-size('', 20%);
+        };
+    };
+
+    @include desktop-portrait {
+        @include narrow-layout;
+    };
+
+    @include tablet {
+        @include narrow-layout;
+    };
+
+    @include phone-portrait {
+
+        & > div:last-child {
+            @include element-size(40%, 75%);
+        };
+    };
+};

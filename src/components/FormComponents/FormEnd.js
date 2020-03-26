@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { FormContext } from '../context/FormContext';
-import parkingIcon from "../assets/parkingIcon.png";
-import progress5 from "../assets/progress5.png";
+import { FormContext } from '../../context/FormContext';
+import parkingIcon from "../../assets/parkingIcon.png";
+import progress5 from "../../assets/progress5.png";
 
 const FormEnd = () => {
   const { onPrevious } = useContext(FormContext);

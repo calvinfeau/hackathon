@@ -2,9 +2,9 @@ import React, { useContext, useEffect } from "react";
 // import { Redirect, Link } from "react-router-dom";
 // import {updateUser} from "../services/api";
 import styled from "styled-components";
-import progress3 from "../assets/progress3.png";
+import progress3 from "../../assets/progress3.png";
 import FormHeader from "./FormHeader";
-import { FormContext } from '../context/FormContext';
+import { FormContext } from '../../context/FormContext';
 
 const EmployerLocation = (props) => {
   return ( 

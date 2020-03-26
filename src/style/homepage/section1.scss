@@ -1,0 +1,126 @@
+@import '../utilities/variables.scss';
+@import '../utilities/media-queries.scss';
+@import '../utilities/layout-templates.scss';
+@import '../utilities/text-templates.scss';
+
+
+#section1 {
+    @include element-size(90vh, 100%);
+    margin-bottom: 10vh;
+    letter-spacing: 1.5px;
+    line-height: 1.7;
+    background-image: url('../../assets/mobile-image1.png');
+    background-size: 100% 100%;
+    
+    & > div {
+        @include flex-template(column, space-evenly, center);
+        @include element-size(100%, 50%);
+        background-color: transparentize($color: white, $amount: 0.2);
+
+        & > div {
+            @include flex-template(column, center, center);
+            @include element-size('', 75%);
+            background-color: initial;
+        };
+
+        & > img {
+            display: none;
+        };
+
+        #title {
+            @include responsive-font($largeText, $darkBlue, bold);
+            text-align: center;
+        };
+
+        #intro {
+            @include responsive-font($mediumText, black, normal);
+            
+            & > div:first-child {
+                margin-bottom: 15px;
+            };
+        };
+
+        #buttons a {
+            @include element-size('', 100%);
+            @include button-template($smallText, $darkBlue, 1);
+
+            &:first-child {
+                margin-bottom: 20px;
+            };
+        };
+    };
+
+    @include desktop {
+        & > div {
+            #intro {
+                & > div {
+                    @include element-size('', 100%);
+                };
+            };
+
+            #buttons a {
+                @include element-size('', 100%);
+            };
+        };
+    };
+
+    @mixin narrow-layout {
+        background-image: none;
+        margin-bottom: initial;
+        padding: 5vh;
+
+        & > div {
+            @include element-size(100%, 100%);
+            @include flex-template(column, space-between, center);
+
+            & > div {
+                @include element-size('', 100%);
+            };
+            
+            & > img {
+                @include element-size('', 100%);
+                padding-top: 56.25%;
+                display: block;
+                background-image: url('../../assets/mobile-image1.png');
+                background-size: 100% 100%;
+            };
+
+            #buttons a {
+                @include element-size('', 75%);
+                text-align: center;
+            };
+        };        
+    };
+
+    @include desktop-portrait {
+        @include narrow-layout;
+    };
+
+    @include tablet {
+        @include narrow-layout;
+    };
+
+    @include phone-portrait {
+        @include narrow-layout;
+
+        & > div {
+            #buttons a {
+                @include element-size('', 100%);
+
+                &:first-child {
+                    margin-bottom: 10px;
+                };
+            };
+        };
+    };
+
+    @include phone-landscape {
+        & > div {
+            #buttons a {
+                &:first-child {
+                    margin-bottom: 10px;
+                };
+            };
+        };
+    };
+};

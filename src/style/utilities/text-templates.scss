@@ -1,0 +1,66 @@
+@import './media-queries.scss';
+
+@mixin responsive-font($size, $color, $weight) {
+    color: $color;
+    font-weight: $weight;
+    font-size: $size;
+
+    @if $size == 2.75vmax {
+        @include desktop {
+            font-size: 32px;
+        };
+
+        @include phone-landscape {
+            font-size: 18px;
+        };
+    };
+
+    @if $size == 1.5vmax {
+        @include desktop {
+            font-size: 20px;
+        };
+    };
+
+    @if $size == 1.2vmax {
+        @include desktop {
+            font-size: 16px;
+        };
+    };
+};
+
+@mixin button-template($size, $color, $template) {
+    @include responsive-font($size, $color, bold);
+    border-radius: 30px;
+    border: 1px $color solid;
+    text-align: center;
+    padding: 15px;
+    letter-spacing: 1.5px;
+
+    @if $template == 1 {
+        color: white;
+        background-color: $color;
+        &:hover {
+            color: $color;
+            background-color: transparent;
+        };
+    }
+    @else {
+        background-color: transparent;
+        &:hover {
+            color: white;
+            background-color: $color;
+        };
+    };
+
+    @include desktop {
+        padding: 20px;
+    };
+
+    @include phone-portrait {
+        padding: 10px;
+    };
+
+    @include phone-landscape {
+        padding: 5px;
+    };
+};

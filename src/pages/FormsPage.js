@@ -1,11 +1,11 @@
 import React, { useContext, useEffect } from 'react';
 import styled from "styled-components";
-import FormIntro from "../components/FormIntro";
-import Form1 from "../components/Form1";
-import Form2 from "../components/Form2";
-import Form3 from "../components/Form3";
-import Form4 from "../components/Form4";
-import FormEnd from "../components/FormEnd";
+import FormIntro from "../components/FormComponents/FormIntro";
+import Form1 from "../components/FormComponents/Form1";
+import Form2 from "../components/FormComponents/Form2";
+import Form3 from "../components/FormComponents/Form3";
+import Form4 from "../components/FormComponents/Form4";
+import FormEnd from "../components/FormComponents/FormEnd";
 import { FormContext } from '../context/FormContext';
 
 const FormsPage = () => {

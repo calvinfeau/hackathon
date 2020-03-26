@@ -1,0 +1,64 @@
+@import '../utilities/variables.scss';
+@import '../utilities/media-queries.scss';
+@import '../utilities/layout-templates.scss';
+@import '../utilities/text-templates.scss';
+
+#section2 {
+    @include element-size(40vh, 100%);
+    @include flex-template(column, space-evenly, '');
+    margin-bottom: 10vh;
+    background-color: $lightBlue;
+    max-height: 400px;
+
+    & > div:first-child {
+        text-align: center;
+        @include responsive-font($mediumText, black, bold);
+        letter-spacing: 1.5px;
+    };
+
+    & > div:last-child {
+    @include element-size(50%, 100%);
+    @include flex-template(row, space-evenly, center);
+
+        & > div {
+            @include element-size(100%, 30%);
+            @include flex-template(column, space-between, center);
+            @include responsive-font($smallText, black, normal);
+            text-align: center;
+            max-width: 1500px;
+            max-height: 500px;
+
+            & > div {
+                @include element-size(30%, 100%);
+                @include flex-template(row, center, flex-start);
+
+            };
+            & > div:last-child {
+                line-height: 1.5;
+            };
+        };
+    };
+
+    @mixin narrow-layout {
+        margin-bottom: 5vh;
+    };
+
+    @include desktop-portrait {
+        @include narrow-layout;
+    };
+
+    @include tablet {
+        @include narrow-layout;
+        @include element-size(30vh, 100%);
+    };
+
+    @include phone-portrait {
+        @include narrow-layout;
+    };
+
+    @include phone-landscape {
+        & > div:last-child > div > div {
+            @include flex-template(row, center, center);
+        };
+    };
+};

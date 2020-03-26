@@ -6,119 +6,79 @@ import uuidv1 from "uuid/v1";
 
 const Profile = () => {
   const { form, isLoggedIn, resetForm, grid1, grid2, grid3, grid4, grid5 } = useContext(FormContext);
-
-  // OVER LOOPING - NOT EFFICIENT 
-
-    // const count = ['1', '2', '3', '4', '5'];
-
-    // const currApplication = (object) => 
-    //  typeof object === 'object' && object !== null ? 
-    //     Object.keys(object).map(key => {
-    //       console.log('current value of key in the loop ', key)
-
-    //       return typeof object[key] == 'object' ?
-    //         currApplication(object[key])
-    //         : 
-    //         currItem.map(item => {
-    //           console.log('current item.data in the loop ', item.data)
-    //           console.log('current value of key in the loop ', item.data)
-
-    //           return item.data === key ?
-    //           <div key={uuidv1()}>
-    //             <Title2>{item.display}</Title2> {object[key]=== null || object[key] === '' ? 'N/A' : `${object[key]}`}
-    //           </div>
-    //           : ''
-    //         })
-    //         })
-    //     : ''
-
-    // return (
-    //     <Wrapper>
-    //         {
-    //         isLoggedIn ? 
-    //         <StyledItems>
-    //           {count.map(num => <GridItems key={uuidv1()} grid={num}>{currApplication(form, num)}</GridItems>)}
-    //           <GridItems key={uuidv1()} grid={'6'}><Link onClick={resetForm} to='/form'>Edit Application</Link></GridItems>
-    //         </StyledItems>
-    //         :
-    //         isLoggedIn === false ? <h1>user doesn't exist</h1> : ''
-    //         }
-    //     </Wrapper>
-    // )
-
-      const displayData = (application, currGrid) => {
-        var appProperties = Object.keys(application);
-        var appDeepProperties;
-        var appSubObject;
-        var property;
-        console.log('value of appProperties: ', appProperties);
-        console.log('value of currGrid: ', currGrid);
+    const displayData = (application, currGrid) => {
+      var appProperties = Object.keys(application);
+      var appDeepProperties;
+      var appSubObject;
+      var property;
+      console.log('value of appProperties: ', appProperties);
+      console.log('value of currGrid: ', currGrid);
 
 
-        return typeof application === 'object' && application !== null ? 
-          currGrid.map(item => {
-            console.log('current item in map: ', item)
-            return item.parentObject ? 
-              (
-                // current sub object from application
-                appSubObject = appProperties.find(appProperty => appProperty === item.parentObject),
-                appDeepProperties = Object.keys(application[appSubObject]),
-                property = appDeepProperties.find(appProperty => appProperty === item.data),
-                console.log('appSubObject value: ', appSubObject),
-                console.log('appDeepProperties value: ', appDeepProperties),
-                console.log('property value: ', property),
-                console.log('application[appSubObject[property]]: ', application[appSubObject][property]),
-                <div key={uuidv1()}>
-                  <Title2>{item.display}</Title2>&nbsp;{application[appSubObject][property] === null || application[appSubObject][property] === '' ? 'N/A' : application[appSubObject][property] === 0 ? '0' : `${application[appSubObject][property]}`}
-                </div>
-              )
-              : 
-              (
-                property = appProperties.find(appProperty => appProperty === item.data), 
-                <div key={uuidv1()}>
-                  <Title2>{item.display}</Title2>&nbsp;{application[property] === null || application[property] === '' ? 'N/A' : application[property] === 0 ? '0' : `${application[property]}`}
-                </div>
-              )
-          })
-        : '';
-      }
+      return typeof application === 'object' && application !== null ? 
+        currGrid.map(item => {
+          console.log('current item in map: ', item)
+          return item.parentObject ? 
+            (
+              // current sub object from application
+              appSubObject = appProperties.find(appProperty => appProperty === item.parentObject),
+              appDeepProperties = Object.keys(application[appSubObject]),
+              property = appDeepProperties.find(appProperty => appProperty === item.data),
+              console.log('appSubObject value: ', appSubObject),
+              console.log('appDeepProperties value: ', appDeepProperties),
+              console.log('property value: ', property),
+              console.log('application[appSubObject[property]]: ', application[appSubObject][property]),
+              <div key={uuidv1()}>
+                <Title2>{item.display}</Title2>&nbsp;{application[appSubObject][property] === null || application[appSubObject][property] === '' ? 'N/A' : application[appSubObject][property] === 0 ? '0' : `${application[appSubObject][property]}`}
+              </div>
+            )
+            : 
+            (
+              property = appProperties.find(appProperty => appProperty === item.data), 
+              <div key={uuidv1()}>
+                <Title2>{item.display}</Title2>&nbsp;{application[property] === null || application[property] === '' ? 'N/A' : application[property] === 0 ? '0' : `${application[property]}`}
+              </div>
+            )
+        })
+      : '';
+    }
 
-        return (
-        <Wrapper>
-            {
-            isLoggedIn ? 
-            <StyledItems>
-              <Grid1>
-                <Title>Your personal information</Title>
-                {displayData(form, grid1)}
-              </Grid1>
-              <Grid2>
-                <Title>Parking situation</Title>
-                {displayData(form, grid2)}
-              </Grid2>
-              <Grid3>
-                <Title>Income information</Title>
-                {displayData(form, grid3)}
-              </Grid3>
-              <Grid4>
-                <Title>Situation details</Title>
-                {displayData(form, grid4)}
-              </Grid4>
-              <Grid5>
-                <Title>Emergency contact</Title>
-                {displayData(form, grid5)}
-              </Grid5>
-              <Grid6>
-                <Button>
-                  <Link onClick={resetForm} to='/form'><Edit>EDIT APPLICATION</Edit></Link>
-                </Button>
-              </Grid6>
-            </StyledItems>
-            :
-            isLoggedIn === false ? <h1>user doesn't exist</h1> : ''
-            }
-        </Wrapper>
-    )
+      return (
+      <Wrapper>
+          {
+          isLoggedIn ? 
+          <StyledItems>
+            <Grid1>
+              <Title>Your personal information</Title>
+              {displayData(form, grid1)}
+            </Grid1>
+            <Grid2>
+              <Title>Parking situation</Title>
+              {displayData(form, grid2)}
+            </Grid2>
+            <Grid3>
+              <Title>Income information</Title>
+              {displayData(form, grid3)}
+            </Grid3>
+            <Grid4>
+              <Title>Situation details</Title>
+              {displayData(form, grid4)}
+            </Grid4>
+            <Grid5>
+              <Title>Emergency contact</Title>
+              {displayData(form, grid5)}
+            </Grid5>
+            <Grid6>
+              <Button>
+                <Link onClick={resetForm} to='/form'><Edit>EDIT APPLICATION</Edit></Link>
+              </Button>
+            </Grid6>
+          </StyledItems>
+          :
+          isLoggedIn === false ? <h1>user doesn't exist</h1> : ''
+          }
+      </Wrapper>
+  )
 }
 
 export default Profile;
