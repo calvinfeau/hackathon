@@ -1,7 +1,7 @@
-@import '../variables.scss';
-@import '../media-queries.scss';
-@import '../layout-templates.scss';
-@import '../typo-templates.scss';
+@import '../utilities/variables.scss';
+@import '../utilities/media-queries.scss';
+@import '../utilities/layout-templates.scss';
+@import '../utilities/text-templates.scss';
 
 #section3 {
     @include flex-template(row, space-evenly, stretch);

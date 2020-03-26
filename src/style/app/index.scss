@@ -1,7 +1,7 @@
-@import './reset.scss';
-@import './layout-templates.scss';
-@import './typo-templates.scss';
-@import './variables.scss';
+@import '../utilities/reset.scss';
+@import '../utilities/variables.scss';
+@import '../utilities/layout-templates.scss';
+@import '../utilities/text-templates.scss';
 
 body {
   @include flex-template(column, center, center);

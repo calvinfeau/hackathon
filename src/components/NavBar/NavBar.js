@@ -1,7 +1,7 @@
 import React from "react";
 import BasicMenu from "./BasicMenu";
 import NarrowMenu from "./NarrowMenu";
-import '../../style/navbar.scss';
+import '../../style/app/navbar.scss';
 
 const NavBar = () => {
   return ( 

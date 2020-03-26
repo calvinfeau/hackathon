@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import '../style/footer.scss';
+import '../style/app/footer.scss';
 
 const Footer = () => {
 

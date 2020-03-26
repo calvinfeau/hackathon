@@ -5,7 +5,7 @@ import leftArrow from "../assets/left-arrow-icon.svg";
 import rightArrow from "../assets/right-arrow-icon.svg";
 import makeCarousel from "react-reveal/makeCarousel";
 import Slide from "react-reveal/Slide";
-import "../style/disclaimer.scss";
+import "../style/app/disclaimer.scss";
 
 const Disclaimer = () => {
     const [currentDisclaimer, setCurrentDisclaimer] = useState(true);
