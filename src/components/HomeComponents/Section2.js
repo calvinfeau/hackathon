@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../style/homepage/section2.scss';
+import '../../style/components/HomeComponents/Section2/section2.scss';
 
 const Section2 = () => {
   return ( 

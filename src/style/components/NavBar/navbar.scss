@@ -1,0 +1,14 @@
+@import '../../utilities/variables.scss';
+@import '../../utilities/media-queries.scss';
+@import '../../utilities/layout-templates.scss';
+@import '../../utilities/text-templates.scss';
+@import './navbar-menu-basic.scss';
+@import './navbar-menu-narrow.scss';
+
+#navbar {
+    @include element-size(10vh, 100%);
+    max-width: 1825px;
+    top: 0;
+    position: fixed;
+    background-color: white;
+};

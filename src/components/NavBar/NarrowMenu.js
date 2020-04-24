@@ -8,7 +8,7 @@ const NarrowMenu = () => {
     const [menu, setMenu] = useState(false);
 
     return ( 
-        <div id="menu-narrow">
+        <div id="navbar-layout-narrow">
             {menu ? 
                 <div id="menu-open">
                     <a onClick={() => setMenu(!menu)} href="https://www.safeparkingla.org/green-streets" target="_blank" rel="noopener noreferrer">

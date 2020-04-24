@@ -1,7 +1,7 @@
-@import '../utilities/variables.scss';
-@import '../utilities/media-queries.scss';
-@import '../utilities/layout-templates.scss';
-@import '../utilities/text-templates.scss';
+@import '../../../utilities/variables.scss';
+@import '../../../utilities/media-queries.scss';
+@import '../../../utilities/layout-templates.scss';
+@import '../../../utilities/text-templates.scss';
 
 
 #section1 {
@@ -9,7 +9,7 @@
     margin-bottom: 10vh;
     letter-spacing: 1.5px;
     line-height: 1.7;
-    background-image: url('../../assets/mobile-image1.png');
+    background-image: url('../../../../assets/mobile-image1.png');
     background-size: 100% 100%;
     
     & > div {
@@ -81,7 +81,7 @@
                 @include element-size('', 100%);
                 padding-top: 56.25%;
                 display: block;
-                background-image: url('../../assets/mobile-image1.png');
+                background-image: url('../../../../assets/mobile-image1.png');
                 background-size: 100% 100%;
             };
 

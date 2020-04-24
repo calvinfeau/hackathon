@@ -1,5 +1,9 @@
 @import './media-queries.scss';
+@import './variables.scss';
+@use "sass:map";
 
+
+// Mixin to be replaced by the one bellow "font-template"
 @mixin responsive-font($size, $color, $weight) {
     color: $color;
     font-weight: $weight;
@@ -27,6 +31,13 @@
         };
     };
 };
+
+
+@mixin font-template($size, $color, $weight) {
+    font-size: map-get($font-sizes, $size);
+    color: $color;
+    font-weight: $weight;  
+}
 
 @mixin button-template($size, $color, $template) {
     @include responsive-font($size, $color, bold);

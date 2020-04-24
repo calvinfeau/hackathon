@@ -1,7 +1,7 @@
-@import '../utilities/variables.scss';
-@import '../utilities/media-queries.scss';
-@import '../utilities/layout-templates.scss';
-@import '../utilities/text-templates.scss';
+@import '../../utilities/variables.scss';
+@import '../../utilities/media-queries.scss';
+@import '../../utilities/layout-templates.scss';
+@import '../../utilities/text-templates.scss';
 
 #footer {
     @include element-size(20vh, 100%);
@@ -17,15 +17,17 @@
             @include flex-template(row, center, center);
 
             & > a {
-                @include element-size($largeText, $largeText);      // Even and responsive circle for icons
+                @include element-size($largeText, $largeText);
                 @include flex-template(row, center, center);
                 background-color: white;
+                //Even and responsive circle for icons
                 border-radius: 50%;
                 -webkit-border-radius: 50%;
                 -moz-border-radius: 50%;
                 -ms-border-radius: 50%;
                 -o-border-radius: 50%;
 
+                
                 &:hover {
                     @include element-size(($largeText * 1.5), ($largeText * 1.5));
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import '../../style/homepage/section1.scss';
+import '../../style/components/HomeComponents/Section1/section1.scss';
 
 const Section1 = () => {
   return ( 

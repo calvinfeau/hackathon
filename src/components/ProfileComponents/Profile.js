@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { FormContext } from '../context/FormContext';
+import { FormContext } from '../../context/FormContext';
 import uuidv1 from "uuid/v1";
 
 const Profile = () => {

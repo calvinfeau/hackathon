@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import styled from "styled-components";
 import { FormContext } from '../context/FormContext';
-import LoginForm from '../components/LoginForm';
-import Profile from '../components/Profile';
+import LoginForm from '../components/ProfileComponents/LoginForm';
+import Profile from '../components/ProfileComponents/Profile';
 
 const ProfilePage = () => {
   const { isLoggedIn } = useContext(FormContext);

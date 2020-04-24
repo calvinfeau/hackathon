@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { FormContext } from '../context/FormContext';
+import { FormContext } from '../../context/FormContext';
 
 const LoginForm = () => {
   const { form, onChange, onChangeNested, checkUser } = useContext(FormContext);

@@ -1,0 +1,43 @@
+@mixin layout-narrow {
+    display: block;
+    @include element-size(100%, 100%);
+
+    #menu-closed {
+        @include element-size(100%, 100%);
+        @include flex-template(row, space-between, flex-end);
+
+        img {
+            @include element-size(5vh, auto);
+        };
+    };
+
+    #menu-open {
+        @include element-size(100%, 100%);
+        @include flex-template(row, space-between, flex-end);
+
+        a {
+            @include font-template("small", black, 900);
+            padding-bottom: 1vh;
+        };
+    };
+};
+
+#navbar-layout-narrow {
+    display: none;
+    padding: 1.5vh 15% 1.5vh;
+
+    i:hover {
+        cursor: pointer;
+    };
+
+    @include desktop-portrait {
+        @include layout-narrow;
+    };
+    @include tablet {
+        @include layout-narrow;
+    };
+    @include phone-portrait {
+        @include layout-narrow;
+        padding: 1.5vh 5% 1.5vh;
+    };
+};

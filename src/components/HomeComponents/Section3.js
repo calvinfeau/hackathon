@@ -2,7 +2,7 @@ import React from 'react';
 import image2 from "../../assets/image2.png";
 import image3 from "../../assets/image3.png";
 import image4 from "../../assets/image4.png";
-import '../../style/homepage/section3.scss';
+import '../../style/components/HomeComponents/Section3/section3.scss';
 
 const Section3 = () => {
   return ( 

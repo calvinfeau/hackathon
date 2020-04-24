@@ -3,16 +3,15 @@ import {Link} from "react-router-dom";
 import logo from "../../assets/logo.png";
 import heart from "../../assets/heart.png";
 
-
 const BasicMenu = () => {
     return ( 
-        <div id="menu-reg">
+        <div id="navbar-layout-basic">
             <div>
                 <Link to="/">
                     <img src={logo} alt="safeparking logo" />
                 </Link>
             </div>
-            <div>
+            <div id="menu">
                 <a href="https://www.safeparkingla.org/green-streets" target="_blank" rel="noopener noreferrer">
                     FIND&nbsp;SPOT
                 </a>
