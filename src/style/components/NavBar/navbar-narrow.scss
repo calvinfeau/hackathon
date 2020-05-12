@@ -32,9 +32,17 @@
 
     @include desktop-portrait {
         @include layout-narrow;
+
+        #menu-open > a {
+            @include font-template("large", black, 900);
+        };
     };
     @include tablet {
         @include layout-narrow;
+
+        #menu-open > a {
+            @include font-template("medium", black, 900);
+        };
     };
     @include phone-portrait {
         @include layout-narrow;

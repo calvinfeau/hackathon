@@ -33,6 +33,6 @@
     @include phone-landscape {
         & > a {
             @include font-template("small", black, 900);
-        }
+        };
     };
 };

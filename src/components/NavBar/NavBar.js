@@ -10,6 +10,6 @@ const NavBar = () => {
       <NarrowMenu />
     </div>
    );
-}
+};
  
 export default NavBar;

@@ -2,8 +2,8 @@
 @import '../../utilities/media-queries.scss';
 @import '../../utilities/layout-templates.scss';
 @import '../../utilities/text-templates.scss';
-@import './navbar-menu-basic.scss';
-@import './navbar-menu-narrow.scss';
+@import './navbar-basic.scss';
+@import './navbar-narrow.scss';
 
 #navbar {
     @include element-size(10vh, 100%);

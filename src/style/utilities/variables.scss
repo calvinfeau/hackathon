@@ -5,16 +5,17 @@ $lightOrange: #FFEEDA;
 $lightGreen: #DBEDDD;
 $lightYellow: #FFF7E2;
 
-// Text
+// Text to be replaced by fixed values
 $smallText: 1.2vmax;
 $mediumText: 1.5vmax;
 $largeText: 2.75vmax;
 
-
 $font-sizes: (
-    "small": 10px,
+    "small": 12px,
     "medium": 18px,
     "large": 26px
 );
 
-$iconSize: ();
+$icon-sizes: (
+
+);

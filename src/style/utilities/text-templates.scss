@@ -37,7 +37,7 @@
     font-size: map-get($font-sizes, $size);
     color: $color;
     font-weight: $weight;  
-}
+};
 
 @mixin button-template($size, $color, $template) {
     @include responsive-font($size, $color, bold);
