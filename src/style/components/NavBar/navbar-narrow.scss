@@ -1,8 +1,11 @@
-@mixin layout-narrow {
-    display: block;
+#navbar-layout-narrow {
     @include element-size(100%, 100%);
+    padding: 1.5vh 15% 1.5vh;
+    i:hover {
+        cursor: pointer;
+    };
 
-    #menu-closed {
+    #navbar-text-closed {
         @include element-size(100%, 100%);
         @include flex-template(row, space-between, flex-end);
 
@@ -11,7 +14,7 @@
         };
     };
 
-    #menu-open {
+    #navbar-text-open {
         @include element-size(100%, 100%);
         @include flex-template(row, space-between, flex-end);
 
@@ -20,32 +23,22 @@
             padding-bottom: 1vh;
         };
     };
-};
-
-#navbar-layout-narrow {
-    display: none;
-    padding: 1.5vh 15% 1.5vh;
-
-    i:hover {
-        cursor: pointer;
-    };
-
+ 
     @include desktop-portrait {
-        @include layout-narrow;
-
-        #menu-open > a {
+        #navbar-text-open > a {
             @include font-template("large", black, 900);
         };
     };
-    @include tablet {
-        @include layout-narrow;
 
-        #menu-open > a {
+    @include tablet {
+        #navbar-text-open > a {
             @include font-template("medium", black, 900);
         };
     };
+
     @include phone-portrait {
-        @include layout-narrow;
-        padding: 1.5vh 5% 1.5vh;
+        #navbar-text-open > a {
+            @include font-template("small", black, 900);
+        };
     };
 };

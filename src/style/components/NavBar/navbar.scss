@@ -2,12 +2,12 @@
 @import '../../utilities/media-queries.scss';
 @import '../../utilities/layout-templates.scss';
 @import '../../utilities/text-templates.scss';
-@import './navbar-basic.scss';
+@import './navbar-large.scss';
 @import './navbar-narrow.scss';
 
 #navbar {
     @include element-size(10vh, 100%);
-    max-width: 1825px;
+    max-width: 1826px;
     top: 0;
     position: fixed;
     background-color: white;

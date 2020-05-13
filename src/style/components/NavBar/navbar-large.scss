@@ -1,4 +1,4 @@
-#navbar-layout-basic {
+#navbar-layout-large {
     @include element-size(100%, 100%);
     @include flex-template(row, space-between, center);
     padding: 1.5vh 30px 1.5vh;
@@ -6,19 +6,9 @@
     img {
         @include element-size(6vh, auto);
     };
-
-    @include desktop-portrait {
-        display: none;
-    };
-    @include tablet {
-        display: none;
-    };
-    @include phone-portrait {
-        display: none;
-    };
 };
 
-#menu {
+#navbar-text {
     @include element-size(100%, 40%);
     @include flex-template(row, space-between, flex-end);
 

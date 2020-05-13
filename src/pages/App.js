@@ -6,13 +6,16 @@ import FormsPage from "./FormsPage";
 import HomePage from "./HomePage";
 import ProfilePage from "./ProfilePage";
 import FormContextProvider from '../context/FormContext';
+import ViewportContextProvider from '../context/ViewportContext';
 import Disclaimer from "../components/Disclaimer";
 
 class App extends Component {
   render() {
     return (
       <div id="app">
-        <NavBar />
+        <ViewportContextProvider>
+          <NavBar />
+        </ViewportContextProvider>
         <Disclaimer />
         <Switch>
           <Route exact path="/" render={() => <HomePage />} />
