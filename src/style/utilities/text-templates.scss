@@ -39,6 +39,11 @@
     font-weight: $weight;  
 };
 
+@mixin icon-template($size, $color) {
+    font-size: map-get($icon-sizes, $size);
+    color: $color;
+};
+
 @mixin button-template($size, $color, $template) {
     @include responsive-font($size, $color, bold);
     border-radius: 30px;

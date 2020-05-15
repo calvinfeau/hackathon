@@ -2,6 +2,7 @@
 @import '../utilities/variables.scss';
 @import '../utilities/layout-templates.scss';
 @import '../utilities/text-templates.scss';
+@import '../utilities/media-queries.scss';
 
 body {
   @include flex-template(column, center, center);
@@ -29,10 +30,20 @@ a {
 };
 
 .material-icons {
-  @include responsive-font($largeText, black, normal);
+  // @include responsive-font($largeText, black, normal);
+  @include icon-template("large", black);
+  @include tablet {
+    @include icon-template("medium", black);
+  };
+  @include phone-portrait {
+    @include icon-template("small", black);
+  };
+  @include phone-landscape {
+    @include icon-template("small", black);
+  };
 };
 
 #app {
   max-width: 1825px;
-  margin-top: 10vh;
+  margin-top: 10vh;   // To use the sticky navbar properly, without bouncing effect
 };

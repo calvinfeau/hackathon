@@ -4,6 +4,7 @@
 @import '../../utilities/text-templates.scss';
 @import './navbar-large.scss';
 @import './navbar-narrow.scss';
+@use "sass:map";
 
 #navbar {
     @include element-size(10vh, 100%);

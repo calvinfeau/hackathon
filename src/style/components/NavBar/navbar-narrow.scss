@@ -1,7 +1,7 @@
 #navbar-narrow-container {
     @include element-size(100%, 100%);
     @include flex-template(row, '', '');
-    padding-left: 10%;
+    padding: 0 10% 1vh;
 };
 
 #navbar-text-closed {
@@ -10,13 +10,6 @@
 
     img {
         @include element-size(5vh, auto);
-        padding-bottom: 10px;
-    };
-
-    #toggle-icon {
-        background-color: white;
-        z-index: 20;
-        padding-right: 10%;
     };
 };
 
@@ -24,14 +17,16 @@
     @include element-size(100%, 100%);
     @include flex-template(row, space-between, flex-end);
     z-index: 10;
-    padding: 0 30% 0 10%;
+    padding: 0 10% 1vh;
     position: absolute;
     left: 100%;
     background-color: white;
 
     a {
+        // equalize the height with the close icon's height and center to align it
+        @include element-size(map-get($icon-sizes, "large"), '');
+        @include flex-template(row, '', center);
         @include font-template("large", black, 900);
-        padding-bottom: 10px;
     };
 };
 
@@ -41,36 +36,34 @@ i:hover {
 };
 
 @include tablet {
-    #navbar-text-open > a {
-        @include font-template("medium", black, 900);
+    #navbar-text-open {
+        a {
+            @include element-size(map-get($icon-sizes, "medium"), '');
+            @include flex-template(row, '', center);
+            @include font-template("medium", black, 900);
+        }
     };
 };
 
 @include phone-portrait {
-    #navbar-text-closed {
-        img {
-            @include element-size(5vh, auto);
-            padding-bottom: 5px;
-        };
-    };
-
     #navbar-text-open {
         a {
+            @include element-size(map-get($icon-sizes, "small"), '');
+            @include flex-template(row, '', center);
             @include font-template("small", black, 900);
-            padding-bottom: 5px;
         };
     };
 };
 
 // ANIMATION
 .menu-open {
-    animation: slidein .3s linear 1 forwards;
-    -webkit-animation: slidein .3s linear 1 forwards;
+    animation: slidein .2s linear 1 forwards;
+    -webkit-animation: slidein .2s linear 1 forwards;
 };
 
 .menu-close {
-    animation: slideout .3s linear 1 forwards;
-    -webkit-animation: slideout .3s linear 1 forwards;
+    animation: slideout .2s linear 1 forwards;
+    -webkit-animation: slideout .2s linear 1 forwards;
 };
 
 @keyframes slidein {
