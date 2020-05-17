@@ -4,7 +4,7 @@ import logo from "../../assets/logo.png";
 import heart from "../../assets/heart.png";
 
 const NarrowMenu = () => {
-    // the state 0 means the page just loaded so the menu should neither have the open or close animation
+    // the state 0 means the page just loaded so the menu should not have the open nor the close animation
     const [ menu, setMenu ] = useState(0);
     let menuIsOpen = menu == 2 ? 'menu-open' : menu == 1 ? 'menu-close' : '';
 

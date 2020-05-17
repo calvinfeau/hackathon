@@ -16,7 +16,7 @@ class App extends Component {
         <ViewportContextProvider>
           <NavBar />
         </ViewportContextProvider>
-        <Disclaimer />
+        {/* <Disclaimer /> */}
         <Switch>
           <Route exact path="/" render={() => <HomePage />} />
           <FormContextProvider>

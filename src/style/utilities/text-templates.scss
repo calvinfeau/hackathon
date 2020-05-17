@@ -2,7 +2,6 @@
 @import './variables.scss';
 @use "sass:map";
 
-
 // Mixin to be replaced by the one bellow "font-template"
 @mixin responsive-font($size, $color, $weight) {
     color: $color;
